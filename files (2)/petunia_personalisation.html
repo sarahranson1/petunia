@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personnaliser — Éditions Petunia Chatterton</title>
+<script>
+// translations.js — Éditions Petunia Chatterton
+// 6 langues : fr, en, es, nl, de, it
+
+const TRANSLATIONS = {
+
+  fr: {
+    // NAV
+    nav_brand: "Éditions Petunia Chatterton",
+    nav_home: "Accueil",
+    nav_catalogue: "Nos créations",
+    nav_about: "À propos",
+    nav_journal: "Journal",
+    nav_contact: "Contact",
+    nav_cta: "Créer mon livre",
+    nav_cart: "Mon panier",
+
+    // HERO HOME
+    hero_label: "Livres personnalisés pour enfants",
+    hero_title_1: "Dans un monde bruyant,",
+    hero_title_2: "on vous aide à dire",
+    hero_title_3: "l'essentiel.",
+    hero_desc: "Créez un livre unique qui raconte votre amour. Un souvenir personnalisé que votre enfant gardera précieusement toute sa vie.",
+    hero_btn_create: "Créer mon livre",
+    hero_btn_discover: "Découvrir l'histoire",
+
+    // HOW IT WORKS
+    how_label: "Comment ça marche",
+    how_title: "Un livre unique en quelques clics",
+    step1_title: "Personnalisez",
+    step1_desc: "Choisissez le prénom de l'enfant et le surnom de l'adulte pour créer une histoire unique.",
+    step2_title: "Prévisualisez",
+    step2_desc: "Découvrez votre livre personnalisé avec les noms intégrés dans les illustrations.",
+    step3_title: "Recevez",
+    step3_desc: "Nous imprimons et expédions votre livre avec soin sous 7 jours ouvrés.",
+    step4_title: "Transmettez",
+    step4_desc: "Offrez un souvenir unique qui se transmettra de génération en génération.",
+
+    // BOOK SECTION
+    book_label: "Notre premier livre",
+    book_title: "Je t'aime grand comme le ciel",
+    book_desc: "Une histoire d'amour entre un parent et son enfant, racontée à travers des illustrations tendres et des mots qui touchent le cœur.",
+    book_feat1: "24 pages illustrées — une histoire poétique magnifiquement illustrée",
+    book_feat2: "Illustrations à l'aquarelle — des dessins doux et chaleureux",
+    book_feat3: "Papier éco-responsable — imprimé en France sur papier certifié",
+    book_from: "À partir de",
+    book_cta: "Créer mon exemplaire",
+
+    // TESTIMONIALS
+    temo_label: "Ce qu'ils en disent",
+    temo_title: "Des souvenirs qui durent toute une vie",
+    temo1_text: "Un cadeau absolument magnifique. Ma fille l'a relu des dizaines de fois et connaît les illustrations par cœur.",
+    temo1_author: "Sophie M.",
+    temo1_detail: "Maman de Chloé, 4 ans",
+    temo2_text: "Notre petit-fils est reparti avec les yeux pétillants. Le fait de voir son prénom dans l'histoire l'a rendu si heureux.",
+    temo2_author: "Jean-Pierre & Monique",
+    temo2_detail: "Grands-parents de Théo, 3 ans",
+    temo3_text: "La livraison a été rapide et l'emballage soigné. Un cadeau vraiment différent de ce qu'on trouve en librairie.",
+    temo3_author: "Camille R.",
+    temo3_detail: "Marraine d'Emma, 5 ans",
+
+    // CTA
+    cta_label: "Commencez maintenant",
+    cta_title: "Offrez un souvenir intemporel",
+    cta_desc: "Créez en quelques minutes le livre qui accompagnera votre enfant toute sa vie.",
+    cta_btn: "Créer mon livre unique",
+
+    // NEWSLETTER
+    nl_label: "Rejoignez-nous",
+    nl_title: "Recevez nos histoires avant tout le monde",
+    nl_desc: "Nouvelles créations, offres exclusives et conseils lecture — en avant-première.",
+    nl_placeholder: "Votre adresse e-mail",
+    nl_btn: "S'inscrire",
+    nl_legal: "Pas de spam. Désabonnement possible à tout moment.",
+
+    // FOOTER
+    footer_legal: "Mentions légales",
+    footer_cgv: "CGV",
+    footer_contact: "Contact",
+    footer_copy: "© 2025 Éditions Petunia Chatterton — Studio ma.vi",
+
+    // CATALOGUE
+    cat_label: "Notre collection",
+    cat_title_1: "Des créations",
+    cat_title_2: "tissées avec amour",
+    cat_desc: "Livres personnalisés, affiches illustrées et cahiers de coloriage — chaque création est pensée pour nourrir l'imaginaire de votre enfant.",
+    cat_filter_all: "Tout voir",
+    cat_filter_books: "Livres",
+    cat_filter_posters: "Affiches",
+    cat_filter_coloring: "Cahiers",
+    cat_filter_occasion: "Occasion",
+    cat_occ_birth: "Naissance",
+    cat_occ_birthday: "Anniversaire",
+    cat_occ_christmas: "Noël",
+    cat_occ_baptism: "Baptême",
+    cat_books_title: "Livres personnalisés",
+    cat_books_sub: "Le prénom de votre enfant dans chaque page",
+    cat_tag_perso: "✦ Personnalisés",
+    cat_tag_fixed: "Produit fixe",
+    cat_posters_title: "Affiches & posters",
+    cat_posters_sub: "Illustrations originales pour la chambre de l'enfant",
+    cat_coloring_title: "Cahiers de coloriage",
+    cat_coloring_sub: "Les illustrations de nos livres à colorier",
+    cat_upsell_title: "Prolongez l'aventure avec les cahiers de coloriage",
+    cat_upsell_sub: "Les personnages de nos livres à colorier — souvent ajoutés au panier avec le livre",
+    cat_discover: "Découvrir →",
+    cat_perso_tag: "Personnalisé avec le prénom de l'enfant",
+    cat_upsell_hint: "+ 3 couvertures premium au choix lors de la commande",
+    cat_upsell_cahier: "Souvent commandé avec le livre ↗",
+    cat_btn_perso: "Personnaliser",
+    cat_btn_add: "Ajouter",
+    cat_from: "À partir de",
+    book1_age: "0 – 6 ans",
+    book1_title: "Je t'aime plus grand que le ciel",
+    book1_desc: "Une déclaration d'amour illustrée entre un parent et son enfant. Des illustrations aquarelle tendres, le prénom de votre enfant tissé dans chaque page.",
+    book1_premium: "+ 3 couvertures premium au choix lors de la commande",
+    book2_age: "Naissance · 0 – 2 ans",
+    book2_title: "Bienvenu au monde",
+    book2_desc: "Un livre de bienvenue lumineux pour accueillir un nouveau-né. Chaque page célèbre sa venue et lui promet un monde rempli d'amour.",
+    poster_a5_title: "Affiche Pétunia — A5",
+    poster_a5_desc: "Illustration aquarelle sur papier mat 250g. Idéale pour un petit cadre à offrir.",
+    poster_a4_title: "Affiche Pétunia — A4",
+    poster_a4_desc: "Notre illustration phare en format encadrable. Papier mat 250g, rendu élégant.",
+    poster_a3_title: "Affiche Pétunia — A3",
+    poster_a3_desc: "Le grand format pour une présence lumineuse dans la pièce. Papier mat 250g.",
+    coloring1_tag: "Cahier de coloriage",
+    coloring1_title: "Je t'aime plus grand que le ciel",
+    coloring1_desc: "Toutes les illustrations aquarelle du livre à colorier. 24 pages de dessins en traits fins sur papier épais.",
+    coloring2_title: "Bienvenu au monde",
+    coloring2_desc: "Les douces illustrations du livre de bienvenue à colorier. 20 pages adaptées aux premières mains.",
+
+    // PERSONALISATION
+    perso_back: "← Nos créations",
+    perso_breadcrumb_home: "Accueil",
+    perso_breadcrumb_cat: "Nos créations",
+    perso_ratings: "4,9 · 147 avis",
+    perso_tagline: "Un livre personnalisé qui raconte votre amour, avec le prénom de votre enfant tissé dans chaque page.",
+    perso_delivery_strong: "Commandé aujourd'hui → livré le 23 déc. chez vous",
+    perso_delivery_sub: "Expédition sous 48h · Livraison offerte dès 45 €",
+    perso_step1: "Choisissez votre format",
+    perso_format1_name: "Livre imprimé",
+    perso_format1_detail: "Couverture rigide · 24 pages · 21×21 cm",
+    perso_format2_name: "E-book (PDF)",
+    perso_format2_detail: "Téléchargement immédiat · Impression libre",
+    perso_format3_name: "Pack complet",
+    perso_format3_detail: "Livre imprimé + E-book · Meilleure valeur",
+    perso_step2: "Personnalisez votre livre",
+    perso_child_label: "Prénom de l'enfant",
+    perso_child_placeholder: "Ex : Léa, Théo, Emma…",
+    perso_girl: "Fille",
+    perso_boy: "Garçon",
+    perso_adult_label: "Votre surnom (comme il vous appelle)",
+    perso_adult_placeholder: "Ex : Maman, Papa, Mamie, Papi…",
+    perso_woman: "Femme",
+    perso_man: "Homme",
+    perso_step3: "Choisissez votre couverture",
+    cover_original: "Original",
+    cover_original_price: "Inclus",
+    cover_pastel: "Pastel",
+    cover_nuit: "Nuit étoilée",
+    cover_premium_label: "Premium",
+    cover_note: "Les couvertures Pastel et Nuit étoilée sont des éditions premium avec finition spéciale.",
+    perso_step4: "Complétez votre commande",
+    opt_coloring_name: "Cahier de coloriage assorti",
+    opt_coloring_desc: "Les illustrations du livre à colorier · A5 · 24 pages · Papier 120g",
+    opt_poster_a5_name: "Affiche poster A5",
+    opt_poster_a5_desc: "Illustration aquarelle de couverture · Papier mat 250g · 14×21 cm",
+    opt_poster_a4_name: "Affiche poster A4",
+    opt_poster_a4_desc: "Illustration aquarelle de couverture · Papier mat 250g · 21×29,7 cm",
+    opt_poster_a3_name: "Affiche poster A3",
+    opt_poster_a3_desc: "Illustration aquarelle de couverture · Papier mat 250g · 29,7×42 cm",
+    total_format: "Format",
+    total_cover: "Couverture premium",
+    total_options: "Options ajoutées",
+    total_label: "Total",
+    pay_secure: "Paiement 100% sécurisé",
+    btn_add_cart: "Ajouter au panier",
+    btn_preview: "Prévisualiser mon livre",
+    details_title: "Détails du produit",
+    detail_format: "Format",
+    detail_pages: "Pagination",
+    detail_paper: "Papier",
+    detail_cover: "Couverture",
+    detail_print: "Impression",
+    detail_delay: "Délai",
+    detail_format_val: "21 × 21 cm",
+    detail_pages_val: "24 pages",
+    detail_paper_val: "170g mat, FSC",
+    detail_cover_val: "Rigide, mat",
+    detail_print_val: "France",
+    detail_delay_val: "7 jours ouvrés",
+    preview_name_placeholder: "Prénom,",
+    gallery_note: "Aperçu mis à jour avec vos choix en temps réel",
+  },
+
+  en: {
+    nav_brand: "Petunia Chatterton Editions",
+    nav_home: "Home",
+    nav_catalogue: "Our creations",
+    nav_about: "About",
+    nav_journal: "Journal",
+    nav_contact: "Contact",
+    nav_cta: "Create my book",
+    nav_cart: "My cart",
+    hero_label: "Personalised books for children",
+    hero_title_1: "In a noisy world,",
+    hero_title_2: "we help you say",
+    hero_title_3: "what matters most.",
+    hero_desc: "Create a unique book that tells your love story. A personalised keepsake your child will treasure for life.",
+    hero_btn_create: "Create my book",
+    hero_btn_discover: "Discover the story",
+    how_label: "How it works",
+    how_title: "A unique book in just a few clicks",
+    step1_title: "Personalise",
+    step1_desc: "Choose the child's name and the adult's nickname to create a unique story.",
+    step2_title: "Preview",
+    step2_desc: "Discover your personalised book with names woven into the illustrations.",
+    step3_title: "Receive",
+    step3_desc: "We print and ship your book with care within 7 working days.",
+    step4_title: "Pass it on",
+    step4_desc: "Give a unique keepsake that will be passed down from generation to generation.",
+    book_label: "Our first book",
+    book_title: "I love you bigger than the sky",
+    book_desc: "A love story between a parent and child, told through tender illustrations and words that touch the heart.",
+    book_feat1: "24 illustrated pages — a beautifully illustrated poetic story",
+    book_feat2: "Watercolour illustrations — soft and warm drawings",
+    book_feat3: "Eco-friendly paper — printed in France on certified paper",
+    book_from: "From",
+    book_cta: "Create my copy",
+    temo_label: "What they say",
+    temo_title: "Memories that last a lifetime",
+    temo1_text: "An absolutely beautiful gift. My daughter has read it dozens of times and knows every illustration by heart.",
+    temo1_author: "Sophie M.",
+    temo1_detail: "Mother of Chloé, age 4",
+    temo2_text: "Our grandson left with sparkling eyes. Seeing his name in the story made him so happy.",
+    temo2_author: "Jean-Pierre & Monique",
+    temo2_detail: "Grandparents of Théo, age 3",
+    temo3_text: "Delivery was fast and the packaging was beautiful. A truly different gift from anything you find in a bookshop.",
+    temo3_author: "Camille R.",
+    temo3_detail: "Godmother of Emma, age 5",
+    cta_label: "Start now",
+    cta_title: "Give a timeless keepsake",
+    cta_desc: "Create in minutes the book that will accompany your child throughout their life.",
+    cta_btn: "Create my unique book",
+    nl_label: "Join us",
+    nl_title: "Get our stories first",
+    nl_desc: "New creations, exclusive offers and reading tips — before anyone else.",
+    nl_placeholder: "Your email address",
+    nl_btn: "Subscribe",
+    nl_legal: "No spam. Unsubscribe at any time.",
+    footer_legal: "Legal notice",
+    footer_cgv: "Terms",
+    footer_contact: "Contact",
+    footer_copy: "© 2025 Petunia Chatterton Editions — Studio ma.vi",
+    cat_label: "Our collection",
+    cat_title_1: "Creations",
+    cat_title_2: "made with love",
+    cat_desc: "Personalised books, illustrated posters and colouring books — each creation nurtures your child's imagination.",
+    cat_filter_all: "View all",
+    cat_filter_books: "Books",
+    cat_filter_posters: "Posters",
+    cat_filter_coloring: "Colouring",
+    cat_filter_occasion: "Occasion",
+    cat_occ_birth: "Birth",
+    cat_occ_birthday: "Birthday",
+    cat_occ_christmas: "Christmas",
+    cat_occ_baptism: "Baptism",
+    cat_books_title: "Personalised books",
+    cat_books_sub: "Your child's name on every page",
+    cat_tag_perso: "✦ Personalised",
+    cat_tag_fixed: "Fixed product",
+    cat_posters_title: "Posters & prints",
+    cat_posters_sub: "Original illustrations for the child's room",
+    cat_coloring_title: "Colouring books",
+    cat_coloring_sub: "Our book illustrations to colour in",
+    cat_upsell_title: "Continue the adventure with our colouring books",
+    cat_upsell_sub: "The characters from our books to colour — often added to the basket with the book",
+    cat_discover: "Discover →",
+    cat_perso_tag: "Personalised with your child's name",
+    cat_upsell_hint: "+ 3 premium covers available at checkout",
+    cat_upsell_cahier: "Often ordered with the book ↗",
+    cat_btn_perso: "Personalise",
+    cat_btn_add: "Add",
+    cat_from: "From",
+    book1_age: "0 – 6 years",
+    book1_title: "I love you bigger than the sky",
+    book1_desc: "An illustrated love story between parent and child, with watercolour artwork and your child's name woven through every page.",
+    book1_premium: "+ 3 premium covers available at checkout",
+    book2_age: "Newborn · 0 – 2 years",
+    book2_title: "Welcome to the world",
+    book2_desc: "A bright and tender welcome book for a newborn. Every page celebrates their arrival and promises a world full of love.",
+    poster_a5_title: "Pétunia Poster — A5",
+    poster_a5_desc: "Watercolour illustration on 250g matte paper. Perfect for a small gift frame.",
+    poster_a4_title: "Pétunia Poster — A4",
+    poster_a4_desc: "Our signature illustration in a frameable size. 250g matte paper, elegant finish.",
+    poster_a3_title: "Pétunia Poster — A3",
+    poster_a3_desc: "The large format for a luminous presence in the room. 250g matte paper, rich colours.",
+    coloring1_tag: "Colouring book",
+    coloring1_title: "I love you bigger than the sky",
+    coloring1_desc: "All the watercolour illustrations from the book to colour in. 24 pages of fine-line drawings on thick paper.",
+    coloring2_title: "Welcome to the world",
+    coloring2_desc: "The gentle illustrations from the welcome book to colour. 20 pages with simple shapes for little hands.",
+    perso_back: "← Our creations",
+    perso_breadcrumb_home: "Home",
+    perso_breadcrumb_cat: "Our creations",
+    perso_ratings: "4.9 · 147 reviews",
+    perso_tagline: "A personalised book that tells your love story, with your child's name woven into every illustrated page.",
+    perso_delivery_strong: "Order today → delivered by 23 Dec to your door",
+    perso_delivery_sub: "Ships within 48h · Free delivery from €45",
+    perso_step1: "Choose your format",
+    perso_format1_name: "Printed book",
+    perso_format1_detail: "Hardcover · 24 pages · 21×21 cm",
+    perso_format2_name: "E-book (PDF)",
+    perso_format2_detail: "Instant download · Print at home",
+    perso_format3_name: "Complete pack",
+    perso_format3_detail: "Printed book + E-book · Best value",
+    perso_step2: "Personalise your book",
+    perso_child_label: "Child's first name",
+    perso_child_placeholder: "E.g. Léa, Theo, Emma…",
+    perso_girl: "Girl",
+    perso_boy: "Boy",
+    perso_adult_label: "Your nickname (as they call you)",
+    perso_adult_placeholder: "E.g. Mummy, Daddy, Grandma…",
+    perso_woman: "Woman",
+    perso_man: "Man",
+    perso_step3: "Choose your cover",
+    cover_original: "Original",
+    cover_original_price: "Included",
+    cover_pastel: "Pastel",
+    cover_nuit: "Starry night",
+    cover_premium_label: "Premium",
+    cover_note: "The Pastel and Starry Night covers are premium editions with a special finish.",
+    perso_step4: "Complete your order",
+    opt_coloring_name: "Matching colouring book",
+    opt_coloring_desc: "The book illustrations to colour in · A5 · 24 pages · 120g paper",
+    opt_poster_a5_name: "A5 poster print",
+    opt_poster_a5_desc: "Cover watercolour illustration · 250g matte paper · 14×21 cm",
+    opt_poster_a4_name: "A4 poster print",
+    opt_poster_a4_desc: "Cover watercolour illustration · 250g matte paper · 21×29.7 cm",
+    opt_poster_a3_name: "A3 poster print",
+    opt_poster_a3_desc: "Cover watercolour illustration · 250g matte paper · 29.7×42 cm",
+    total_format: "Format",
+    total_cover: "Premium cover",
+    total_options: "Added options",
+    total_label: "Total",
+    pay_secure: "100% secure payment",
+    btn_add_cart: "Add to cart",
+    btn_preview: "Preview my book",
+    details_title: "Product details",
+    detail_format: "Size",
+    detail_pages: "Pages",
+    detail_paper: "Paper",
+    detail_cover: "Cover",
+    detail_print: "Printing",
+    detail_delay: "Delivery",
+    detail_format_val: "21 × 21 cm",
+    detail_pages_val: "24 pages",
+    detail_paper_val: "170g matte, FSC",
+    detail_cover_val: "Hardcover, matte",
+    detail_print_val: "France",
+    detail_delay_val: "7 working days",
+    preview_name_placeholder: "First name,",
+    gallery_note: "Preview updates live with your choices",
+  },
+
+  es: {
+    nav_brand: "Ediciones Petunia Chatterton",
+    nav_home: "Inicio",
+    nav_catalogue: "Nuestras creaciones",
+    nav_about: "Nosotros",
+    nav_journal: "Diario",
+    nav_contact: "Contacto",
+    nav_cta: "Crear mi libro",
+    nav_cart: "Mi carrito",
+    hero_label: "Libros personalizados para niños",
+    hero_title_1: "En un mundo ruidoso,",
+    hero_title_2: "te ayudamos a decir",
+    hero_title_3: "lo esencial.",
+    hero_desc: "Crea un libro único que cuente tu amor. Un recuerdo personalizado que tu hijo guardará para siempre.",
+    hero_btn_create: "Crear mi libro",
+    hero_btn_discover: "Descubrir la historia",
+    how_label: "Cómo funciona",
+    how_title: "Un libro único en pocos clics",
+    step1_title: "Personaliza",
+    step1_desc: "Elige el nombre del niño y el apodo del adulto para crear una historia única.",
+    step2_title: "Previsualiza",
+    step2_desc: "Descubre tu libro personalizado con los nombres integrados en las ilustraciones.",
+    step3_title: "Recibe",
+    step3_desc: "Imprimimos y enviamos tu libro con cuidado en 7 días hábiles.",
+    step4_title: "Transmite",
+    step4_desc: "Regala un recuerdo único que se transmitirá de generación en generación.",
+    book_label: "Nuestro primer libro",
+    book_title: "Te quiero más grande que el cielo",
+    book_desc: "Una historia de amor entre un padre y su hijo, contada a través de tiernas ilustraciones y palabras que tocan el corazón.",
+    book_feat1: "24 páginas ilustradas — una historia poética magníficamente ilustrada",
+    book_feat2: "Ilustraciones en acuarela — dibujos suaves y cálidos",
+    book_feat3: "Papel ecológico — impreso en Francia en papel certificado",
+    book_from: "Desde",
+    book_cta: "Crear mi ejemplar",
+    temo_label: "Lo que dicen",
+    temo_title: "Recuerdos que duran toda la vida",
+    temo1_text: "Un regalo absolutamente precioso. Mi hija lo ha leído decenas de veces y se sabe todas las ilustraciones de memoria.",
+    temo1_author: "Sophie M.",
+    temo1_detail: "Mamá de Chloé, 4 años",
+    temo2_text: "Nuestro nieto se fue con los ojos brillantes. Ver su nombre en la historia le hizo tan feliz.",
+    temo2_author: "Jean-Pierre y Monique",
+    temo2_detail: "Abuelos de Théo, 3 años",
+    temo3_text: "La entrega fue rápida y el embalaje muy cuidado. Un regalo realmente diferente a lo que se encuentra en las librerías.",
+    temo3_author: "Camille R.",
+    temo3_detail: "Madrina de Emma, 5 años",
+    cta_label: "Empieza ahora",
+    cta_title: "Regala un recuerdo atemporal",
+    cta_desc: "Crea en minutos el libro que acompañará a tu hijo toda la vida.",
+    cta_btn: "Crear mi libro único",
+    nl_label: "Únete a nosotros",
+    nl_title: "Recibe nuestras historias antes que nadie",
+    nl_desc: "Nuevas creaciones, ofertas exclusivas y consejos de lectura — antes que nadie.",
+    nl_placeholder: "Tu correo electrónico",
+    nl_btn: "Suscribirse",
+    nl_legal: "Sin spam. Cancela cuando quieras.",
+    footer_legal: "Aviso legal",
+    footer_cgv: "Condiciones",
+    footer_contact: "Contacto",
+    footer_copy: "© 2025 Ediciones Petunia Chatterton — Studio ma.vi",
+    cat_label: "Nuestra colección",
+    cat_title_1: "Creaciones",
+    cat_title_2: "hechas con amor",
+    cat_desc: "Libros personalizados, pósters ilustrados y cuadernos de colorear — cada creación nutre la imaginación de tu hijo.",
+    cat_filter_all: "Ver todo",
+    cat_filter_books: "Libros",
+    cat_filter_posters: "Pósters",
+    cat_filter_coloring: "Cuadernos",
+    cat_filter_occasion: "Ocasión",
+    cat_occ_birth: "Nacimiento",
+    cat_occ_birthday: "Cumpleaños",
+    cat_occ_christmas: "Navidad",
+    cat_occ_baptism: "Bautizo",
+    cat_books_title: "Libros personalizados",
+    cat_books_sub: "El nombre de tu hijo en cada página",
+    cat_tag_perso: "✦ Personalizados",
+    cat_tag_fixed: "Producto fijo",
+    cat_posters_title: "Pósters e ilustraciones",
+    cat_posters_sub: "Ilustraciones originales para la habitación del niño",
+    cat_coloring_title: "Cuadernos de colorear",
+    cat_coloring_sub: "Las ilustraciones de nuestros libros para colorear",
+    cat_upsell_title: "Prolonga la aventura con los cuadernos de colorear",
+    cat_upsell_sub: "Los personajes de nuestros libros para colorear — frecuentemente añadidos con el libro",
+    cat_discover: "Descubrir →",
+    cat_perso_tag: "Personalizado con el nombre del niño",
+    cat_upsell_hint: "+ 3 portadas premium disponibles al pedir",
+    cat_upsell_cahier: "Frecuentemente pedido con el libro ↗",
+    cat_btn_perso: "Personalizar",
+    cat_btn_add: "Añadir",
+    cat_from: "Desde",
+    book1_age: "0 – 6 años",
+    book1_title: "Te quiero más grande que el cielo",
+    book1_desc: "Una declaración de amor ilustrada entre un padre y su hijo. Acuarelas tiernas y el nombre de tu hijo tejido en cada página.",
+    book1_premium: "+ 3 portadas premium al pedir",
+    book2_age: "Recién nacido · 0 – 2 años",
+    book2_title: "Bienvenido al mundo",
+    book2_desc: "Un libro de bienvenida luminoso para recibir a un recién nacido. Cada página celebra su llegada.",
+    poster_a5_title: "Póster Pétunia — A5",
+    poster_a5_desc: "Ilustración en acuarela sobre papel mate 250g. Ideal para un pequeño marco de regalo.",
+    poster_a4_title: "Póster Pétunia — A4",
+    poster_a4_desc: "Nuestra ilustración insignia en formato enmarcable. Papel mate 250g.",
+    poster_a3_title: "Póster Pétunia — A3",
+    poster_a3_desc: "El gran formato para una presencia luminosa en la habitación. Papel mate 250g.",
+    coloring1_tag: "Cuaderno de colorear",
+    coloring1_title: "Te quiero más grande que el cielo",
+    coloring1_desc: "Todas las ilustraciones del libro para colorear. 24 páginas de dibujos en línea fina sobre papel grueso.",
+    coloring2_title: "Bienvenido al mundo",
+    coloring2_desc: "Las suaves ilustraciones del libro de bienvenida para colorear. 20 páginas adaptadas a las primeras manos.",
+    perso_back: "← Nuestras creaciones",
+    perso_breadcrumb_home: "Inicio",
+    perso_breadcrumb_cat: "Nuestras creaciones",
+    perso_ratings: "4,9 · 147 opiniones",
+    perso_tagline: "Un libro personalizado que cuenta tu amor, con el nombre de tu hijo en cada página ilustrada.",
+    perso_delivery_strong: "Pedido hoy → entregado el 23 dic. en tu domicilio",
+    perso_delivery_sub: "Envío en 48h · Envío gratuito a partir de 45 €",
+    perso_step1: "Elige tu formato",
+    perso_format1_name: "Libro impreso",
+    perso_format1_detail: "Tapa dura · 24 páginas · 21×21 cm",
+    perso_format2_name: "E-book (PDF)",
+    perso_format2_detail: "Descarga inmediata · Impresión libre",
+    perso_format3_name: "Pack completo",
+    perso_format3_detail: "Libro impreso + E-book · Mejor precio",
+    perso_step2: "Personaliza tu libro",
+    perso_child_label: "Nombre del niño",
+    perso_child_placeholder: "Ej: Léa, Théo, Emma…",
+    perso_girl: "Niña",
+    perso_boy: "Niño",
+    perso_adult_label: "Tu apodo (como te llama)",
+    perso_adult_placeholder: "Ej: Mamá, Papá, Abuela…",
+    perso_woman: "Mujer",
+    perso_man: "Hombre",
+    perso_step3: "Elige tu portada",
+    cover_original: "Original",
+    cover_original_price: "Incluida",
+    cover_pastel: "Pastel",
+    cover_nuit: "Noche estrellada",
+    cover_premium_label: "Premium",
+    cover_note: "Las portadas Pastel y Noche estrellada son ediciones premium con acabado especial.",
+    perso_step4: "Completa tu pedido",
+    opt_coloring_name: "Cuaderno de colorear a juego",
+    opt_coloring_desc: "Las ilustraciones del libro para colorear · A5 · 24 páginas · Papel 120g",
+    opt_poster_a5_name: "Póster A5",
+    opt_poster_a5_desc: "Ilustración de portada en acuarela · Papel mate 250g · 14×21 cm",
+    opt_poster_a4_name: "Póster A4",
+    opt_poster_a4_desc: "Ilustración de portada en acuarela · Papel mate 250g · 21×29,7 cm",
+    opt_poster_a3_name: "Póster A3",
+    opt_poster_a3_desc: "Ilustración de portada en acuarela · Papel mate 250g · 29,7×42 cm",
+    total_format: "Formato",
+    total_cover: "Portada premium",
+    total_options: "Opciones añadidas",
+    total_label: "Total",
+    pay_secure: "Pago 100% seguro",
+    btn_add_cart: "Añadir al carrito",
+    btn_preview: "Previsualizar mi libro",
+    details_title: "Detalles del producto",
+    detail_format: "Formato",
+    detail_pages: "Páginas",
+    detail_paper: "Papel",
+    detail_cover: "Portada",
+    detail_print: "Impresión",
+    detail_delay: "Plazo",
+    detail_format_val: "21 × 21 cm",
+    detail_pages_val: "24 páginas",
+    detail_paper_val: "170g mate, FSC",
+    detail_cover_val: "Tapa dura, mate",
+    detail_print_val: "Francia",
+    detail_delay_val: "7 días hábiles",
+    preview_name_placeholder: "Nombre,",
+    gallery_note: "Vista previa actualizada en tiempo real",
+  },
+
+  nl: {
+    nav_brand: "Editions Petunia Chatterton",
+    nav_home: "Home",
+    nav_catalogue: "Onze creaties",
+    nav_about: "Over ons",
+    nav_journal: "Dagboek",
+    nav_contact: "Contact",
+    nav_cta: "Maak mijn boek",
+    nav_cart: "Mijn winkelwagen",
+    hero_label: "Gepersonaliseerde kinderboeken",
+    hero_title_1: "In een lawaaierige wereld,",
+    hero_title_2: "helpen we je zeggen",
+    hero_title_3: "wat er echt toe doet.",
+    hero_desc: "Maak een uniek boek dat jouw liefde vertelt. Een gepersonaliseerd aandenken dat je kind zijn hele leven zal koesteren.",
+    hero_btn_create: "Maak mijn boek",
+    hero_btn_discover: "Ontdek het verhaal",
+    how_label: "Hoe het werkt",
+    how_title: "Een uniek boek in een paar klikken",
+    step1_title: "Personaliseer",
+    step1_desc: "Kies de naam van het kind en de bijnaam van de volwassene voor een uniek verhaal.",
+    step2_title: "Voorbeeld bekijken",
+    step2_desc: "Bekijk je gepersonaliseerde boek met namen verwerkt in de illustraties.",
+    step3_title: "Ontvang",
+    step3_desc: "We drukken en verzenden je boek zorgvuldig binnen 7 werkdagen.",
+    step4_title: "Geef door",
+    step4_desc: "Geef een uniek aandenken dat van generatie op generatie wordt doorgegeven.",
+    book_label: "Ons eerste boek",
+    book_title: "Ik hou van je zo groot als de hemel",
+    book_desc: "Een liefdesverhaal tussen een ouder en kind, verteld door tedere illustraties en woorden die het hart raken.",
+    book_feat1: "24 geïllustreerde pagina's — een prachtig geïllustreerd poëtisch verhaal",
+    book_feat2: "Aquarelillustraties — zachte en warme tekeningen",
+    book_feat3: "Eco-verantwoord papier — gedrukt in Frankrijk op gecertificeerd papier",
+    book_from: "Vanaf",
+    book_cta: "Maak mijn exemplaar",
+    temo_label: "Wat ze zeggen",
+    temo_title: "Herinneringen die een leven lang meegaan",
+    temo1_text: "Een absoluut prachtig cadeau. Mijn dochter heeft het tientallen keren herlezen en kent elke illustratie uit haar hoofd.",
+    temo1_author: "Sophie M.",
+    temo1_detail: "Moeder van Chloé, 4 jaar",
+    temo2_text: "Onze kleinzoon vertrok met stralende ogen. Zijn naam in het verhaal zien maakte hem zo blij.",
+    temo2_author: "Jean-Pierre & Monique",
+    temo2_detail: "Grootouders van Théo, 3 jaar",
+    temo3_text: "De levering was snel en de verpakking verzorgd. Een echt ander cadeau dan wat je in een boekwinkel vindt.",
+    temo3_author: "Camille R.",
+    temo3_detail: "Meter van Emma, 5 jaar",
+    cta_label: "Begin nu",
+    cta_title: "Geef een tijdloos aandenken",
+    cta_desc: "Maak in een paar minuten het boek dat je kind zijn hele leven begeleidt.",
+    cta_btn: "Maak mijn unieke boek",
+    nl_label: "Word lid",
+    nl_title: "Ontvang onze verhalen als eerste",
+    nl_desc: "Nieuwe creaties, exclusieve aanbiedingen en leestips — als eerste.",
+    nl_placeholder: "Jouw e-mailadres",
+    nl_btn: "Inschrijven",
+    nl_legal: "Geen spam. Op elk moment uitschrijven.",
+    footer_legal: "Juridische informatie",
+    footer_cgv: "Voorwaarden",
+    footer_contact: "Contact",
+    footer_copy: "© 2025 Editions Petunia Chatterton — Studio ma.vi",
+    cat_label: "Onze collectie",
+    cat_title_1: "Creaties",
+    cat_title_2: "gemaakt met liefde",
+    cat_desc: "Gepersonaliseerde boeken, geïllustreerde posters en kleurboeken — elke creatie voedt de verbeelding van je kind.",
+    cat_filter_all: "Alles bekijken",
+    cat_filter_books: "Boeken",
+    cat_filter_posters: "Posters",
+    cat_filter_coloring: "Kleurboeken",
+    cat_filter_occasion: "Gelegenheid",
+    cat_occ_birth: "Geboorte",
+    cat_occ_birthday: "Verjaardag",
+    cat_occ_christmas: "Kerst",
+    cat_occ_baptism: "Doop",
+    cat_books_title: "Gepersonaliseerde boeken",
+    cat_books_sub: "De naam van je kind op elke pagina",
+    cat_tag_perso: "✦ Gepersonaliseerd",
+    cat_tag_fixed: "Vast product",
+    cat_posters_title: "Posters & prints",
+    cat_posters_sub: "Originele illustraties voor de kinderkamer",
+    cat_coloring_title: "Kleurboeken",
+    cat_coloring_sub: "De illustraties uit onze boeken om in te kleuren",
+    cat_upsell_title: "Verleng het avontuur met onze kleurboeken",
+    cat_upsell_sub: "De personages uit onze boeken om in te kleuren — vaak samen met het boek besteld",
+    cat_discover: "Ontdekken →",
+    cat_perso_tag: "Gepersonaliseerd met de naam van je kind",
+    cat_upsell_hint: "+ 3 premium omslagen beschikbaar bij bestelling",
+    cat_upsell_cahier: "Vaak samen met het boek besteld ↗",
+    cat_btn_perso: "Personaliseren",
+    cat_btn_add: "Toevoegen",
+    cat_from: "Vanaf",
+    book1_age: "0 – 6 jaar",
+    book1_title: "Ik hou van je zo groot als de hemel",
+    book1_desc: "Een geïllustreerde liefdesverklaring tussen ouder en kind. Tedere aquarellen en de naam van je kind verweven door elke pagina.",
+    book1_premium: "+ 3 premium omslagen bij bestelling",
+    book2_age: "Pasgeboren · 0 – 2 jaar",
+    book2_title: "Welkom op de wereld",
+    book2_desc: "Een lichtend welkomstboek voor een pasgeborene. Elke pagina viert de komst van het kind.",
+    poster_a5_title: "Pétunia Poster — A5",
+    poster_a5_desc: "Aquarelillustratie op 250g mat papier. Ideaal voor een klein cadeaukader.",
+    poster_a4_title: "Pétunia Poster — A4",
+    poster_a4_desc: "Onze kenmerkende illustratie in inlijstbaar formaat. 250g mat papier.",
+    poster_a3_title: "Pétunia Poster — A3",
+    poster_a3_desc: "Het grote formaat voor een lichtende aanwezigheid in de kamer. 250g mat papier.",
+    coloring1_tag: "Kleurboek",
+    coloring1_title: "Ik hou van je zo groot als de hemel",
+    coloring1_desc: "Alle aquarelillustraties uit het boek om in te kleuren. 24 pagina's met fijne lijntekeningen op dik papier.",
+    coloring2_title: "Welkom op de wereld",
+    coloring2_desc: "De zachte illustraties uit het welkomstboek om in te kleuren. 20 pagina's voor de eerste handjes.",
+    perso_back: "← Onze creaties",
+    perso_breadcrumb_home: "Home",
+    perso_breadcrumb_cat: "Onze creaties",
+    perso_ratings: "4,9 · 147 beoordelingen",
+    perso_tagline: "Een gepersonaliseerd boek dat jouw liefde vertelt, met de naam van je kind op elke geïllustreerde pagina.",
+    perso_delivery_strong: "Vandaag besteld → geleverd op 23 dec. bij jou thuis",
+    perso_delivery_sub: "Verzending binnen 48u · Gratis verzending vanaf €45",
+    perso_step1: "Kies je formaat",
+    perso_format1_name: "Gedrukt boek",
+    perso_format1_detail: "Hardcover · 24 pagina's · 21×21 cm",
+    perso_format2_name: "E-book (PDF)",
+    perso_format2_detail: "Directe download · Vrij te printen",
+    perso_format3_name: "Compleet pakket",
+    perso_format3_detail: "Gedrukt boek + E-book · Beste waarde",
+    perso_step2: "Personaliseer je boek",
+    perso_child_label: "Voornaam van het kind",
+    perso_child_placeholder: "Bijv. Léa, Théo, Emma…",
+    perso_girl: "Meisje",
+    perso_boy: "Jongen",
+    perso_adult_label: "Jouw bijnaam (zoals het kind je noemt)",
+    perso_adult_placeholder: "Bijv. Mama, Papa, Oma, Opa…",
+    perso_woman: "Vrouw",
+    perso_man: "Man",
+    perso_step3: "Kies je omslag",
+    cover_original: "Origineel",
+    cover_original_price: "Inbegrepen",
+    cover_pastel: "Pastel",
+    cover_nuit: "Sterrennacht",
+    cover_premium_label: "Premium",
+    cover_note: "De Pastel en Sterrennacht omslagen zijn premium edities met speciale afwerking.",
+    perso_step4: "Maak je bestelling compleet",
+    opt_coloring_name: "Bijpassend kleurboek",
+    opt_coloring_desc: "De boekillustraties om in te kleuren · A5 · 24 pagina's · 120g papier",
+    opt_poster_a5_name: "Poster A5",
+    opt_poster_a5_desc: "Aquarelillustratie van omslag · 250g mat papier · 14×21 cm",
+    opt_poster_a4_name: "Poster A4",
+    opt_poster_a4_desc: "Aquarelillustratie van omslag · 250g mat papier · 21×29,7 cm",
+    opt_poster_a3_name: "Poster A3",
+    opt_poster_a3_desc: "Aquarelillustratie van omslag · 250g mat papier · 29,7×42 cm",
+    total_format: "Formaat",
+    total_cover: "Premium omslag",
+    total_options: "Toegevoegde opties",
+    total_label: "Totaal",
+    pay_secure: "100% veilige betaling",
+    btn_add_cart: "In winkelwagen",
+    btn_preview: "Voorbeeld bekijken",
+    details_title: "Productdetails",
+    detail_format: "Formaat",
+    detail_pages: "Pagina's",
+    detail_paper: "Papier",
+    detail_cover: "Omslag",
+    detail_print: "Druk",
+    detail_delay: "Levertijd",
+    detail_format_val: "21 × 21 cm",
+    detail_pages_val: "24 pagina's",
+    detail_paper_val: "170g mat, FSC",
+    detail_cover_val: "Hardcover, mat",
+    detail_print_val: "Frankrijk",
+    detail_delay_val: "7 werkdagen",
+    preview_name_placeholder: "Voornaam,",
+    gallery_note: "Voorbeeld wordt live bijgewerkt",
+  },
+
+  de: {
+    nav_brand: "Editions Petunia Chatterton",
+    nav_home: "Startseite",
+    nav_catalogue: "Unsere Kreationen",
+    nav_about: "Über uns",
+    nav_journal: "Blog",
+    nav_contact: "Kontakt",
+    nav_cta: "Mein Buch erstellen",
+    nav_cart: "Warenkorb",
+    hero_label: "Personalisierte Bücher für Kinder",
+    hero_title_1: "In einer lauten Welt",
+    hero_title_2: "helfen wir dir, das",
+    hero_title_3: "Wesentliche zu sagen.",
+    hero_desc: "Erstelle ein einzigartiges Buch, das deine Liebe erzählt. Ein personalisiertes Andenken, das dein Kind sein ganzes Leben lang in Ehren halten wird.",
+    hero_btn_create: "Mein Buch erstellen",
+    hero_btn_discover: "Die Geschichte entdecken",
+    how_label: "So funktioniert es",
+    how_title: "Ein einzigartiges Buch in wenigen Klicks",
+    step1_title: "Personalisieren",
+    step1_desc: "Wähle den Namen des Kindes und den Spitznamen des Erwachsenen für eine einzigartige Geschichte.",
+    step2_title: "Vorschau",
+    step2_desc: "Entdecke dein personalisiertes Buch mit Namen in den Illustrationen.",
+    step3_title: "Erhalten",
+    step3_desc: "Wir drucken und versenden dein Buch sorgfältig innerhalb von 7 Werktagen.",
+    step4_title: "Weitergeben",
+    step4_desc: "Schenke ein einzigartiges Andenken, das von Generation zu Generation weitergegeben wird.",
+    book_label: "Unser erstes Buch",
+    book_title: "Ich liebe dich so groß wie der Himmel",
+    book_desc: "Eine Liebesgeschichte zwischen Elternteil und Kind, erzählt durch zarte Illustrationen und Worte, die das Herz berühren.",
+    book_feat1: "24 illustrierte Seiten — eine wunderschön illustrierte poetische Geschichte",
+    book_feat2: "Aquarellillustrationen — weiche und warme Zeichnungen",
+    book_feat3: "Umweltfreundliches Papier — in Frankreich auf zertifiziertem Papier gedruckt",
+    book_from: "Ab",
+    book_cta: "Mein Exemplar erstellen",
+    temo_label: "Was sie sagen",
+    temo_title: "Erinnerungen, die ein Leben lang halten",
+    temo1_text: "Ein absolut wunderschönes Geschenk. Meine Tochter hat es dutzende Male gelesen und kennt jede Illustration auswendig.",
+    temo1_author: "Sophie M.",
+    temo1_detail: "Mutter von Chloé, 4 Jahre",
+    temo2_text: "Unser Enkel ging mit leuchtenden Augen nach Hause. Seinen Namen in der Geschichte zu sehen, machte ihn so glücklich.",
+    temo2_author: "Jean-Pierre & Monique",
+    temo2_detail: "Großeltern von Théo, 3 Jahre",
+    temo3_text: "Die Lieferung war schnell und die Verpackung sorgfältig. Ein wirklich anderes Geschenk als alles, was man in Buchhandlungen findet.",
+    temo3_author: "Camille R.",
+    temo3_detail: "Patentante von Emma, 5 Jahre",
+    cta_label: "Jetzt beginnen",
+    cta_title: "Schenke ein zeitloses Andenken",
+    cta_desc: "Erstelle in wenigen Minuten das Buch, das dein Kind sein ganzes Leben begleiten wird.",
+    cta_btn: "Mein einzigartiges Buch erstellen",
+    nl_label: "Mach mit",
+    nl_title: "Erhalte unsere Geschichten als Erster",
+    nl_desc: "Neue Kreationen, exklusive Angebote und Lesetipps — vor allen anderen.",
+    nl_placeholder: "Deine E-Mail-Adresse",
+    nl_btn: "Anmelden",
+    nl_legal: "Kein Spam. Jederzeit abmelden.",
+    footer_legal: "Impressum",
+    footer_cgv: "AGB",
+    footer_contact: "Kontakt",
+    footer_copy: "© 2025 Editions Petunia Chatterton — Studio ma.vi",
+    cat_label: "Unsere Kollektion",
+    cat_title_1: "Kreationen",
+    cat_title_2: "mit Liebe gemacht",
+    cat_desc: "Personalisierte Bücher, illustrierte Poster und Malbücher — jede Kreation nährt die Fantasie deines Kindes.",
+    cat_filter_all: "Alles ansehen",
+    cat_filter_books: "Bücher",
+    cat_filter_posters: "Poster",
+    cat_filter_coloring: "Malbücher",
+    cat_filter_occasion: "Anlass",
+    cat_occ_birth: "Geburt",
+    cat_occ_birthday: "Geburtstag",
+    cat_occ_christmas: "Weihnachten",
+    cat_occ_baptism: "Taufe",
+    cat_books_title: "Personalisierte Bücher",
+    cat_books_sub: "Der Name deines Kindes auf jeder Seite",
+    cat_tag_perso: "✦ Personalisiert",
+    cat_tag_fixed: "Festes Produkt",
+    cat_posters_title: "Poster & Drucke",
+    cat_posters_sub: "Originale Illustrationen fürs Kinderzimmer",
+    cat_coloring_title: "Malbücher",
+    cat_coloring_sub: "Die Illustrationen aus unseren Büchern zum Ausmalen",
+    cat_upsell_title: "Das Abenteuer mit unseren Malbüchern verlängern",
+    cat_upsell_sub: "Die Charaktere aus unseren Büchern zum Ausmalen — oft zusammen mit dem Buch bestellt",
+    cat_discover: "Entdecken →",
+    cat_perso_tag: "Personalisiert mit dem Namen des Kindes",
+    cat_upsell_hint: "+ 3 Premium-Cover bei der Bestellung wählbar",
+    cat_upsell_cahier: "Oft zusammen mit dem Buch bestellt ↗",
+    cat_btn_perso: "Personalisieren",
+    cat_btn_add: "Hinzufügen",
+    cat_from: "Ab",
+    book1_age: "0 – 6 Jahre",
+    book1_title: "Ich liebe dich so groß wie der Himmel",
+    book1_desc: "Eine illustrierte Liebeserklärung zwischen Elternteil und Kind. Zarte Aquarelle und der Name deines Kindes auf jeder Seite.",
+    book1_premium: "+ 3 Premium-Cover wählbar",
+    book2_age: "Neugeborene · 0 – 2 Jahre",
+    book2_title: "Willkommen auf der Welt",
+    book2_desc: "Ein leuchtendes Willkommensbuch für ein Neugeborenes. Jede Seite feiert seine Ankunft.",
+    poster_a5_title: "Pétunia Poster — A5",
+    poster_a5_desc: "Aquarellillustration auf 250g Mattepapier. Ideal für einen kleinen Geschenkrahmen.",
+    poster_a4_title: "Pétunia Poster — A4",
+    poster_a4_desc: "Unsere Signaturillustration in Rahmenformat. 250g Mattepapier.",
+    poster_a3_title: "Pétunia Poster — A3",
+    poster_a3_desc: "Das große Format für eine leuchtende Präsenz im Zimmer. 250g Mattepapier.",
+    coloring1_tag: "Malbuch",
+    coloring1_title: "Ich liebe dich so groß wie der Himmel",
+    coloring1_desc: "Alle Aquarellillustrationen aus dem Buch zum Ausmalen. 24 Seiten mit feinen Linienzeichnungen auf dickem Papier.",
+    coloring2_title: "Willkommen auf der Welt",
+    coloring2_desc: "Die sanften Illustrationen aus dem Willkommensbuch zum Ausmalen. 20 Seiten für kleine Hände.",
+    perso_back: "← Unsere Kreationen",
+    perso_breadcrumb_home: "Startseite",
+    perso_breadcrumb_cat: "Unsere Kreationen",
+    perso_ratings: "4,9 · 147 Bewertungen",
+    perso_tagline: "Ein personalisiertes Buch, das deine Liebe erzählt, mit dem Namen deines Kindes auf jeder illustrierten Seite.",
+    perso_delivery_strong: "Heute bestellt → am 23. Dez. geliefert",
+    perso_delivery_sub: "Versand in 48h · Kostenloser Versand ab 45 €",
+    perso_step1: "Format wählen",
+    perso_format1_name: "Gedrucktes Buch",
+    perso_format1_detail: "Hardcover · 24 Seiten · 21×21 cm",
+    perso_format2_name: "E-Book (PDF)",
+    perso_format2_detail: "Sofort-Download · Frei druckbar",
+    perso_format3_name: "Komplettpaket",
+    perso_format3_detail: "Gedrucktes Buch + E-Book · Bestes Preis-Leistungs-Verhältnis",
+    perso_step2: "Buch personalisieren",
+    perso_child_label: "Vorname des Kindes",
+    perso_child_placeholder: "Z.B. Léa, Théo, Emma…",
+    perso_girl: "Mädchen",
+    perso_boy: "Junge",
+    perso_adult_label: "Dein Spitzname (wie es dich nennt)",
+    perso_adult_placeholder: "Z.B. Mama, Papa, Oma, Opa…",
+    perso_woman: "Frau",
+    perso_man: "Mann",
+    perso_step3: "Cover wählen",
+    cover_original: "Original",
+    cover_original_price: "Inklusive",
+    cover_pastel: "Pastell",
+    cover_nuit: "Sternennacht",
+    cover_premium_label: "Premium",
+    cover_note: "Die Pastell- und Sternennacht-Cover sind Premium-Editionen mit besonderer Veredelung.",
+    perso_step4: "Bestellung vervollständigen",
+    opt_coloring_name: "Passendes Malbuch",
+    opt_coloring_desc: "Die Buchillustrationen zum Ausmalen · A5 · 24 Seiten · 120g Papier",
+    opt_poster_a5_name: "Poster A5",
+    opt_poster_a5_desc: "Aquarell-Cover-Illustration · 250g Mattepapier · 14×21 cm",
+    opt_poster_a4_name: "Poster A4",
+    opt_poster_a4_desc: "Aquarell-Cover-Illustration · 250g Mattepapier · 21×29,7 cm",
+    opt_poster_a3_name: "Poster A3",
+    opt_poster_a3_desc: "Aquarell-Cover-Illustration · 250g Mattepapier · 29,7×42 cm",
+    total_format: "Format",
+    total_cover: "Premium-Cover",
+    total_options: "Hinzugefügte Optionen",
+    total_label: "Gesamt",
+    pay_secure: "100% sichere Zahlung",
+    btn_add_cart: "In den Warenkorb",
+    btn_preview: "Buch-Vorschau",
+    details_title: "Produktdetails",
+    detail_format: "Format",
+    detail_pages: "Seiten",
+    detail_paper: "Papier",
+    detail_cover: "Einband",
+    detail_print: "Druck",
+    detail_delay: "Lieferzeit",
+    detail_format_val: "21 × 21 cm",
+    detail_pages_val: "24 Seiten",
+    detail_paper_val: "170g matt, FSC",
+    detail_cover_val: "Hardcover, matt",
+    detail_print_val: "Frankreich",
+    detail_delay_val: "7 Werktage",
+    preview_name_placeholder: "Vorname,",
+    gallery_note: "Vorschau wird live aktualisiert",
+  },
+
+  it: {
+    nav_brand: "Edizioni Petunia Chatterton",
+    nav_home: "Home",
+    nav_catalogue: "Le nostre creazioni",
+    nav_about: "Chi siamo",
+    nav_journal: "Blog",
+    nav_contact: "Contatti",
+    nav_cta: "Crea il mio libro",
+    nav_cart: "Il mio carrello",
+    hero_label: "Libri personalizzati per bambini",
+    hero_title_1: "In un mondo rumoroso,",
+    hero_title_2: "ti aiutiamo a dire",
+    hero_title_3: "l'essenziale.",
+    hero_desc: "Crea un libro unico che racconta il tuo amore. Un ricordo personalizzato che il tuo bambino conserverà per tutta la vita.",
+    hero_btn_create: "Crea il mio libro",
+    hero_btn_discover: "Scopri la storia",
+    how_label: "Come funziona",
+    how_title: "Un libro unico in pochi clic",
+    step1_title: "Personalizza",
+    step1_desc: "Scegli il nome del bambino e il soprannome dell'adulto per creare una storia unica.",
+    step2_title: "Visualizza",
+    step2_desc: "Scopri il tuo libro personalizzato con i nomi integrati nelle illustrazioni.",
+    step3_title: "Ricevi",
+    step3_desc: "Stampiamo e spediamo il tuo libro con cura entro 7 giorni lavorativi.",
+    step4_title: "Trasmetti",
+    step4_desc: "Regala un ricordo unico che si trasmetterà di generazione in generazione.",
+    book_label: "Il nostro primo libro",
+    book_title: "Ti voglio bene più grande del cielo",
+    book_desc: "Una storia d'amore tra genitore e figlio, raccontata attraverso tenere illustrazioni e parole che toccano il cuore.",
+    book_feat1: "24 pagine illustrate — una storia poetica splendidamente illustrata",
+    book_feat2: "Illustrazioni ad acquerello — disegni morbidi e caldi",
+    book_feat3: "Carta eco-responsabile — stampato in Francia su carta certificata",
+    book_from: "Da",
+    book_cta: "Crea la mia copia",
+    temo_label: "Cosa dicono",
+    temo_title: "Ricordi che durano tutta la vita",
+    temo1_text: "Un regalo assolutamente meraviglioso. Mia figlia lo ha riletto decine di volte e conosce ogni illustrazione a memoria.",
+    temo1_author: "Sophie M.",
+    temo1_detail: "Mamma di Chloé, 4 anni",
+    temo2_text: "Nostro nipote è andato via con gli occhi brillanti. Vedere il suo nome nella storia lo ha reso così felice.",
+    temo2_author: "Jean-Pierre & Monique",
+    temo2_detail: "Nonni di Théo, 3 anni",
+    temo3_text: "La consegna è stata rapida e la confezione curata. Un regalo davvero diverso da tutto ciò che si trova in libreria.",
+    temo3_author: "Camille R.",
+    temo3_detail: "Madrina di Emma, 5 anni",
+    cta_label: "Inizia ora",
+    cta_title: "Regala un ricordo senza tempo",
+    cta_desc: "Crea in pochi minuti il libro che accompagnerà il tuo bambino per tutta la vita.",
+    cta_btn: "Crea il mio libro unico",
+    nl_label: "Unisciti a noi",
+    nl_title: "Ricevi le nostre storie in anteprima",
+    nl_desc: "Nuove creazioni, offerte esclusive e consigli di lettura — in anteprima.",
+    nl_placeholder: "Il tuo indirizzo email",
+    nl_btn: "Iscriviti",
+    nl_legal: "Nessuno spam. Cancellazione in qualsiasi momento.",
+    footer_legal: "Note legali",
+    footer_cgv: "Condizioni",
+    footer_contact: "Contatti",
+    footer_copy: "© 2025 Edizioni Petunia Chatterton — Studio ma.vi",
+    cat_label: "La nostra collezione",
+    cat_title_1: "Creazioni",
+    cat_title_2: "fatte con amore",
+    cat_desc: "Libri personalizzati, poster illustrati e album da colorare — ogni creazione nutre la fantasia del tuo bambino.",
+    cat_filter_all: "Vedi tutto",
+    cat_filter_books: "Libri",
+    cat_filter_posters: "Poster",
+    cat_filter_coloring: "Album",
+    cat_filter_occasion: "Occasione",
+    cat_occ_birth: "Nascita",
+    cat_occ_birthday: "Compleanno",
+    cat_occ_christmas: "Natale",
+    cat_occ_baptism: "Battesimo",
+    cat_books_title: "Libri personalizzati",
+    cat_books_sub: "Il nome del tuo bambino in ogni pagina",
+    cat_tag_perso: "✦ Personalizzati",
+    cat_tag_fixed: "Prodotto fisso",
+    cat_posters_title: "Poster & stampe",
+    cat_posters_sub: "Illustrazioni originali per la cameretta",
+    cat_coloring_title: "Album da colorare",
+    cat_coloring_sub: "Le illustrazioni dei nostri libri da colorare",
+    cat_upsell_title: "Prolunga l'avventura con gli album da colorare",
+    cat_upsell_sub: "I personaggi dei nostri libri da colorare — spesso aggiunto con il libro",
+    cat_discover: "Scopri →",
+    cat_perso_tag: "Personalizzato con il nome del bambino",
+    cat_upsell_hint: "+ 3 copertine premium disponibili all'ordine",
+    cat_upsell_cahier: "Spesso ordinato con il libro ↗",
+    cat_btn_perso: "Personalizza",
+    cat_btn_add: "Aggiungi",
+    cat_from: "Da",
+    book1_age: "0 – 6 anni",
+    book1_title: "Ti voglio bene più grande del cielo",
+    book1_desc: "Una dichiarazione d'amore illustrata tra genitore e figlio. Acquerelli teneri e il nome del tuo bambino in ogni pagina.",
+    book1_premium: "+ 3 copertine premium all'ordine",
+    book2_age: "Neonato · 0 – 2 anni",
+    book2_title: "Benvenuto al mondo",
+    book2_desc: "Un libro di benvenuto luminoso per accogliere un neonato. Ogni pagina celebra il suo arrivo.",
+    poster_a5_title: "Poster Pétunia — A5",
+    poster_a5_desc: "Illustrazione ad acquerello su carta opaca 250g. Ideale per una piccola cornice regalo.",
+    poster_a4_title: "Poster Pétunia — A4",
+    poster_a4_desc: "La nostra illustrazione iconica in formato incorniciabile. Carta opaca 250g.",
+    poster_a3_title: "Poster Pétunia — A3",
+    poster_a3_desc: "Il grande formato per una presenza luminosa nella stanza. Carta opaca 250g.",
+    coloring1_tag: "Album da colorare",
+    coloring1_title: "Ti voglio bene più grande del cielo",
+    coloring1_desc: "Tutte le illustrazioni ad acquerello del libro da colorare. 24 pagine di disegni a tratto fine su carta spessa.",
+    coloring2_title: "Benvenuto al mondo",
+    coloring2_desc: "Le dolci illustrazioni del libro di benvenuto da colorare. 20 pagine per le prime manine.",
+    perso_back: "← Le nostre creazioni",
+    perso_breadcrumb_home: "Home",
+    perso_breadcrumb_cat: "Le nostre creazioni",
+    perso_ratings: "4,9 · 147 recensioni",
+    perso_tagline: "Un libro personalizzato che racconta il tuo amore, con il nome del tuo bambino in ogni pagina illustrata.",
+    perso_delivery_strong: "Ordinato oggi → consegnato il 23 dic. a casa tua",
+    perso_delivery_sub: "Spedizione in 48h · Spedizione gratuita da 45 €",
+    perso_step1: "Scegli il formato",
+    perso_format1_name: "Libro stampato",
+    perso_format1_detail: "Copertina rigida · 24 pagine · 21×21 cm",
+    perso_format2_name: "E-book (PDF)",
+    perso_format2_detail: "Download immediato · Stampa libera",
+    perso_format3_name: "Pack completo",
+    perso_format3_detail: "Libro stampato + E-book · Il miglior valore",
+    perso_step2: "Personalizza il tuo libro",
+    perso_child_label: "Nome del bambino",
+    perso_child_placeholder: "Es: Léa, Théo, Emma…",
+    perso_girl: "Bambina",
+    perso_boy: "Bambino",
+    perso_adult_label: "Il tuo soprannome (come ti chiama)",
+    perso_adult_placeholder: "Es: Mamma, Papà, Nonna…",
+    perso_woman: "Donna",
+    perso_man: "Uomo",
+    perso_step3: "Scegli la copertina",
+    cover_original: "Originale",
+    cover_original_price: "Inclusa",
+    cover_pastel: "Pastello",
+    cover_nuit: "Notte stellata",
+    cover_premium_label: "Premium",
+    cover_note: "Le copertine Pastello e Notte stellata sono edizioni premium con finitura speciale.",
+    perso_step4: "Completa il tuo ordine",
+    opt_coloring_name: "Album da colorare abbinato",
+    opt_coloring_desc: "Le illustrazioni del libro da colorare · A5 · 24 pagine · Carta 120g",
+    opt_poster_a5_name: "Poster A5",
+    opt_poster_a5_desc: "Illustrazione copertina ad acquerello · Carta opaca 250g · 14×21 cm",
+    opt_poster_a4_name: "Poster A4",
+    opt_poster_a4_desc: "Illustrazione copertina ad acquerello · Carta opaca 250g · 21×29,7 cm",
+    opt_poster_a3_name: "Poster A3",
+    opt_poster_a3_desc: "Illustrazione copertina ad acquerello · Carta opaca 250g · 29,7×42 cm",
+    total_format: "Formato",
+    total_cover: "Copertina premium",
+    total_options: "Opzioni aggiunte",
+    total_label: "Totale",
+    pay_secure: "Pagamento 100% sicuro",
+    btn_add_cart: "Aggiungi al carrello",
+    btn_preview: "Anteprima del mio libro",
+    details_title: "Dettagli prodotto",
+    detail_format: "Formato",
+    detail_pages: "Pagine",
+    detail_paper: "Carta",
+    detail_cover: "Copertina",
+    detail_print: "Stampa",
+    detail_delay: "Consegna",
+    detail_format_val: "21 × 21 cm",
+    detail_pages_val: "24 pagine",
+    detail_paper_val: "170g opaca, FSC",
+    detail_cover_val: "Rigida, opaca",
+    detail_print_val: "Francia",
+    detail_delay_val: "7 giorni lavorativi",
+    preview_name_placeholder: "Nome,",
+    gallery_note: "Anteprima aggiornata in tempo reale",
+  }
+};
+
+// ── Langue courante ──────────────────────────────────────────
+const LANG_KEY = 'petunia_lang';
+const BROWSER_LANG_MAP = { fr:'fr', en:'en', es:'es', nl:'nl', de:'de', it:'it' };
+const LANG_META = {
+  fr: { flag:'🇫🇷', label:'Français' },
+  en: { flag:'🇬🇧', label:'English' },
+  es: { flag:'🇪🇸', label:'Español' },
+  nl: { flag:'🇳🇱', label:'Nederlands' },
+  de: { flag:'🇩🇪', label:'Deutsch' },
+  it: { flag:'🇮🇹', label:'Italiano' },
+};
+
+function detectLang() {
+  const saved = localStorage.getItem(LANG_KEY);
+  if (saved && TRANSLATIONS[saved]) return saved;
+  const browser = (navigator.language || navigator.userLanguage || 'fr').slice(0,2).toLowerCase();
+  return BROWSER_LANG_MAP[browser] || 'fr';
+}
+
+function t(key) {
+  const lang = window.__PETUNIA_LANG__ || detectLang();
+  return (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) || (TRANSLATIONS['fr'] && TRANSLATIONS['fr'][key]) || key;
+}
+
+function setLang(lang) {
+  if (!TRANSLATIONS[lang]) return;
+  window.__PETUNIA_LANG__ = lang;
+  localStorage.setItem(LANG_KEY, lang);
+  applyTranslations();
+  updateLangSelector();
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = t(key);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    el.innerHTML = t(el.getAttribute('data-i18n-html'));
+  });
+  // Update html lang attribute
+  document.documentElement.lang = window.__PETUNIA_LANG__ || 'fr';
+}
+
+function updateLangSelector() {
+  const lang = window.__PETUNIA_LANG__ || detectLang();
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  const trigger = document.getElementById('lang-trigger');
+  if (trigger) trigger.textContent = LANG_META[lang].flag + ' ' + LANG_META[lang].label;
+}
+
+// ── Sélecteur HTML ───────────────────────────────────────────
+function buildLangSelector(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const lang = window.__PETUNIA_LANG__ || detectLang();
+  container.innerHTML = `
+    <div class="lang-selector" style="position:relative;display:inline-block">
+      <button id="lang-trigger" onclick="toggleLangMenu()" style="
+        background:white;border:1px solid #ede3d7;border-radius:2px;
+        color:#1D4E49;padding:5px 11px;font-family:'Open Sans',sans-serif;font-size:11px;
+        letter-spacing:.05em;cursor:pointer;display:flex;align-items:center;gap:.5rem;white-space:nowrap;
+        font-weight:600
+      ">${LANG_META[lang].flag} ${LANG_META[lang].label} <span style="font-size:9px;color:#AB9166">▼</span></button>
+      <div id="lang-menu" style="
+        display:none;position:absolute;top:calc(100% + 4px);right:0;background:white;
+        border:1px solid #e0e0da;border-radius:2px;min-width:150px;z-index:999;
+        box-shadow:0 4px 16px rgba(0,0,0,.1)
+      ">
+        ${Object.entries(LANG_META).map(([code, meta]) => `
+          <button class="lang-btn${code===lang?' active':''}" data-lang="${code}" onclick="setLang('${code}');toggleLangMenu(false)" style="
+            display:flex;align-items:center;gap:.6rem;width:100%;padding:8px 12px;border:none;background:${code===lang?'#e8f2f0':'white'};
+            font-family:'Open Sans',sans-serif;font-size:12px;color:${code===lang?'#1D4E49':'#5a5a5a'};cursor:pointer;text-align:left;
+            font-weight:${code===lang?'600':'400'}
+          ">${meta.flag} ${meta.label}${code===lang?' ✓':''}</button>
+        `).join('')}
+      </div>
+    </div>`;
+}
+
+function toggleLangMenu(force) {
+  const menu = document.getElementById('lang-menu');
+  if (!menu) return;
+  const show = force !== undefined ? force : menu.style.display === 'none';
+  menu.style.display = show ? 'block' : 'none';
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.lang-selector')) toggleLangMenu(false);
+});
+
+// ── Init ─────────────────────────────────────────────────────
+window.__PETUNIA_LANG__ = detectLang();
+document.addEventListener('DOMContentLoaded', () => {
+  applyTranslations();
+  updateLangSelector();
+});
+
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--vert:#1D4E49;--vert-light:#2a6b64;--vert-pale:#e8f2f0;--rose:#EFD5C4;--beige:#F8F0E8;--beige-dark:#ede3d7;--dore:#AB9166;--dore-light:#c4aa82;--noir:#1a1a1a;--gris:#5a5a5a;--gris-light:#8a8a8a}
+body{font-family:'Lora',Georgia,serif;background:var(--beige);color:var(--noir)}
+nav{background:rgba(248,240,232,.97);border-bottom:1px solid var(--beige-dark);padding:0 2.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;position:sticky;top:0;z-index:100}
+.nav-brand{font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--vert);flex-shrink:0}
+.nav-back{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);text-decoration:none;flex-shrink:0}
+.nav-back:hover{color:var(--vert)}
+.nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-cta{background:var(--vert);color:white;padding:7px 18px;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.breadcrumb{padding:.65rem 2.5rem;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light);border-bottom:1px solid var(--beige-dark);background:white}
+.breadcrumb a{color:var(--gris-light);text-decoration:none}
+.breadcrumb a:hover{color:var(--vert)}
+.product-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 100px)}
+
+/* GALERIE */
+.gallery{background:var(--rose);padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem;position:sticky;top:100px;align-self:start}
+.gallery-main{background:white;border-radius:2px;padding:2rem;display:flex;align-items:center;justify-content:center;min-height:340px;border:1px solid var(--beige-dark)}
+.gallery-thumbs{display:flex;gap:.6rem}
+.thumb{width:66px;height:66px;background:white;border:1.5px solid var(--beige-dark);border-radius:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
+.thumb.active{border-color:var(--vert)}
+.thumb:hover:not(.active){border-color:var(--dore)}
+.gallery-note{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light);display:flex;align-items:center;gap:.4rem}
+.gallery-note::before{content:'';width:6px;height:6px;background:var(--vert);border-radius:50%;display:block}
+
+/* FORMULAIRE */
+.product-form{padding:2.25rem 2.75rem;background:var(--beige)}
+.stars-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.85rem}
+.stars{color:var(--dore);font-size:13px;letter-spacing:2px}
+.rating{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris-light)}
+.product-title{font-family:'Lora',serif;font-size:1.85rem;font-weight:400;color:var(--vert);line-height:1.25;margin-bottom:.6rem}
+.product-tagline{font-family:'Lora',serif;font-style:italic;font-size:.9rem;line-height:1.7;color:var(--gris);margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--beige-dark)}
+.delivery-badge{display:flex;align-items:center;gap:.7rem;background:var(--vert-pale);border:1px solid rgba(29,78,73,.15);border-radius:2px;padding:.65rem 1rem;margin-bottom:1.65rem}
+.delivery-icon{width:32px;height:32px;background:var(--vert);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.delivery-icon svg{width:15px;height:15px;stroke:white;fill:none;stroke-width:1.5;stroke-linecap:round}
+.delivery-strong{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;color:var(--vert);display:block}
+.delivery-sub{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light)}
+
+/* ÉTAPES */
+.step-block{margin-bottom:1.4rem;background:white;border:1px solid var(--beige-dark);border-radius:2px;overflow:hidden}
+.step-header{display:flex;align-items:center;gap:.65rem;padding:.85rem 1.15rem;border-bottom:1px solid var(--beige-dark)}
+.step-num{width:25px;height:25px;background:var(--vert);border-radius:50%;font-family:'Open Sans',sans-serif;font-size:11px;font-weight:600;color:white;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-title-txt{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;color:var(--vert);letter-spacing:.03em}
+.step-body{padding:1.15rem}
+
+/* FORMAT */
+.format-list{display:flex;flex-direction:column;gap:.4rem}
+.format-opt{display:flex;align-items:center;justify-content:space-between;padding:.65rem .85rem;border:1.5px solid var(--beige-dark);border-radius:2px;cursor:pointer;transition:all .2s;background:white}
+.format-opt.selected{border-color:var(--vert);background:var(--vert-pale)}
+.format-opt:hover:not(.selected){border-color:var(--dore)}
+.format-left{display:flex;align-items:center;gap:.65rem}
+.format-icon-wrap{width:28px;height:28px;background:var(--beige-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.format-icon-wrap svg{width:14px;height:14px;stroke:var(--vert);fill:none;stroke-width:1.5;stroke-linecap:round}
+.format-name{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;color:var(--noir)}
+.format-detail{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light)}
+.format-price{font-family:'Lora',serif;font-size:1rem;color:var(--vert)}
+
+/* PERSO */
+.field-group{margin-bottom:.85rem}
+.field-label{font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin-bottom:.38rem;display:block}
+.field-input{width:100%;padding:8px 11px;border:1px solid var(--beige-dark);border-radius:2px;font-family:'Lora',serif;font-size:.9rem;color:var(--noir);background:white;transition:border-color .2s}
+.field-input:focus{outline:none;border-color:var(--vert)}
+.field-input::placeholder{color:var(--gris-light)}
+.gender-row{display:flex;gap:.4rem;margin-top:.38rem}
+.gender-btn{flex:1;padding:6px;border:1px solid var(--beige-dark);border-radius:2px;background:white;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris);cursor:pointer;transition:all .2s}
+.gender-btn.active{background:var(--vert);color:white;border-color:var(--vert)}
+
+/* COUVERTURES */
+.cover-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem}
+.cover-opt{border:2px solid var(--beige-dark);border-radius:2px;overflow:hidden;cursor:pointer;transition:border-color .2s}
+.cover-opt.selected{border-color:var(--vert)}
+.cover-opt:hover:not(.selected){border-color:var(--dore)}
+.cover-preview{height:82px;display:flex;align-items:center;justify-content:center}
+.cover-info{padding:5px 7px 7px;background:white;text-align:center}
+.cover-name{font-family:'Open Sans',sans-serif;font-size:11px;font-weight:600;color:var(--gris)}
+.cover-price-txt{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--dore)}
+.cover-premium-lbl{font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--dore);background:rgba(171,145,102,.1);padding:2px 5px;border-radius:2px;display:inline-block;margin-bottom:2px}
+.cover-note-txt{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light);margin-top:.65rem;line-height:1.5}
+
+/* OPTIONS */
+.options-list{display:flex;flex-direction:column;gap:.4rem}
+.option-row{display:flex;align-items:center;justify-content:space-between;padding:.65rem .85rem;border:1px solid var(--beige-dark);border-radius:2px;background:white;cursor:pointer;transition:border-color .2s}
+.option-row:hover{border-color:var(--dore)}
+.option-row.selected{border-color:var(--vert);background:var(--vert-pale)}
+.option-left{display:flex;align-items:center;gap:.65rem}
+.option-check{width:17px;height:17px;border:1.5px solid var(--beige-dark);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.option-row.selected .option-check{background:var(--vert);border-color:var(--vert)}
+.check-mark{display:none;width:9px;height:9px;background:white;border-radius:1px}
+.option-row.selected .check-mark{display:block}
+.option-name{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--noir);font-weight:600}
+.option-desc{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light)}
+.option-price{font-family:'Lora',serif;font-size:.92rem;color:var(--dore);flex-shrink:0;margin-left:.5rem}
+
+/* TOTAL */
+.total-block{background:white;border:1px solid var(--beige-dark);border-radius:2px;padding:1.05rem;margin-bottom:1.15rem}
+.total-line{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
+.total-lbl{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris)}
+.total-val{font-family:'Lora',serif;font-size:.9rem;color:var(--noir)}
+.total-main{border-top:1px solid var(--beige-dark);padding-top:.6rem;margin-top:.35rem}
+.total-main .total-lbl{font-weight:600;color:var(--vert);font-size:13px}
+.total-main .total-val{font-size:1.5rem;color:var(--vert)}
+.pay-row{display:flex;gap:.35rem;align-items:center;margin-top:.6rem}
+.pay-icon{background:var(--beige-dark);border-radius:2px;padding:2px 6px;font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris);font-weight:600}
+.pay-secure{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light);margin-left:auto}
+.btn-add{width:100%;background:var(--vert);color:white;padding:14px;border:none;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;margin-bottom:.6rem;transition:background .2s}
+.btn-add:hover{background:var(--vert-light)}
+.btn-preview{width:100%;background:transparent;color:var(--vert);padding:12px;border:1px solid var(--vert);border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.btn-preview:hover{background:var(--vert-pale)}
+.product-details{margin-top:1.35rem;padding:1.15rem;background:white;border:1px solid var(--beige-dark);border-radius:2px}
+.details-title-txt{font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gris);margin-bottom:.75rem}
+.details-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.detail-key{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light);margin-bottom:2px}
+.detail-val{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--noir);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand" data-i18n="nav_brand">Éditions Petunia Chatterton</div>
+  <a href="petunia_catalogue.html" class="nav-back" data-i18n="perso_back">← Nos créations</a>
+  <div class="nav-right">
+    <div id="lang-selector-nav"></div>
+    <a href="#" class="nav-cta" data-i18n="nav_cart">Mon panier (0)</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="petunia_chatterton_homepage.html" data-i18n="perso_breadcrumb_home">Accueil</a>
+  &nbsp;›&nbsp;
+  <a href="petunia_catalogue.html" data-i18n="perso_breadcrumb_cat">Nos créations</a>
+  &nbsp;›&nbsp;
+  <span data-i18n="book1_title">Je t'aime plus grand que le ciel</span>
+</div>
+
+<div class="product-wrap">
+
+  <!-- GALERIE -->
+  <div class="gallery">
+    <div class="gallery-main">
+      <svg width="188" height="258" viewBox="0 0 188 258" fill="none" id="book-svg">
+        <rect x="4" y="4" width="180" height="250" rx="3" fill="#EFD5C4" id="book-bg"/>
+        <rect x="10" y="10" width="168" height="238" rx="2" fill="#F8F0E8" opacity=".38"/>
+        <ellipse cx="94" cy="98" rx="48" ry="60" fill="#EFD5C4" opacity=".9" transform="rotate(-12 94 98)" id="p1"/>
+        <ellipse cx="94" cy="98" rx="48" ry="60" fill="#EFD5C4" opacity=".7" transform="rotate(28 94 98)" id="p2"/>
+        <ellipse cx="94" cy="98" rx="48" ry="60" fill="#EFD5C4" opacity=".54" transform="rotate(68 94 98)" id="p3"/>
+        <ellipse cx="94" cy="98" rx="48" ry="60" fill="#EFD5C4" opacity=".44" transform="rotate(108 94 98)" id="p4"/>
+        <circle cx="94" cy="98" r="16" fill="#AB9166" opacity=".94"/>
+        <circle cx="94" cy="98" r="7" fill="#1D4E49" opacity=".5"/>
+        <text x="94" y="186" text-anchor="middle" font-family="Lora,serif" font-style="italic" font-size="13" fill="#1D4E49" id="preview-name">Prénom,</text>
+        <text x="94" y="204" text-anchor="middle" font-family="Lora,serif" font-style="italic" font-size="10.5" fill="#5a5a5a" id="preview-subtitle">je t'aime plus grand que le ciel</text>
+        <text x="94" y="240" text-anchor="middle" font-family="Open Sans,sans-serif" font-size="8.5" fill="#AB9166" letter-spacing="2">ÉDITIONS PETUNIA CHATTERTON</text>
+      </svg>
+    </div>
+    <div class="gallery-thumbs">
+      <div class="thumb active">
+        <svg width="44" height="60" viewBox="0 0 44 60" fill="none"><rect x="1" y="1" width="42" height="58" rx="2" fill="#EFD5C4"/><ellipse cx="22" cy="25" rx="12" ry="16" fill="#F8F0E8" opacity=".8" transform="rotate(-10 22 25)"/><circle cx="22" cy="25" r="5" fill="#AB9166" opacity=".84"/></svg>
+      </div>
+      <div class="thumb">
+        <svg width="44" height="60" viewBox="0 0 44 60" fill="none"><rect x="1" y="1" width="42" height="58" rx="2" fill="#F8F0E8"/><rect x="5" y="5" width="34" height="50" rx="1" fill="#EFD5C4" opacity=".38"/><text x="22" y="33" text-anchor="middle" font-family="Lora,serif" font-style="italic" font-size="5" fill="#1D4E49">Page 4</text></svg>
+      </div>
+      <div class="thumb">
+        <svg width="44" height="60" viewBox="0 0 44 60" fill="none"><rect x="1" y="1" width="42" height="58" rx="2" fill="#1D4E49"/><ellipse cx="22" cy="23" rx="10" ry="13" fill="#EFD5C4" opacity=".52" transform="rotate(-10 22 23)"/><circle cx="22" cy="23" r="4" fill="#AB9166" opacity=".78"/><text x="22" y="46" text-anchor="middle" font-family="Lora,serif" font-style="italic" font-size="4.5" fill="#F8F0E8">Page 12</text></svg>
+      </div>
+      <div class="thumb">
+        <svg width="44" height="60" viewBox="0 0 44 60" fill="none"><rect x="1" y="1" width="42" height="58" rx="2" fill="#F5EDE0"/><path d="M7 46 Q22 17 37 46" fill="none" stroke="#AB9166" stroke-width="1.4"/><circle cx="22" cy="27" r="8" fill="#EFD5C4" opacity=".68"/></svg>
+      </div>
+      <div class="thumb">
+        <svg width="44" height="60" viewBox="0 0 44 60" fill="none"><rect x="1" y="1" width="42" height="58" rx="2" fill="#2a6b64"/><ellipse cx="22" cy="25" rx="12" ry="15" fill="#EFD5C4" opacity=".44" transform="rotate(20 22 25)"/><circle cx="22" cy="25" r="4" fill="#AB9166" opacity=".78"/></svg>
+      </div>
+    </div>
+    <div class="gallery-note" data-i18n="gallery_note">Aperçu mis à jour avec vos choix en temps réel</div>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <div class="product-form">
+
+    <div class="stars-row">
+      <span class="stars">★★★★★</span>
+      <span class="rating" data-i18n="perso_ratings">4,9 · 147 avis</span>
+    </div>
+
+    <h1 class="product-title" data-i18n="book1_title">Je t'aime plus grand que le ciel</h1>
+    <p class="product-tagline" data-i18n="perso_tagline">Un livre personnalisé qui raconte votre amour.</p>
+
+    <div class="delivery-badge">
+      <div class="delivery-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div>
+        <span class="delivery-strong" data-i18n="perso_delivery_strong">Commandé aujourd'hui → livré le 23 déc.</span>
+        <span class="delivery-sub" data-i18n="perso_delivery_sub">Expédition sous 48h · Livraison offerte dès 45 €</span>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 1 -->
+    <div class="step-block">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <span class="step-title-txt" data-i18n="perso_step1">Choisissez votre format</span>
+      </div>
+      <div class="step-body">
+        <div class="format-list">
+          <div class="format-opt selected" onclick="selectFormat(this,29,'perso_format1_name')">
+            <div class="format-left">
+              <div class="format-icon-wrap"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+              <div>
+                <div class="format-name" data-i18n="perso_format1_name">Livre imprimé</div>
+                <div class="format-detail" data-i18n="perso_format1_detail">Couverture rigide · 24 pages · 21×21 cm</div>
+              </div>
+            </div>
+            <div class="format-price">29 €</div>
+          </div>
+          <div class="format-opt" onclick="selectFormat(this,7.90,'perso_format2_name')">
+            <div class="format-left">
+              <div class="format-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+              <div>
+                <div class="format-name" data-i18n="perso_format2_name">E-book (PDF)</div>
+                <div class="format-detail" data-i18n="perso_format2_detail">Téléchargement immédiat · Impression libre</div>
+              </div>
+            </div>
+            <div class="format-price">7,90 €</div>
+          </div>
+          <div class="format-opt" onclick="selectFormat(this,32,'perso_format3_name')">
+            <div class="format-left">
+              <div class="format-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg></div>
+              <div>
+                <div class="format-name" data-i18n="perso_format3_name">Pack complet</div>
+                <div class="format-detail" data-i18n="perso_format3_detail">Livre imprimé + E-book · Meilleure valeur</div>
+              </div>
+            </div>
+            <div class="format-price">32 €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 2 -->
+    <div class="step-block">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <span class="step-title-txt" data-i18n="perso_step2">Personnalisez votre livre</span>
+      </div>
+      <div class="step-body">
+        <div class="field-group">
+          <label class="field-label" data-i18n="perso_child_label">Prénom de l'enfant</label>
+          <input class="field-input" type="text" id="child-name" data-i18n-placeholder="perso_child_placeholder" placeholder="Ex : Léa, Théo, Emma…" oninput="updateName(this.value)">
+          <div class="gender-row">
+            <button class="gender-btn active" onclick="setGender(this)" data-i18n="perso_girl">Fille</button>
+            <button class="gender-btn" onclick="setGender(this)" data-i18n="perso_boy">Garçon</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-i18n="perso_adult_label">Votre surnom (comme il vous appelle)</label>
+          <input class="field-input" type="text" data-i18n-placeholder="perso_adult_placeholder" placeholder="Ex : Maman, Papa, Mamie…">
+          <div class="gender-row">
+            <button class="gender-btn active" onclick="setGender(this)" data-i18n="perso_woman">Femme</button>
+            <button class="gender-btn" onclick="setGender(this)" data-i18n="perso_man">Homme</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 -->
+    <div class="step-block">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <span class="step-title-txt" data-i18n="perso_step3">Choisissez votre couverture</span>
+      </div>
+      <div class="step-body">
+        <div class="cover-grid">
+          <div class="cover-opt selected" onclick="selectCover(this,'#EFD5C4',0)">
+            <div class="cover-preview" style="background:var(--rose)">
+              <svg width="40" height="55" viewBox="0 0 40 55" fill="none"><rect x="1" y="1" width="38" height="53" rx="2" fill="#EFD5C4"/><ellipse cx="20" cy="23" rx="11" ry="14" fill="#F8F0E8" opacity=".84" transform="rotate(-10 20 23)"/><ellipse cx="20" cy="23" rx="11" ry="14" fill="#F8F0E8" opacity=".6" transform="rotate(30 20 23)"/><circle cx="20" cy="23" r="5" fill="#AB9166" opacity=".9"/></svg>
+            </div>
+            <div class="cover-info">
+              <div class="cover-name" data-i18n="cover_original">Original</div>
+              <div class="cover-price-txt" data-i18n="cover_original_price">Inclus</div>
+            </div>
+          </div>
+          <div class="cover-opt" onclick="selectCover(this,'#f0e8f5',5)">
+            <div class="cover-preview" style="background:#f0e8f5">
+              <svg width="40" height="55" viewBox="0 0 40 55" fill="none"><rect x="1" y="1" width="38" height="53" rx="2" fill="#f0e8f5"/><ellipse cx="20" cy="23" rx="11" ry="14" fill="#EFD5C4" opacity=".77" transform="rotate(20 20 23)"/><ellipse cx="20" cy="23" rx="11" ry="14" fill="#EFD5C4" opacity=".54" transform="rotate(-15 20 23)"/><circle cx="20" cy="23" r="5" fill="#c4aa82" opacity=".9"/></svg>
+            </div>
+            <div class="cover-info">
+              <div class="cover-premium-lbl" data-i18n="cover_premium_label">Premium</div>
+              <div class="cover-name" data-i18n="cover_pastel">Pastel</div>
+              <div class="cover-price-txt">+5 €</div>
+            </div>
+          </div>
+          <div class="cover-opt" onclick="selectCover(this,'#1a2040',5)">
+            <div class="cover-preview" style="background:#1a2040">
+              <svg width="40" height="55" viewBox="0 0 40 55" fill="none"><rect x="1" y="1" width="38" height="53" rx="2" fill="#1a2040"/><circle cx="20" cy="22" r="15" fill="#2a3060" opacity=".68"/><circle cx="20" cy="22" r="8" fill="#EFD5C4" opacity=".24"/><circle cx="11" cy="12" r="1.5" fill="white" opacity=".58"/><circle cx="29" cy="10" r="1.2" fill="white" opacity=".48"/><circle cx="27" cy="30" r="1" fill="white" opacity=".42"/><circle cx="8" cy="28" r=".8" fill="white" opacity=".38"/></svg>
+            </div>
+            <div class="cover-info">
+              <div class="cover-premium-lbl" data-i18n="cover_premium_label">Premium</div>
+              <div class="cover-name" data-i18n="cover_nuit">Nuit étoilée</div>
+              <div class="cover-price-txt">+5 €</div>
+            </div>
+          </div>
+        </div>
+        <p class="cover-note-txt" data-i18n="cover_note">Les couvertures Pastel et Nuit étoilée sont des éditions premium avec finition spéciale.</p>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 4 -->
+    <div class="step-block">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <span class="step-title-txt" data-i18n="perso_step4">Complétez votre commande</span>
+      </div>
+      <div class="step-body">
+        <div class="options-list">
+          <div class="option-row" onclick="toggleOption(this,9)">
+            <div class="option-left">
+              <div class="option-check"><div class="check-mark"></div></div>
+              <div>
+                <div class="option-name" data-i18n="opt_coloring_name">Cahier de coloriage assorti</div>
+                <div class="option-desc" data-i18n="opt_coloring_desc">Les illustrations du livre à colorier · A5 · 24 pages</div>
+              </div>
+            </div>
+            <span class="option-price">+9 €</span>
+          </div>
+          <div class="option-row" onclick="toggleOption(this,12)">
+            <div class="option-left">
+              <div class="option-check"><div class="check-mark"></div></div>
+              <div>
+                <div class="option-name" data-i18n="opt_poster_a5_name">Affiche poster A5</div>
+                <div class="option-desc" data-i18n="opt_poster_a5_desc">Illustration aquarelle · Papier mat 250g · 14×21 cm</div>
+              </div>
+            </div>
+            <span class="option-price">+12 €</span>
+          </div>
+          <div class="option-row" onclick="toggleOption(this,18)">
+            <div class="option-left">
+              <div class="option-check"><div class="check-mark"></div></div>
+              <div>
+                <div class="option-name" data-i18n="opt_poster_a4_name">Affiche poster A4</div>
+                <div class="option-desc" data-i18n="opt_poster_a4_desc">Illustration aquarelle · Papier mat 250g · 21×29,7 cm</div>
+              </div>
+            </div>
+            <span class="option-price">+18 €</span>
+          </div>
+          <div class="option-row" onclick="toggleOption(this,26)">
+            <div class="option-left">
+              <div class="option-check"><div class="check-mark"></div></div>
+              <div>
+                <div class="option-name" data-i18n="opt_poster_a3_name">Affiche poster A3</div>
+                <div class="option-desc" data-i18n="opt_poster_a3_desc">Illustration aquarelle · Papier mat 250g · 29,7×42 cm</div>
+              </div>
+            </div>
+            <span class="option-price">+26 €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOTAL -->
+    <div class="total-block">
+      <div class="total-line">
+        <span class="total-lbl" id="format-label" data-i18n="perso_format1_name">Livre imprimé</span>
+        <span class="total-val" id="base-price-display">29 €</span>
+      </div>
+      <div class="total-line" id="cover-line" style="display:none">
+        <span class="total-lbl" data-i18n="total_cover">Couverture premium</span>
+        <span class="total-val" id="cover-price-display">+5 €</span>
+      </div>
+      <div class="total-line" id="options-line" style="display:none">
+        <span class="total-lbl" data-i18n="total_options">Options ajoutées</span>
+        <span class="total-val" id="options-price-display">+0 €</span>
+      </div>
+      <div class="total-line total-main">
+        <span class="total-lbl" data-i18n="total_label">Total</span>
+        <span class="total-val" id="total-display">29 €</span>
+      </div>
+      <div class="pay-row">
+        <span class="pay-icon">VISA</span>
+        <span class="pay-icon">MC</span>
+        <span class="pay-icon">AMEX</span>
+        <span class="pay-secure" data-i18n="pay_secure">Paiement 100% sécurisé</span>
+      </div>
+    </div>
+
+    <button class="btn-add" data-i18n="btn_add_cart">Ajouter au panier</button>
+    <button class="btn-preview" data-i18n="btn_preview">Prévisualiser mon livre</button>
+
+    <div class="product-details">
+      <p class="details-title-txt" data-i18n="details_title">Détails du produit</p>
+      <div class="details-grid">
+        <div><div class="detail-key" data-i18n="detail_format">Format</div><div class="detail-val" data-i18n="detail_format_val">21 × 21 cm</div></div>
+        <div><div class="detail-key" data-i18n="detail_pages">Pagination</div><div class="detail-val" data-i18n="detail_pages_val">24 pages</div></div>
+        <div><div class="detail-key" data-i18n="detail_paper">Papier</div><div class="detail-val" data-i18n="detail_paper_val">170g mat, FSC</div></div>
+        <div><div class="detail-key" data-i18n="detail_cover">Couverture</div><div class="detail-val" data-i18n="detail_cover_val">Rigide, mat</div></div>
+        <div><div class="detail-key" data-i18n="detail_print">Impression</div><div class="detail-val" data-i18n="detail_print_val">France</div></div>
+        <div><div class="detail-key" data-i18n="detail_delay">Délai</div><div class="detail-val" data-i18n="detail_delay_val">7 jours ouvrés</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let basePrice=29, coverPrice=0, optionsTotal=0, currentFormatKey='perso_format1_name';
+
+function fmt(n){ return n.toFixed(2).replace('.',',').replace(',00','') + ' €'; }
+
+function updateTotal(){
+  const total = basePrice + coverPrice + optionsTotal;
+  document.getElementById('total-display').textContent = fmt(total);
+  document.getElementById('base-price-display').textContent = fmt(basePrice);
+  document.getElementById('format-label').textContent = t(currentFormatKey);
+}
+
+function updateName(v){
+  const el = document.getElementById('preview-name');
+  const ph = t('preview_name_placeholder');
+  if(el) el.textContent = v ? v + ',' : ph;
+}
+
+function setGender(btn){
+  btn.closest('.gender-row').querySelectorAll('.gender-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function selectFormat(el, price, labelKey){
+  document.querySelectorAll('.format-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  basePrice = price;
+  currentFormatKey = labelKey;
+  updateTotal();
+}
+
+function selectCover(el, bgColor, extra){
+  document.querySelectorAll('.cover-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  coverPrice = extra;
+  const cl = document.getElementById('cover-line');
+  if(cl) cl.style.display = extra > 0 ? '' : 'none';
+  const cp = document.getElementById('cover-price-display');
+  if(cp) cp.textContent = '+' + extra + ' €';
+  document.getElementById('book-bg').setAttribute('fill', bgColor);
+  ['p1','p2','p3','p4'].forEach(id=>{
+    const p = document.getElementById(id);
+    if(p) p.setAttribute('fill', bgColor === '#1a2040' ? '#EFD5C4' : bgColor);
+  });
+  updateTotal();
+}
+
+function toggleOption(el, price){
+  const isSel = el.classList.contains('selected');
+  el.classList.toggle('selected');
+  optionsTotal += isSel ? -price : price;
+  const ol = document.getElementById('options-line');
+  const op = document.getElementById('options-price-display');
+  if(optionsTotal > 0){ ol.style.display=''; op.textContent = '+' + fmt(optionsTotal); }
+  else { ol.style.display='none'; }
+  updateTotal();
+}
+
+// Init multilingue
+document.addEventListener('DOMContentLoaded', () => {
+  buildLangSelector('lang-selector-nav');
+  applyTranslations();
+  updateLangSelector();
+  // Mettre à jour le placeholder de l'aperçu
+  document.getElementById('preview-name').textContent = t('preview_name_placeholder');
+});
+
+window.setLang = function(lang) {
+  window.__PETUNIA_LANG__ = lang;
+  localStorage.setItem('petunia_lang', lang);
+  applyTranslations();
+  buildLangSelector('lang-selector-nav');
+  updateLangSelector();
+  // Mettre à jour le total label après changement de langue
+  updateTotal();
+  // Mettre à jour le placeholder aperçu si vide
+  const nameInput = document.getElementById('child-name');
+  if(nameInput && !nameInput.value){
+    document.getElementById('preview-name').textContent = t('preview_name_placeholder');
+  }
+};
+</script>
+</body>
+</html>
