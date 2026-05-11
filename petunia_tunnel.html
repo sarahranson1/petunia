@@ -9,16 +9,16 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --vert:#1D4E49;--vert-light:#2a6b64;--vert-pale:#e8f2f0;
-  --rose:#EFD5C4;--beige:#F8F0E8;--beige-dark:#ede3d7;
+  --rose:#EFD5C4;--beige:#ffffff;--beige-dark:#e8e8e8;
   --dore:#AB9166;--dore-light:#c4aa82;
-  --noir:#1a1a1a;--gris:#5a5a5a;--gris-light:#8a8a8a;--gris-bg:#f4f4f2;
+  --noir:#1a1a1a;--gris:#5a5a5a;--gris-light:#8a8a8a;--gris-bg:#f8f8f8;
   --ok:#2d7a4f;--ok-bg:#e6f4ec;
   --err:#c0392b;--err-bg:#fdeaea;
 }
-body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir);min-height:100vh}
+body{font-family:'Open Sans',sans-serif;background:white;color:var(--noir);min-height:100vh}
 
 /* ── NAV CHECKOUT ── */
-.checkout-nav{background:white;border-bottom:1px solid var(--beige-dark);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.checkout-nav{background:white;border-bottom:1px solid #e8e8e4;padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between}
 .nav-back{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);text-decoration:none;display:flex;align-items:center;gap:.4rem}
 .nav-back:hover{color:var(--vert)}
 .nav-back::before{content:'←'}
@@ -27,7 +27,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
 .nav-secure::before{content:'●';font-size:8px}
 
 /* ── PROGRESS BAR ── */
-.progress-wrap{background:white;border-bottom:1px solid var(--beige-dark);padding:.9rem 2rem}
+.progress-wrap{background:white;border-bottom:1px solid #e8e8e4;padding:.9rem 2rem}
 .progress-steps{display:flex;align-items:center;justify-content:center;gap:0;max-width:600px;margin:0 auto}
 .step-dot{display:flex;flex-direction:column;align-items:center;gap:.3rem;position:relative;flex:1}
 .step-dot:not(:last-child)::after{content:'';position:absolute;top:14px;left:calc(50% + 14px);right:calc(-50% + 14px);height:1px;background:var(--beige-dark);z-index:0}
@@ -43,11 +43,11 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
 .step-dot.done .dot-label{color:var(--vert)}
 
 /* ── LAYOUT PRINCIPAL ── */
-.checkout-layout{display:grid;grid-template-columns:1fr 380px;gap:2rem;max-width:1000px;margin:0 auto;padding:2rem}
+.checkout-layout{background:white;display:grid;grid-template-columns:1fr 380px;gap:2rem;max-width:1000px;margin:0 auto;padding:2rem}
 
 /* ── FORMULAIRE ── */
-.checkout-form{background:white;border-radius:3px;border:1px solid var(--beige-dark);overflow:hidden}
-.form-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--beige-dark);display:flex;align-items:center;gap:.75rem}
+.checkout-form{background:white;border-radius:3px;border:1px solid #e8e8e4;overflow:hidden}
+.form-header{padding:1.25rem 1.5rem;border-bottom:1px solid #e8e8e4;display:flex;align-items:center;gap:.75rem}
 .form-header-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .form-header-title{font-family:'Lora',serif;font-size:1.1rem;color:var(--vert)}
 .form-body{padding:1.5rem}
@@ -55,14 +55,14 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1rem}
 .field-label{font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);margin-bottom:.4rem;display:flex;align-items:center;gap:.3rem}
 .field-label .req{color:var(--err);font-size:10px}
-.field-input{width:100%;padding:10px 14px;border:1px solid var(--beige-dark);border-radius:2px;font-family:'Open Sans',sans-serif;font-size:13px;color:var(--noir);background:white;transition:border-color .2s;outline:none}
+.field-input{width:100%;padding:10px 14px;border:1px solid #e8e8e4;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:13px;color:var(--noir);background:white;transition:border-color .2s;outline:none}
 .field-input:focus{border-color:var(--vert)}
 .field-input.error{border-color:var(--err)}
 .field-input::placeholder{color:var(--gris-light)}
 .field-error{font-size:11px;color:var(--err);margin-top:.3rem}
 
 /* ── OPTIONS LIVRAISON ── */
-.shipping-opt{border:1.5px solid var(--beige-dark);border-radius:2px;padding:.85rem 1rem;cursor:pointer;transition:all .2s;margin-bottom:.5rem;display:flex;align-items:center;gap:.85rem}
+.shipping-opt{border:1.5px solid #ebebeb;border-radius:2px;padding:.85rem 1rem;cursor:pointer;transition:all .2s;margin-bottom:.5rem;display:flex;align-items:center;gap:.85rem}
 .shipping-opt.selected{border-color:var(--vert);background:var(--vert-pale)}
 .shipping-opt:hover:not(.selected){border-color:var(--dore)}
 .ship-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--beige-dark);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
@@ -76,71 +76,71 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
 .ship-price{font-family:'Lora',serif;font-size:1rem;color:var(--vert);flex-shrink:0}
 
 /* ── PAIEMENT ── */
-.pay-method{border:1.5px solid var(--beige-dark);border-radius:2px;padding:.75rem 1rem;cursor:pointer;transition:all .2s;margin-bottom:.5rem;display:flex;align-items:center;gap:.85rem}
+.pay-method{border:1.5px solid #ebebeb;border-radius:2px;padding:.75rem 1rem;cursor:pointer;transition:all .2s;margin-bottom:.5rem;display:flex;align-items:center;gap:.85rem}
 .pay-method.selected{border-color:var(--vert);background:var(--vert-pale)}
 .pay-method:hover:not(.selected){border-color:var(--dore)}
 .pay-icons{display:flex;gap:.4rem;align-items:center}
 .pay-icon-badge{background:var(--beige-dark);border-radius:2px;padding:2px 7px;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris);font-weight:600}
-.card-fields{background:var(--gris-bg);border-radius:2px;padding:1rem;margin-top:.75rem}
+.card-fields{background:#f8f8f8;border-radius:2px;padding:1rem;margin-top:.75rem}
 .ssl-badge{display:flex;align-items:center;gap:.4rem;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--ok);margin-top:.75rem}
 .ssl-badge::before{content:'🔒'}
 
 /* ── BOUTONS ── */
 .btn-primary{width:100%;background:var(--vert);color:white;padding:14px;border:none;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:1rem}
 .btn-primary:hover{background:var(--vert-light)}
-.btn-back{background:transparent;color:var(--gris);border:1px solid var(--beige-dark);padding:12px 20px;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;cursor:pointer;margin-top:.65rem;width:100%;transition:all .2s}
+.btn-back{background:transparent;color:var(--gris);border:1px solid #e8e8e4;padding:12px 20px;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;cursor:pointer;margin-top:.65rem;width:100%;transition:all .2s}
 .btn-back:hover{border-color:var(--gris)}
 
 /* ── RÉSUMÉ COMMANDE ── */
-.order-summary{position:sticky;top:1rem;align-self:start}
-.summary-card{background:white;border-radius:3px;border:1px solid var(--beige-dark);overflow:hidden}
-.summary-header{padding:.85rem 1.25rem;border-bottom:1px solid var(--beige-dark);font-family:'Open Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.order-summary{background:white;position:sticky;top:1rem;align-self:start}
+.summary-card{background:white;border-radius:3px;border:1px solid #e8e8e4;overflow:hidden}
+.summary-header{padding:.85rem 1.25rem;border-bottom:1px solid #e8e8e4;font-family:'Open Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
 .summary-body{padding:1.25rem}
-.summary-item{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--beige-dark)}
+.summary-item{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #e8e8e4}
 .summary-item:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
 .summary-img{width:56px;height:56px;border-radius:2px;background:var(--rose);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px}
 .summary-item-name{font-family:'Lora',serif;font-style:italic;font-size:.88rem;color:var(--vert);line-height:1.3}
 .summary-item-detail{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light);margin-top:.2rem}
 .summary-item-price{font-family:'Lora',serif;font-size:.95rem;color:var(--vert);margin-left:auto;flex-shrink:0}
-.summary-lines{padding:1rem 1.25rem;border-top:1px solid var(--beige-dark)}
+.summary-lines{padding:1rem 1.25rem;border-top:1px solid #e8e8e4}
 .summary-line{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
 .summary-line-label{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris)}
 .summary-line-val{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--noir)}
 .summary-total{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-top:1.5px solid var(--beige-dark)}
 .summary-total-label{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--vert)}
 .summary-total-val{font-family:'Lora',serif;font-size:1.4rem;color:var(--vert)}
-.summary-badges{padding:.85rem 1.25rem;border-top:1px solid var(--beige-dark);display:flex;flex-direction:column;gap:.5rem}
+.summary-badges{padding:.85rem 1.25rem;border-top:1px solid #e8e8e4;display:flex;flex-direction:column;gap:.5rem}
 .summary-badge{display:flex;align-items:center;gap:.6rem;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris)}
 .summary-badge-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
 
 /* ── PANIER SLIDE-OVER ── */
 .cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:300}
 .cart-overlay.open{display:block}
-.cart-panel{position:fixed;top:0;right:-420px;width:420px;max-width:95vw;height:100vh;background:white;z-index:301;display:flex;flex-direction:column;transition:right .3s ease;box-shadow:-4px 0 24px rgba(0,0,0,.1)}
+.cart-panel{position:fixed;top:0;right:-420px;width:420px;max-width:95vw;height:100vh;background:white;border-left:1px solid #ebebeb;z-index:301;display:flex;flex-direction:column;transition:right .3s ease;box-shadow:-4px 0 24px rgba(0,0,0,.1)}
 .cart-panel.open{right:0}
-.cart-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--beige-dark);display:flex;align-items:center;justify-content:space-between}
+.cart-header{padding:1.25rem 1.5rem;border-bottom:1px solid #e8e8e4;display:flex;align-items:center;justify-content:space-between}
 .cart-title{font-family:'Lora',serif;font-style:italic;font-size:1.1rem;color:var(--vert)}
 .cart-close{cursor:pointer;color:var(--gris-light);font-size:20px;padding:2px 6px;line-height:1}
 .cart-close:hover{color:var(--noir)}
 .cart-body{flex:1;overflow-y:auto;padding:1.25rem 1.5rem}
-.cart-item{display:flex;gap:1rem;padding-bottom:1.25rem;border-bottom:1px solid var(--beige-dark);margin-bottom:1.25rem}
+.cart-item{display:flex;gap:1rem;padding-bottom:1.25rem;border-bottom:1px solid #e8e8e4;margin-bottom:1.25rem}
 .cart-item-img{width:70px;height:70px;background:var(--rose);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px}
 .cart-item-info{flex:1}
 .cart-item-name{font-family:'Lora',serif;font-style:italic;font-size:.95rem;color:var(--vert);margin-bottom:.3rem;line-height:1.3}
 .cart-item-detail{font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light);margin-bottom:.5rem}
 .cart-item-perso{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--dore);background:rgba(171,145,102,.1);padding:2px 7px;border-radius:2px;display:inline-block}
 .qty-row{display:flex;align-items:center;gap:.6rem;margin-top:.65rem}
-.qty-btn{width:26px;height:26px;border:1px solid var(--beige-dark);background:white;border-radius:2px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--gris);transition:all .2s}
+.qty-btn{width:26px;height:26px;border:1px solid #e8e8e4;background:white;border-radius:2px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--gris);transition:all .2s}
 .qty-btn:hover{border-color:var(--vert);color:var(--vert)}
 .qty-val{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--noir);min-width:20px;text-align:center}
 .cart-item-price{font-family:'Lora',serif;font-size:1rem;color:var(--vert);margin-left:auto;align-self:flex-start}
 .cart-delete{cursor:pointer;color:var(--gris-light);font-size:16px;align-self:flex-start;margin-left:.5rem;transition:color .2s}
 .cart-delete:hover{color:var(--err)}
-.cart-footer{padding:1.25rem 1.5rem;border-top:1px solid var(--beige-dark)}
+.cart-footer{padding:1.25rem 1.5rem;border-top:1px solid #e8e8e4}
 .cart-subtotal{display:flex;justify-content:space-between;margin-bottom:.5rem}
 .cart-subtotal-lbl{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris)}
 .cart-subtotal-val{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--noir)}
-.cart-total-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-top:1px solid var(--beige-dark);margin-bottom:1rem}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-top:1px solid #e8e8e4;margin-bottom:1rem}
 .cart-total-lbl{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--vert)}
 .cart-total-val{font-family:'Lora',serif;font-size:1.4rem;color:var(--vert)}
 .cart-cta{width:100%;background:var(--vert);color:white;padding:14px;border:none;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s}
@@ -152,8 +152,8 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
 .confirm-icon{width:56px;height:56px;border-radius:50%;background:var(--ok-bg);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:24px}
 .confirm-title{font-family:'Lora',serif;font-size:1.75rem;color:var(--vert);margin-bottom:.75rem}
 .confirm-sub{font-family:'Lora',serif;font-style:italic;font-size:.95rem;color:var(--gris);line-height:1.7;margin-bottom:2rem}
-.confirm-info-block{background:white;border:1px solid var(--beige-dark);border-radius:3px;margin-bottom:1rem;overflow:hidden}
-.confirm-info-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1.25rem;border-bottom:1px solid var(--beige-dark)}
+.confirm-info-block{background:white;border:1px solid #e8e8e4;border-radius:3px;margin-bottom:1rem;overflow:hidden}
+.confirm-info-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1.25rem;border-bottom:1px solid #e8e8e4}
 .confirm-info-row:last-child{border-bottom:none}
 .confirm-info-label{font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light);letter-spacing:.05em}
 .confirm-info-val{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--noir)}
@@ -173,7 +173,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
 .promo-toggle{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--dore);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
 .promo-form{display:none;flex;gap:.5rem;margin-top:.65rem}
 .promo-form.open{display:flex}
-.promo-input{flex:1;padding:8px 12px;border:1px solid var(--beige-dark);border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;outline:none}
+.promo-input{flex:1;padding:8px 12px;border:1px solid #e8e8e4;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;outline:none}
 .promo-input:focus{border-color:var(--vert)}
 .promo-btn{background:var(--vert);color:white;border:none;padding:8px 14px;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:11px;cursor:pointer}
 
@@ -260,13 +260,13 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
             <input class="field-input" type="tel" id="f-tel" placeholder="06 00 00 00 00">
           </div>
 
-          <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--beige-dark)">
+          <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid #e8e8e4">
             <div style="font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light);margin-bottom:.65rem">Déjà un compte ?</div>
             <div style="display:flex;gap:.75rem">
-              <button style="flex:1;border:1px solid var(--beige-dark);background:white;border-radius:2px;padding:9px 14px;font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem">
+              <button style="flex:1;border:1px solid #e8e8e4;background:white;border-radius:2px;padding:9px 14px;font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem">
                 <span style="font-size:14px">G</span> Continuer avec Google
               </button>
-              <button style="flex:1;border:1px solid var(--beige-dark);background:white;border-radius:2px;padding:9px 14px;font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);cursor:pointer">Se connecter</button>
+              <button style="flex:1;border:1px solid #e8e8e4;background:white;border-radius:2px;padding:9px 14px;font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);cursor:pointer">Se connecter</button>
             </div>
           </div>
 
@@ -315,7 +315,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
           </div>
 
           <!-- Modes de livraison -->
-          <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--beige-dark)">
+          <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid #e8e8e4">
             <div style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.85rem;font-weight:600">Mode de livraison</div>
 
             <div class="shipping-opt selected" id="ship-colissimo" onclick="selectShipping(this,'4.90','5-7 jours ouvrés')">
@@ -501,7 +501,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir
       </div>
 
       <!-- Code promo -->
-      <div style="padding:.85rem 1.25rem;border-top:1px solid var(--beige-dark)">
+      <div style="padding:.85rem 1.25rem;border-top:1px solid #e8e8e4">
         <span class="promo-toggle" onclick="togglePromo()">Vous avez un code promo ?</span>
         <div class="promo-form" id="promo-form">
           <input class="promo-input" id="promo-input" placeholder="Code promo">
