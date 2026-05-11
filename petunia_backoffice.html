@@ -199,8 +199,15 @@ tr:hover td{background:#fafaf8}
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>Commandes
       <span class="nav-badge red">5</span>
     </div>
+    <div class="nav-item" onclick="goTo('gelato',this)">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Gelato
+      <span class="nav-badge" style="background:var(--dore)">8</span>
+    </div>
     <div class="nav-item" onclick="goTo('catalogue',this)">
       <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Catalogue
+    </div>
+    <div class="nav-item" onclick="goTo('types-produits',this)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="4" rx="1"/><rect x="3" y="11" width="7" height="4" rx="1"/><rect x="3" y="19" width="7" height="2" rx="1"/><line x1="14" y1="5" x2="21" y2="5"/><line x1="14" y1="13" x2="21" y2="13"/><line x1="14" y1="20" x2="21" y2="20"/></svg>Types de produits
     </div>
     <div class="nav-item" onclick="goTo('clients',this)">
       <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Clients
@@ -323,35 +330,170 @@ tr:hover td{background:#fafaf8}
     <!-- COMMANDES -->
     <div class="section" id="sec-commandes">
       <div class="sec-title">Gestion des commandes</div>
+
+      <!-- Statuts Gelato pipeline -->
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;margin-bottom:1.5rem">
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.9rem 1rem;border-top:3px solid #8a8a8a">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">Reçues</div>
+          <div style="font-family:'Lora',serif;font-size:1.6rem;color:var(--gris)">5</div>
+          <div style="font-size:10px;color:var(--gris-light);margin-top:.2rem">En attente envoi Gelato</div>
+        </div>
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.9rem 1rem;border-top:3px solid var(--dore)">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">Chez Gelato</div>
+          <div style="font-family:'Lora',serif;font-size:1.6rem;color:var(--dore)">8</div>
+          <div style="font-size:10px;color:var(--gris-light);margin-top:.2rem">Transmises, en file</div>
+        </div>
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.9rem 1rem;border-top:3px solid var(--info)">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">En impression</div>
+          <div style="font-family:'Lora',serif;font-size:1.6rem;color:var(--info)">4</div>
+          <div style="font-size:10px;color:var(--gris-light);margin-top:.2rem">En cours chez Gelato</div>
+        </div>
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.9rem 1rem;border-top:3px solid var(--ok)">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">Expédiées</div>
+          <div style="font-family:'Lora',serif;font-size:1.6rem;color:var(--ok)">14</div>
+          <div style="font-size:10px;color:var(--gris-light);margin-top:.2rem">Gelato a expédié</div>
+        </div>
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.9rem 1rem;border-top:3px solid var(--vert)">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">Livrées</div>
+          <div style="font-family:'Lora',serif;font-size:1.6rem;color:var(--vert)">62</div>
+          <div style="font-size:10px;color:var(--gris-light);margin-top:.2rem">Confirmées client</div>
+        </div>
+      </div>
+
       <div class="filters">
         <div class="ftab active" onclick="ftab(this)">Toutes <span class="fcount">89</span></div>
-        <div class="ftab" onclick="ftab(this)">En attente <span class="fcount">5</span></div>
-        <div class="ftab" onclick="ftab(this)">En impression <span class="fcount">8</span></div>
-        <div class="ftab" onclick="ftab(this)">Expédiées <span class="fcount">14</span></div>
-        <div class="ftab" onclick="ftab(this)">Livrées <span class="fcount">62</span></div>
+        <div class="ftab" onclick="ftab(this)">⚠ En attente <span class="fcount">5</span></div>
+        <div class="ftab" onclick="ftab(this)">📦 Chez Gelato <span class="fcount">8</span></div>
+        <div class="ftab" onclick="ftab(this)">🖨 En impression <span class="fcount">4</span></div>
+        <div class="ftab" onclick="ftab(this)">🚚 Expédiées <span class="fcount">14</span></div>
+        <div class="ftab" onclick="ftab(this)">✓ Livrées <span class="fcount">62</span></div>
         <div class="fr">
-          <select class="fsel"><option>Période : Ce mois</option><option>7 jours</option><option>Tout</option></select>
           <select class="fsel"><option>Produit : Tous</option><option>Je t'aime...</option><option>Bienvenu au monde</option><option>Affiches</option><option>Cahiers</option></select>
         </div>
       </div>
+
       <div class="card">
         <table>
-          <thead><tr><th>Réf.</th><th>Date</th><th>Client</th><th>Produit principal</th><th>Options</th><th>Montant</th><th>Statut</th><th></th></tr></thead>
+          <thead><tr><th>Réf.</th><th>Date</th><th>Client</th><th>Produit</th><th>Montant</th><th>Statut</th><th>Gelato ID</th><th>Suivi</th><th></th></tr></thead>
           <tbody>
-            <tr class="order-row" onclick="toggleExp(this,'e1')"><td class="td-mono" style="font-weight:600">#1021</td><td class="td-mono">12 déc.</td><td><strong>Marie Dupont</strong></td><td style="font-style:italic;font-size:12px;color:var(--gris)">Je t'aime... (Léa / Maman)</td><td style="font-size:11px;color:var(--dore)">Nuit étoilée +5€</td><td style="font-weight:600">34 €</td><td><span class="badge b-warn">En cours</span></td><td style="color:var(--gris-light);font-size:11px">▼</td></tr>
-            <tr class="exp-row" id="e1" style="background:#fafaf8"><td colspan="8"><div class="exp-inner"><div><div class="exp-lbl">Livraison</div><div class="exp-val">12 rue de la Paix<br>75001 Paris</div></div><div><div class="exp-lbl">Détail commande</div><div class="exp-val">Livre imprimé — 29 €<br>Couverture Nuit étoilée — +5 €</div></div><div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem"><button class="bxs bxs-v">Marquer expédié</button><button class="bxs bxs-o">Imprimer bon</button></div></div></div></td></tr>
 
-            <tr class="order-row" onclick="toggleExp(this,'e2')"><td class="td-mono" style="font-weight:600">#1020</td><td class="td-mono">12 déc.</td><td><strong>Julien Martin</strong></td><td style="font-style:italic;font-size:12px;color:var(--gris)">Bienvenu au monde (Tom / Papa)</td><td style="font-size:11px;color:var(--dore)">+ Cahier coloriage</td><td style="font-weight:600">38 €</td><td><span class="badge b-ok">Expédié</span></td><td style="color:var(--gris-light);font-size:11px">▼</td></tr>
-            <tr class="exp-row" id="e2" style="background:#fafaf8"><td colspan="8"><div class="exp-inner"><div><div class="exp-lbl">Livraison</div><div class="exp-val">5 av. Victor Hugo<br>69001 Lyon</div></div><div><div class="exp-lbl">Détail commande</div><div class="exp-val">Livre imprimé — 29 €<br>Cahier de coloriage — +9 €</div></div><div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem"><button class="bxs bxs-v">Marquer livré</button><button class="bxs bxs-o">Voir client</button></div></div></div></td></tr>
+            <tr class="order-row" onclick="toggleExp(this,'e1')">
+              <td class="td-mono" style="font-weight:600">#1021</td>
+              <td class="td-mono">12 déc.</td>
+              <td><strong>Marie Dupont</strong></td>
+              <td style="font-style:italic;font-size:12px;color:var(--gris)">Je t'aime... · Léa / Maman</td>
+              <td style="font-weight:600">34 €</td>
+              <td><span class="badge" style="background:#f0f0ec;color:var(--gris)">⚠ En attente</span></td>
+              <td class="td-mono" style="color:var(--gris-light)">—</td>
+              <td class="td-mono" style="color:var(--gris-light)">—</td>
+              <td style="color:var(--gris-light);font-size:11px">▼</td>
+            </tr>
+            <tr class="exp-row" id="e1" style="background:#fafaf8"><td colspan="9">
+              <div class="exp-inner" style="grid-template-columns:1fr 1fr 1fr 1fr">
+                <div><div class="exp-lbl">Adresse livraison</div><div class="exp-val">12 rue de la Paix<br>75001 Paris</div></div>
+                <div><div class="exp-lbl">Détail produit</div><div class="exp-val">Livre imprimé — 29 €<br>Couverture Nuit étoilée — +5 €<br><span style="color:var(--dore);font-size:11px">SKU Gelato : PC-BOOK-FR-001</span></div></div>
+                <div><div class="exp-lbl">Personalisation</div><div class="exp-val">Prénom enfant : <strong>Léa</strong><br>Surnom adulte : <strong>Maman</strong><br>Genre : Fille</div></div>
+                <div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem">
+                  <button class="bxs bxs-v" style="background:var(--dore);border-color:var(--dore)">→ Envoyer à Gelato</button>
+                  <button class="bxs bxs-o">Voir client</button>
+                  <button class="bxs bxs-o">Imprimer bon</button>
+                </div></div>
+              </div>
+            </td></tr>
 
-            <tr class="order-row" onclick="toggleExp(this,'e3')"><td class="td-mono" style="font-weight:600">#1019</td><td class="td-mono">11 déc.</td><td><strong>Claire Bernard</strong></td><td style="font-style:italic;font-size:12px;color:var(--gris)">Je t'aime... (Emma / Mamie)</td><td style="font-size:11px;color:var(--dore)">+ Affiche A4</td><td style="font-weight:600">47 €</td><td><span class="badge b-ok">Expédié</span></td><td style="color:var(--gris-light);font-size:11px">▼</td></tr>
-            <tr class="exp-row" id="e3" style="background:#fafaf8"><td colspan="8"><div class="exp-inner"><div><div class="exp-lbl">Livraison</div><div class="exp-val">8 bd Haussmann<br>75009 Paris</div></div><div><div class="exp-lbl">Détail commande</div><div class="exp-val">Pack complet — 32 €<br>Affiche A4 — +18 €<br>Couverture Pastel — +5 €</div></div><div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem"><button class="bxs bxs-v">Marquer livré</button><button class="bxs bxs-o">Voir client</button></div></div></div></td></tr>
+            <tr class="order-row" onclick="toggleExp(this,'e2')">
+              <td class="td-mono" style="font-weight:600">#1020</td>
+              <td class="td-mono">12 déc.</td>
+              <td><strong>Julien Martin</strong></td>
+              <td style="font-style:italic;font-size:12px;color:var(--gris)">Bienvenu au monde · Tom / Papa</td>
+              <td style="font-weight:600">38 €</td>
+              <td><span class="badge b-warn">📦 Chez Gelato</span></td>
+              <td class="td-mono" style="color:var(--vert);font-size:11px">GEL-2024-8821</td>
+              <td class="td-mono" style="color:var(--gris-light)">—</td>
+              <td style="color:var(--gris-light);font-size:11px">▼</td>
+            </tr>
+            <tr class="exp-row" id="e2" style="background:#fafaf8"><td colspan="9">
+              <div class="exp-inner" style="grid-template-columns:1fr 1fr 1fr 1fr">
+                <div><div class="exp-lbl">Adresse livraison</div><div class="exp-val">5 av. Victor Hugo<br>69001 Lyon</div></div>
+                <div><div class="exp-lbl">Détail produit</div><div class="exp-val">Livre imprimé — 29 €<br>Cahier de coloriage — +9 €<br><span style="color:var(--dore);font-size:11px">SKU Gelato : PC-BOOK-FR-002</span></div></div>
+                <div><div class="exp-lbl">Gelato</div><div class="exp-val">ID : <strong>GEL-2024-8821</strong><br>Statut : <span style="color:var(--warn)">En file d'attente</span><br>Transmis le 12 déc. 09h14</div></div>
+                <div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem">
+                  <button class="bxs bxs-o">Voir sur Gelato ↗</button>
+                  <button class="bxs bxs-o">Voir client</button>
+                </div></div>
+              </div>
+            </td></tr>
 
-            <tr class="order-row" onclick="toggleExp(this,'e4')"><td class="td-mono" style="font-weight:600">#1018</td><td class="td-mono">11 déc.</td><td><strong>Pierre Leroy</strong></td><td style="font-style:italic;font-size:12px;color:var(--gris)">Je t'aime... (Hugo / Papa)</td><td style="font-size:11px;color:var(--gris-light)">—</td><td style="font-weight:600">32 €</td><td><span class="badge b-info">Impression</span></td><td style="color:var(--gris-light);font-size:11px">▼</td></tr>
-            <tr class="exp-row" id="e4" style="background:#fafaf8"><td colspan="8"><div class="exp-inner"><div><div class="exp-lbl">Livraison</div><div class="exp-val">3 rue des Lilas<br>33000 Bordeaux</div></div><div><div class="exp-lbl">Détail commande</div><div class="exp-val">Pack complet — 32 €<br>Couverture originale — inclus</div></div><div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem"><button class="bxs bxs-v">Marquer expédié</button><button class="bxs bxs-o">Imprimer bon</button></div></div></div></td></tr>
+            <tr class="order-row" onclick="toggleExp(this,'e3')">
+              <td class="td-mono" style="font-weight:600">#1019</td>
+              <td class="td-mono">11 déc.</td>
+              <td><strong>Claire Bernard</strong></td>
+              <td style="font-style:italic;font-size:12px;color:var(--gris)">Je t'aime... · Emma / Mamie + Affiche A4</td>
+              <td style="font-weight:600">47 €</td>
+              <td><span class="badge b-info">🖨 En impression</span></td>
+              <td class="td-mono" style="color:var(--vert);font-size:11px">GEL-2024-8798</td>
+              <td class="td-mono" style="color:var(--gris-light)">—</td>
+              <td style="color:var(--gris-light);font-size:11px">▼</td>
+            </tr>
+            <tr class="exp-row" id="e3" style="background:#fafaf8"><td colspan="9">
+              <div class="exp-inner" style="grid-template-columns:1fr 1fr 1fr 1fr">
+                <div><div class="exp-lbl">Adresse livraison</div><div class="exp-val">8 bd Haussmann<br>75009 Paris</div></div>
+                <div><div class="exp-lbl">Détail produit</div><div class="exp-val">Pack complet — 32 €<br>Affiche A4 — +18 €<br>Couverture Pastel — +5 €</div></div>
+                <div><div class="exp-lbl">Gelato</div><div class="exp-val">ID : <strong>GEL-2024-8798</strong><br>Statut : <span style="color:var(--info)">🖨 En impression</span><br>Début : 11 déc. 14h32<br>Délai estimé : 13 déc.</div></div>
+                <div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem">
+                  <button class="bxs bxs-o">Voir sur Gelato ↗</button>
+                  <button class="bxs bxs-o">Voir client</button>
+                </div></div>
+              </div>
+            </td></tr>
 
-            <tr class="order-row" onclick="toggleExp(this,'e5')"><td class="td-mono" style="font-weight:600">#1017</td><td class="td-mono">10 déc.</td><td><strong>Emma Petit</strong></td><td style="font-style:italic;font-size:12px;color:var(--gris)">Affiche A3 + Cahier coloriage</td><td style="font-size:11px;color:var(--gris-light)">Produits fixes</td><td style="font-weight:600">35 €</td><td><span class="badge b-gray">Livré</span></td><td style="color:var(--gris-light);font-size:11px">▼</td></tr>
-            <tr class="exp-row" id="e5" style="background:#fafaf8"><td colspan="8"><div class="exp-inner"><div><div class="exp-lbl">Livraison</div><div class="exp-val">Livré le 12 déc. 2024</div></div><div><div class="exp-lbl">Détail commande</div><div class="exp-val">Affiche A3 — 26 €<br>Cahier coloriage — 9 €</div></div><div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem"><button class="bxs bxs-o">Demander un avis</button><button class="bxs bxs-o">Voir client</button></div></div></div></td></tr>
+            <tr class="order-row" onclick="toggleExp(this,'e4')">
+              <td class="td-mono" style="font-weight:600">#1018</td>
+              <td class="td-mono">11 déc.</td>
+              <td><strong>Pierre Leroy</strong></td>
+              <td style="font-style:italic;font-size:12px;color:var(--gris)">Je t'aime... · Hugo / Papa</td>
+              <td style="font-weight:600">32 €</td>
+              <td><span class="badge b-ok">🚚 Expédiée</span></td>
+              <td class="td-mono" style="color:var(--vert);font-size:11px">GEL-2024-8754</td>
+              <td><a href="#" style="font-size:11px;color:var(--info);font-family:'Open Sans',sans-serif">1Z999AA10123456784</a></td>
+              <td style="color:var(--gris-light);font-size:11px">▼</td>
+            </tr>
+            <tr class="exp-row" id="e4" style="background:#fafaf8"><td colspan="9">
+              <div class="exp-inner" style="grid-template-columns:1fr 1fr 1fr 1fr">
+                <div><div class="exp-lbl">Adresse livraison</div><div class="exp-val">3 rue des Lilas<br>33000 Bordeaux</div></div>
+                <div><div class="exp-lbl">Détail produit</div><div class="exp-val">Pack complet — 32 €<br>Couverture originale — inclus</div></div>
+                <div><div class="exp-lbl">Gelato / Suivi</div><div class="exp-val">ID : <strong>GEL-2024-8754</strong><br>Transporteur : UPS<br>N° suivi : <span style="color:var(--info)">1Z999AA10123456784</span><br>Expédié le 11 déc. · <span style="color:var(--ok)">Livraison prévue 13 déc.</span></div></div>
+                <div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem">
+                  <button class="bxs bxs-v">Marquer livré</button>
+                  <button class="bxs bxs-o">Email suivi client</button>
+                  <button class="bxs bxs-o">Voir sur Gelato ↗</button>
+                </div></div>
+              </div>
+            </td></tr>
+
+            <tr class="order-row" onclick="toggleExp(this,'e5')">
+              <td class="td-mono" style="font-weight:600">#1017</td>
+              <td class="td-mono">10 déc.</td>
+              <td><strong>Emma Petit</strong></td>
+              <td style="font-style:italic;font-size:12px;color:var(--gris)">Affiche A3 + Cahier coloriage</td>
+              <td style="font-weight:600">35 €</td>
+              <td><span class="badge b-gray">✓ Livré</span></td>
+              <td class="td-mono" style="color:var(--vert);font-size:11px">GEL-2024-8701</td>
+              <td class="td-mono" style="color:var(--gris-light);font-size:11px">Livré 12 déc.</td>
+              <td style="color:var(--gris-light);font-size:11px">▼</td>
+            </tr>
+            <tr class="exp-row" id="e5" style="background:#fafaf8"><td colspan="9">
+              <div class="exp-inner" style="grid-template-columns:1fr 1fr 1fr 1fr">
+                <div><div class="exp-lbl">Livraison</div><div class="exp-val">Livré le 12 déc. 2024</div></div>
+                <div><div class="exp-lbl">Détail produit</div><div class="exp-val">Affiche A3 — 26 €<br>Cahier coloriage — 9 €</div></div>
+                <div><div class="exp-lbl">Gelato</div><div class="exp-val">ID : <strong>GEL-2024-8701</strong><br>Statut final : <span style="color:var(--ok)">✓ Livré</span></div></div>
+                <div><div class="exp-lbl">Actions</div><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.2rem">
+                  <button class="bxs bxs-o">Demander un avis</button>
+                  <button class="bxs bxs-o">Voir client</button>
+                </div></div>
+              </div>
+            </td></tr>
+
           </tbody>
         </table>
         <div style="padding:.65rem 1.1rem;border-top:1px solid #f0f0ec;display:flex;align-items:center;justify-content:space-between">
@@ -361,93 +503,304 @@ tr:hover td{background:#fafaf8}
       </div>
     </div>
 
+    <!-- GELATO DASHBOARD -->
+    <div class="section" id="sec-gelato">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+        <div class="sec-title" style="margin:0">Tableau de bord Gelato</div>
+        <div style="display:flex;align-items:center;gap:.75rem">
+          <div style="display:flex;align-items:center;gap:.4rem;font-size:12px;color:var(--ok)">
+            <div style="width:8px;height:8px;background:var(--ok);border-radius:50%"></div>
+            Connexion Gelato active
+          </div>
+          <button class="tb-btn">
+            <svg viewBox="0 0 24 24" width="13" height="13" style="stroke:white;fill:none;stroke-width:2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Synchroniser
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Gelato -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem">
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:1rem;border-left:4px solid var(--dore)">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">Jobs en attente</div>
+          <div style="font-family:'Lora',serif;font-size:1.7rem;color:var(--dore)">8</div>
+          <div style="font-size:11px;color:var(--gris-light);margin-top:.2rem">Transmis, en file Gelato</div>
+        </div>
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:1rem;border-left:4px solid var(--info)">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">En impression</div>
+          <div style="font-family:'Lora',serif;font-size:1.7rem;color:var(--info)">4</div>
+          <div style="font-size:11px;color:var(--gris-light);margin-top:.2rem">En cours de production</div>
+        </div>
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:1rem;border-left:4px solid var(--ok)">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">Expédiés ce mois</div>
+          <div style="font-family:'Lora',serif;font-size:1.7rem;color:var(--ok)">67</div>
+          <div style="font-size:11px;color:var(--gris-light);margin-top:.2rem">Par Gelato</div>
+        </div>
+        <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:1rem;border-left:4px solid var(--err)">
+          <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.4rem">Erreurs Gelato</div>
+          <div style="font-family:'Lora',serif;font-size:1.7rem;color:var(--err)">1</div>
+          <div style="font-size:11px;color:var(--err);margin-top:.2rem">⚠ Action requise</div>
+        </div>
+      </div>
+
+      <!-- Alerte erreur -->
+      <div style="background:var(--err-bg);border:1px solid rgba(160,45,45,.2);border-radius:3px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
+        <div style="font-size:20px;flex-shrink:0">⚠️</div>
+        <div style="flex:1">
+          <div style="font-weight:600;font-size:13px;color:var(--err);margin-bottom:.2rem">Erreur Gelato — Commande #1015</div>
+          <div style="font-size:12px;color:var(--gris)">Fichier PDF invalide pour la commande de Sophie R. — Le fichier de personnalisation n'a pas pu être traité par Gelato. Vérifiez le rendu et relancez.</div>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-shrink:0">
+          <button class="bxs bxs-v" style="background:var(--err);border-color:var(--err)">Relancer</button>
+          <button class="bxs bxs-o">Voir détails</button>
+        </div>
+      </div>
+
+      <!-- Jobs en cours -->
+      <div class="card" style="margin-bottom:1.5rem">
+        <div class="card-hd"><span class="card-ttl">Jobs actifs chez Gelato</span><span style="font-size:11px;color:var(--gris-light)">Mis à jour il y a 3 min</span></div>
+        <table>
+          <thead><tr><th>Gelato ID</th><th>Commande</th><th>Produit</th><th>Client</th><th>Transmis le</th><th>Statut Gelato</th><th>Délai estimé</th><th>Transporteur</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="td-mono" style="color:var(--vert)">GEL-2024-8821</td>
+              <td class="td-mono" style="font-weight:600">#1020</td>
+              <td style="font-size:12px;color:var(--gris);font-style:italic">Bienvenu au monde</td>
+              <td>Julien Martin</td>
+              <td class="td-mono">12 déc. 09h14</td>
+              <td><span class="badge b-warn">En file</span></td>
+              <td class="td-mono" style="color:var(--gris-light)">14 déc.</td>
+              <td class="td-mono" style="color:var(--gris-light)">Non attribué</td>
+            </tr>
+            <tr>
+              <td class="td-mono" style="color:var(--vert)">GEL-2024-8798</td>
+              <td class="td-mono" style="font-weight:600">#1019</td>
+              <td style="font-size:12px;color:var(--gris);font-style:italic">Je t'aime... + Affiche A4</td>
+              <td>Claire Bernard</td>
+              <td class="td-mono">11 déc. 14h32</td>
+              <td><span class="badge b-info">🖨 En impression</span></td>
+              <td class="td-mono" style="color:var(--vert)">13 déc.</td>
+              <td class="td-mono" style="color:var(--gris-light)">Colissimo</td>
+            </tr>
+            <tr>
+              <td class="td-mono" style="color:var(--vert)">GEL-2024-8790</td>
+              <td class="td-mono" style="font-weight:600">#1016</td>
+              <td style="font-size:12px;color:var(--gris);font-style:italic">Je t'aime... (Pastel)</td>
+              <td>Marc Girard</td>
+              <td class="td-mono">11 déc. 11h05</td>
+              <td><span class="badge b-info">🖨 En impression</span></td>
+              <td class="td-mono" style="color:var(--vert)">13 déc.</td>
+              <td class="td-mono" style="color:var(--gris-light)">Colissimo</td>
+            </tr>
+            <tr>
+              <td class="td-mono" style="color:var(--vert)">GEL-2024-8754</td>
+              <td class="td-mono" style="font-weight:600">#1018</td>
+              <td style="font-size:12px;color:var(--gris);font-style:italic">Je t'aime...</td>
+              <td>Pierre Leroy</td>
+              <td class="td-mono">10 déc. 16h22</td>
+              <td><span class="badge b-ok">🚚 Expédié</span></td>
+              <td class="td-mono" style="color:var(--ok)">13 déc.</td>
+              <td class="td-mono">UPS — <a href="#" style="color:var(--info)">1Z999AA1…</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SKUs Gelato configurés -->
+      <div class="card">
+        <div class="card-hd">
+          <span class="card-ttl">SKUs Gelato configurés</span>
+          <button class="bxs bxs-v" style="font-size:11px">+ Ajouter un SKU</button>
+        </div>
+        <table>
+          <thead><tr><th>Produit Petunia</th><th>SKU Gelato</th><th>Format Gelato</th><th>Papier</th><th>Couverture</th><th>Statut</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="font-style:italic;color:var(--vert)">Je t'aime... (Original)</td>
+              <td class="td-mono">PC-BOOK-FR-001</td>
+              <td class="td-mono">21×21 cm</td>
+              <td style="font-size:12px;color:var(--gris)">170g mat FSC</td>
+              <td style="font-size:12px;color:var(--gris)">Rigide mat</td>
+              <td><span class="badge b-ok">Actif</span></td>
+            </tr>
+            <tr>
+              <td style="font-style:italic;color:var(--vert)">Je t'aime... (Pastel)</td>
+              <td class="td-mono">PC-BOOK-FR-002</td>
+              <td class="td-mono">21×21 cm</td>
+              <td style="font-size:12px;color:var(--gris)">170g mat FSC</td>
+              <td style="font-size:12px;color:var(--gris)">Rigide mat — finition Pastel</td>
+              <td><span class="badge b-ok">Actif</span></td>
+            </tr>
+            <tr>
+              <td style="font-style:italic;color:var(--vert)">Je t'aime... (Nuit étoilée)</td>
+              <td class="td-mono">PC-BOOK-FR-003</td>
+              <td class="td-mono">21×21 cm</td>
+              <td style="font-size:12px;color:var(--gris)">170g mat FSC</td>
+              <td style="font-size:12px;color:var(--gris)">Rigide mat — finition Nuit</td>
+              <td><span class="badge b-ok">Actif</span></td>
+            </tr>
+            <tr>
+              <td style="font-style:italic;color:var(--vert)">Bienvenu au monde</td>
+              <td class="td-mono">PC-BOOK-FR-004</td>
+              <td class="td-mono">21×21 cm</td>
+              <td style="font-size:12px;color:var(--gris)">170g mat FSC</td>
+              <td style="font-size:12px;color:var(--gris)">Rigide mat</td>
+              <td><span class="badge b-ok">Actif</span></td>
+            </tr>
+            <tr>
+              <td style="font-style:italic;color:var(--vert)">Affiche A5</td>
+              <td class="td-mono">PC-POSTER-A5-001</td>
+              <td class="td-mono">14×21 cm</td>
+              <td style="font-size:12px;color:var(--gris)">250g mat</td>
+              <td style="font-size:12px;color:var(--gris)">—</td>
+              <td><span class="badge b-ok">Actif</span></td>
+            </tr>
+            <tr>
+              <td style="font-style:italic;color:var(--vert)">Affiche A4</td>
+              <td class="td-mono">PC-POSTER-A4-001</td>
+              <td class="td-mono">21×29,7 cm</td>
+              <td style="font-size:12px;color:var(--gris)">250g mat</td>
+              <td style="font-size:12px;color:var(--gris)">—</td>
+              <td><span class="badge b-ok">Actif</span></td>
+            </tr>
+            <tr>
+              <td style="font-style:italic;color:var(--vert)">Affiche A3</td>
+              <td class="td-mono">PC-POSTER-A3-001</td>
+              <td class="td-mono">29,7×42 cm</td>
+              <td style="font-size:12px;color:var(--gris)">250g mat</td>
+              <td style="font-size:12px;color:var(--gris)">—</td>
+              <td><span class="badge b-ok">Actif</span></td>
+            </tr>
+            <tr>
+              <td style="font-style:italic;color:var(--vert)">Cahier coloriage</td>
+              <td class="td-mono">PC-COLOR-A5-001</td>
+              <td class="td-mono">14×21 cm</td>
+              <td style="font-size:12px;color:var(--gris)">120g blanc</td>
+              <td style="font-size:12px;color:var(--gris)">Souple</td>
+              <td><span class="badge b-ok">Actif</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <!-- CATALOGUE -->
     <div class="section" id="sec-catalogue">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
         <div class="sec-title" style="margin:0">Catalogue produits</div>
-        <button class="tb-btn"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Ajouter un produit</button>
-      </div>
-
-      <div class="cat-section-lbl">Livres personnalisés — 2 titres</div>
-      <div class="cat-grid">
-        <div class="cat-card">
-          <div class="cat-img" style="background:var(--rose)">
-            <svg width="50" height="70" viewBox="0 0 50 70" fill="none"><rect x="2" y="2" width="46" height="66" rx="2" fill="#EFD5C4"/><ellipse cx="25" cy="28" rx="13" ry="16" fill="#F8F0E8" opacity=".85" transform="rotate(-10 25 28)"/><ellipse cx="25" cy="28" rx="13" ry="16" fill="#F8F0E8" opacity=".6" transform="rotate(30 25 28)"/><circle cx="25" cy="28" r="5" fill="#AB9166" opacity=".9"/></svg>
-          </div>
-          <div class="cat-body">
-            <div class="cat-name">Je t'aime plus grand que le ciel</div>
-            <div class="cat-meta">0–6 ans · 61 ventes · <span style="color:var(--ok)">●</span> En ligne</div>
-            <div style="font-size:10px;color:var(--dore);margin-bottom:.5rem">3 couvertures · incl. 2 premium</div>
-            <div class="cat-foot"><span class="cat-price">29 €</span><div class="cat-acts"><button class="bxs bxs-o">Modifier</button><button class="bxs bxs-v">Voir</button></div></div>
-          </div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-img" style="background:#deeef5">
-            <svg width="50" height="70" viewBox="0 0 50 70" fill="none"><rect x="2" y="2" width="46" height="66" rx="2" fill="#c8e2ef"/><circle cx="25" cy="30" r="16" fill="#f5e8c8" opacity=".5"/><circle cx="25" cy="30" r="9" fill="#f5e8c8" opacity=".7"/><ellipse cx="12" cy="20" rx="7" ry="4" fill="white" opacity=".6"/><ellipse cx="38" cy="17" rx="6" ry="3.5" fill="white" opacity=".55"/></svg>
-          </div>
-          <div class="cat-body">
-            <div class="cat-name">Bienvenu au monde</div>
-            <div class="cat-meta">Naissance · 18 ventes · <span style="color:var(--ok)">●</span> En ligne</div>
-            <div style="font-size:10px;color:var(--dore);margin-bottom:.5rem">Couverture unique</div>
-            <div class="cat-foot"><span class="cat-price">29 €</span><div class="cat-acts"><button class="bxs bxs-o">Modifier</button><button class="bxs bxs-v">Voir</button></div></div>
-          </div>
+        <div style="display:flex;gap:.65rem">
+          <button class="tb-btn" style="background:white;color:var(--gris);border:1px solid #e0e0da" onclick="goTo('types-produits',document.querySelectorAll('.nav-item')[5])">
+            <svg viewBox="0 0 24 24" style="stroke:var(--gris)"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Gérer les types
+          </button>
+          <button class="tb-btn" onclick="document.getElementById('modal-add-product').classList.add('open')">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Ajouter un produit
+          </button>
         </div>
       </div>
 
-      <div class="cat-section-lbl">Affiches & posters — 3 formats</div>
-      <div class="cat-grid">
-        <div class="cat-card">
-          <div class="cat-img" style="background:var(--rose)">
-            <svg width="40" height="57" viewBox="0 0 40 57" fill="none"><rect x="1" y="1" width="38" height="55" rx="2" fill="#F8F0E8"/><ellipse cx="20" cy="22" rx="10" ry="13" fill="#EFD5C4" opacity=".85" transform="rotate(-10 20 22)"/><circle cx="20" cy="22" r="4" fill="#AB9166" opacity=".9"/></svg>
-          </div>
-          <div class="cat-body">
-            <div class="cat-name">Affiche Pétunia A5</div>
-            <div class="cat-meta">14×21 cm · 7 ventes · <span style="color:var(--ok)">●</span> En ligne</div>
-            <div class="cat-foot"><span class="cat-price">12 €</span><div class="cat-acts"><button class="bxs bxs-o">Modifier</button><button class="bxs bxs-v">Voir</button></div></div>
-          </div>
+      <!-- Barre de recherche + filtres dynamiques -->
+      <div class="filters" style="margin-bottom:1.25rem">
+        <div class="tb-search" style="background:white;border:1px solid #e0e0da">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" placeholder="Rechercher un produit…" oninput="filterCatalogue(this.value)" style="width:200px">
         </div>
-        <div class="cat-card">
-          <div class="cat-img" style="background:var(--vert-pale)">
-            <svg width="48" height="68" viewBox="0 0 48 68" fill="none"><rect x="1" y="1" width="46" height="66" rx="2" fill="#F8F0E8"/><ellipse cx="24" cy="28" rx="13" ry="17" fill="#EFD5C4" opacity=".8" transform="rotate(-8 24 28)"/><ellipse cx="24" cy="28" rx="13" ry="17" fill="#EFD5C4" opacity=".55" transform="rotate(32 24 28)"/><circle cx="24" cy="28" r="5.5" fill="#AB9166" opacity=".9"/></svg>
-          </div>
-          <div class="cat-body">
-            <div class="cat-name">Affiche Pétunia A4</div>
-            <div class="cat-meta">21×29,7 cm · 24 ventes · <span style="color:var(--ok)">●</span> En ligne</div>
-            <div class="cat-foot"><span class="cat-price">18 €</span><div class="cat-acts"><button class="bxs bxs-o">Modifier</button><button class="bxs bxs-v">Voir</button></div></div>
-          </div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-img" style="background:var(--vert)">
-            <svg width="56" height="79" viewBox="0 0 56 79" fill="none"><rect x="1" y="1" width="54" height="77" rx="2" fill="#2a6b64"/><ellipse cx="28" cy="34" rx="16" ry="20" fill="#EFD5C4" opacity=".45" transform="rotate(-10 28 34)"/><ellipse cx="28" cy="34" rx="16" ry="20" fill="#EFD5C4" opacity=".32" transform="rotate(30 28 34)"/><circle cx="28" cy="34" r="6" fill="#AB9166" opacity=".85"/></svg>
-          </div>
-          <div class="cat-body">
-            <div class="cat-name">Affiche Pétunia A3</div>
-            <div class="cat-meta">29,7×42 cm · 4 ventes · <span style="color:var(--ok)">●</span> En ligne</div>
-            <div class="cat-foot"><span class="cat-price">26 €</span><div class="cat-acts"><button class="bxs bxs-o">Modifier</button><button class="bxs bxs-v">Voir</button></div></div>
-          </div>
+        <div id="type-filters" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>
+        <div class="fr">
+          <select class="fsel" onchange="filterByStatus(this.value)">
+            <option value="all">Tous les statuts</option>
+            <option value="online">En ligne</option>
+            <option value="draft">Brouillon</option>
+            <option value="soon">Bientôt</option>
+          </select>
+          <select class="fsel" onchange="sortCatalogue(this.value)">
+            <option value="ventes">Trier : Ventes</option>
+            <option value="prix-asc">Prix croissant</option>
+            <option value="prix-desc">Prix décroissant</option>
+            <option value="nom">Alphabétique</option>
+            <option value="recent">Plus récent</option>
+          </select>
         </div>
       </div>
 
-      <div class="cat-section-lbl">Cahiers de coloriage — 2 titres</div>
-      <div class="cat-grid">
-        <div class="cat-card">
-          <div class="cat-img" style="background:var(--rose)">
-            <svg width="44" height="62" viewBox="0 0 44 62" fill="none"><rect x="2" y="2" width="40" height="58" rx="2" fill="white"/><rect x="2" y="2" width="40" height="12" rx="2" fill="#EFD5C4"/><text x="22" y="11" text-anchor="middle" font-family="Lora,serif" font-style="italic" font-size="5" fill="#1D4E49">Je t'aime...</text><ellipse cx="22" cy="36" rx="10" ry="13" fill="none" stroke="#1D4E49" stroke-width=".7" opacity=".3" transform="rotate(-10 22 36)"/><ellipse cx="22" cy="36" rx="10" ry="13" fill="#EFD5C4" opacity=".25" transform="rotate(-10 22 36)"/><circle cx="22" cy="36" r="3.5" fill="none" stroke="#AB9166" stroke-width=".7" opacity=".4"/></svg>
-          </div>
-          <div class="cat-body">
-            <div class="cat-name">Cahier coloriage — Je t'aime...</div>
-            <div class="cat-meta">A5 · 24 pages · 19 ventes · <span style="color:var(--ok)">●</span> En ligne</div>
-            <div class="cat-foot"><span class="cat-price">9 €</span><div class="cat-acts"><button class="bxs bxs-o">Modifier</button><button class="bxs bxs-v">Voir</button></div></div>
+      <!-- Stats résumé -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.5rem" id="cat-stats"></div>
+
+      <!-- Grille produits dynamique -->
+      <div id="products-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem"></div>
+
+      <!-- Carte "Ajouter" toujours visible en bas -->
+      <div style="margin-top:1rem">
+        <div class="cat-card" style="border:2px dashed var(--beige-dark);background:transparent;display:flex;align-items:center;justify-content:center;min-height:160px;cursor:pointer;border-radius:3px" onclick="document.getElementById('modal-add-product').classList.add('open')">
+          <div style="text-align:center;color:var(--gris-light)">
+            <div style="font-size:26px;color:var(--beige-dark);margin-bottom:.4rem">+</div>
+            <div style="font-size:12px">Ajouter un produit</div>
+            <div style="font-size:10px;margin-top:.2rem;color:var(--gris-light)">Tous types Gelato acceptés</div>
           </div>
         </div>
-        <div class="cat-card">
-          <div class="cat-img" style="background:#deeef5">
-            <svg width="44" height="62" viewBox="0 0 44 62" fill="none"><rect x="2" y="2" width="40" height="58" rx="2" fill="white"/><rect x="2" y="2" width="40" height="12" rx="2" fill="#c8e2ef"/><text x="22" y="11" text-anchor="middle" font-family="Lora,serif" font-style="italic" font-size="5" fill="#1D4E49">Bienvenu...</text><circle cx="22" cy="36" r="12" fill="none" stroke="#1D4E49" stroke-width=".7" opacity=".22"/><circle cx="22" cy="36" r="6" fill="#f5e8c8" opacity=".4"/><line x1="22" y1="18" x2="22" y2="14" stroke="#1D4E49" stroke-width=".7" opacity=".18"/></svg>
+      </div>
+    </div>
+
+    <!-- TYPES DE PRODUITS -->
+    <div class="section" id="sec-types-produits">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+        <div class="sec-title" style="margin:0">Types de produits</div>
+        <button class="tb-btn" onclick="addTypeRow()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Nouveau type
+        </button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:1.5rem">
+        <div>
+          <div class="card" style="margin-bottom:1rem">
+            <div class="card-hd"><span class="card-ttl">Vos types actuels</span></div>
+            <div id="types-list" style="padding:.5rem 0"></div>
           </div>
-          <div class="cat-body">
-            <div class="cat-name">Cahier coloriage — Bienvenu...</div>
-            <div class="cat-meta">A5 · 20 pages · 8 ventes · <span style="color:var(--ok)">●</span> En ligne</div>
-            <div class="cat-foot"><span class="cat-price">9 €</span><div class="cat-acts"><button class="bxs bxs-o">Modifier</button><button class="bxs bxs-v">Voir</button></div></div>
+          <div style="background:var(--vert-pale);border-radius:3px;padding:.85rem 1rem;font-size:12px;color:var(--vert);border:1px solid rgba(29,78,73,.12)">
+            💡 Les types sont libres : créez "Puzzle", "Mug", "Carte postale", "Tote bag"… tout ce que Gelato propose. Aucune limite.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><span class="card-ttl">Ajouter / modifier un type</span></div>
+          <div class="card-body">
+            <div class="f-field" style="margin-bottom:.85rem">
+              <label class="f-lbl">Nom du type (FR)</label>
+              <input class="f-inp" id="type-name-fr" placeholder="Ex : Puzzle, Mug, Tote bag…">
+            </div>
+            <div class="f-row" style="margin-bottom:.85rem">
+              <div class="f-field">
+                <label class="f-lbl">Nom (EN)</label>
+                <input class="f-inp" id="type-name-en" placeholder="Ex : Puzzle, Mug…">
+              </div>
+              <div class="f-field">
+                <label class="f-lbl">Emoji / icône</label>
+                <input class="f-inp" id="type-emoji" placeholder="Ex : 🧩 🖼️ 📖" style="max-width:100px">
+              </div>
+            </div>
+            <div class="f-row" style="margin-bottom:.85rem">
+              <div class="f-field">
+                <label class="f-lbl">Couleur d'accentuation</label>
+                <div style="display:flex;gap:.5rem;align-items:center">
+                  <input type="color" id="type-color" value="#1D4E49" style="width:40px;height:32px;border:1px solid #e0e0da;border-radius:2px;cursor:pointer;padding:2px">
+                  <input class="f-inp" id="type-color-hex" value="#1D4E49" style="max-width:100px;font-family:monospace">
+                </div>
+              </div>
+              <div class="f-field">
+                <label class="f-lbl">Ce produit est personnalisable ?</label>
+                <div style="display:flex;align-items:center;gap:.75rem;margin-top:.4rem">
+                  <div class="toggle" id="type-perso-toggle" onclick="this.classList.toggle('on')"></div>
+                  <span style="font-size:12px;color:var(--gris)">Avec prénom enfant</span>
+                </div>
+              </div>
+            </div>
+            <div class="f-field" style="margin-bottom:1rem">
+              <label class="f-lbl">Description (optionnel)</label>
+              <input class="f-inp" placeholder="Ex : Produits imprimés sur textile via Gelato">
+            </div>
+            <div style="display:flex;gap:.65rem">
+              <button class="btn-save" onclick="saveType()">Enregistrer le type</button>
+              <button class="btn-cancel" onclick="resetTypeForm()">Réinitialiser</button>
+            </div>
           </div>
         </div>
       </div>
@@ -586,7 +939,163 @@ tr:hover td{background:#fafaf8}
   </div>
 </main>
 
-<!-- MODAL -->
+<!-- MODAL AJOUTER PRODUIT -->
+<div class="modal-bd" id="modal-add-product">
+  <div class="modal" style="width:620px;max-width:95vw">
+    <div class="modal-hd">
+      <span class="modal-ttl">Ajouter un produit au catalogue</span>
+      <span class="modal-x" onclick="document.getElementById('modal-add-product').classList.remove('open')">×</span>
+    </div>
+    <div class="modal-body" style="max-height:75vh;overflow-y:auto">
+
+      <!-- Type de produit -->
+      <div style="margin-bottom:1.25rem">
+        <div class="f-lbl" style="margin-bottom:.5rem">Type de produit</div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap" id="modal-type-btns"></div>
+        <select class="f-inp" id="modal-type-select" style="display:none"></select>
+      </div>
+
+      <!-- Infos générales -->
+      <div style="background:var(--gris-bg);border-radius:3px;padding:1rem;margin-bottom:1rem">
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.75rem;font-weight:600">Informations générales</div>
+        <div class="f-row">
+          <div class="f-field">
+            <label class="f-lbl">Titre (FR)</label>
+            <input class="f-inp" placeholder="Ex : Je t'aime plus grand que le ciel">
+          </div>
+          <div class="f-field">
+            <label class="f-lbl">Titre (EN)</label>
+            <input class="f-inp" placeholder="Ex : I love you bigger than the sky">
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-field">
+            <label class="f-lbl">Prix de vente (€)</label>
+            <input class="f-inp" type="number" placeholder="29" style="max-width:120px">
+          </div>
+          <div class="f-field">
+            <label class="f-lbl">Statut</label>
+            <select class="f-inp">
+              <option>Brouillon (non visible)</option>
+              <option>En ligne</option>
+              <option>Bientôt disponible</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-field" style="margin-bottom:.75rem">
+          <label class="f-lbl">Description courte (FR)</label>
+          <textarea class="f-inp" style="resize:vertical;min-height:60px;font-family:'Open Sans',sans-serif" placeholder="Description affichée sur le catalogue…"></textarea>
+        </div>
+        <div class="f-row">
+          <div class="f-field">
+            <label class="f-lbl">Tranche d'âge</label>
+            <select class="f-inp"><option>0–2 ans</option><option>0–6 ans</option><option>3–8 ans</option><option>4–10 ans</option><option>Tous âges</option></select>
+          </div>
+          <div class="f-field">
+            <label class="f-lbl">Occasion</label>
+            <select class="f-inp"><option>Tous</option><option>Naissance</option><option>Anniversaire</option><option>Noël</option><option>Baptême</option></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section spécifique livre (affichée si type = livre) -->
+      <div id="section-livre" style="background:#eef7f5;border-radius:3px;padding:1rem;margin-bottom:1rem;border:1px solid rgba(29,78,73,.12)">
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--vert);margin-bottom:.75rem;font-weight:600">📖 Options de personnalisation</div>
+        <div class="f-row">
+          <div class="f-field">
+            <label class="f-lbl">Champ personnalisable 1</label>
+            <select class="f-inp"><option>Prénom de l'enfant</option><option>Prénom + genre</option><option>Aucun</option></select>
+          </div>
+          <div class="f-field">
+            <label class="f-lbl">Champ personnalisable 2</label>
+            <select class="f-inp"><option>Surnom adulte + genre</option><option>Prénom adulte</option><option>Aucun</option></select>
+          </div>
+        </div>
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--vert);margin:.75rem 0;font-weight:600">Couvertures disponibles</div>
+        <div style="display:flex;flex-direction:column;gap:.4rem">
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer">
+            <input type="checkbox" checked> Originale (incluse dans le prix)
+          </label>
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer">
+            <input type="checkbox"> Pastel (+5 €) — Premium
+          </label>
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer">
+            <input type="checkbox"> Nuit étoilée (+5 €) — Premium
+          </label>
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer">
+            <input type="checkbox"> + Ajouter une nouvelle couverture
+          </label>
+        </div>
+      </div>
+
+      <!-- Section spécifique affiche (cachée par défaut) -->
+      <div id="section-affiche" style="display:none;background:#f5f0e8;border-radius:3px;padding:1rem;margin-bottom:1rem;border:1px solid rgba(171,145,102,.15)">
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dore);margin-bottom:.75rem;font-weight:600">🖼️ Formats disponibles</div>
+        <div style="display:flex;flex-direction:column;gap:.4rem">
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer"><input type="checkbox"> A5 (14×21 cm)</label>
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer"><input type="checkbox"> A4 (21×29,7 cm)</label>
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer"><input type="checkbox"> A3 (29,7×42 cm)</label>
+        </div>
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dore);margin:.75rem 0;font-weight:600">Finition</div>
+        <select class="f-inp" style="width:100%"><option>Mat 250g</option><option>Brillant 250g</option><option>Mat 300g</option></select>
+      </div>
+
+      <!-- Gelato -->
+      <div style="background:#1D4E490d;border-radius:3px;padding:1rem;margin-bottom:1rem;border:1px solid rgba(29,78,73,.12)">
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--vert);margin-bottom:.75rem;font-weight:600">📦 Configuration Gelato</div>
+        <div class="f-row">
+          <div class="f-field">
+            <label class="f-lbl">SKU Gelato</label>
+            <input class="f-inp" placeholder="Ex : PC-BOOK-FR-005" style="font-family:monospace">
+          </div>
+          <div class="f-field">
+            <label class="f-lbl">Produit Gelato correspondant</label>
+            <select class="f-inp">
+              <option>-- Sélectionner dans Gelato --</option>
+              <option>Photobook 21×21 cm Hardcover</option>
+              <option>Poster A4 Mat</option>
+              <option>Poster A3 Mat</option>
+              <option>Poster A5 Mat</option>
+              <option>Saddle-stitch booklet A5</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-field">
+            <label class="f-lbl">Papier Gelato</label>
+            <select class="f-inp"><option>170gsm Silk</option><option>250gsm Silk</option><option>120gsm Uncoated</option></select>
+          </div>
+          <div class="f-field">
+            <label class="f-lbl">Délai production Gelato (jours)</label>
+            <input class="f-inp" type="number" value="3" style="max-width:80px">
+          </div>
+        </div>
+        <div style="background:var(--vert-pale);border-radius:2px;padding:.6rem .85rem;font-size:11px;color:var(--vert);margin-top:.25rem">
+          💡 Le SKU sera utilisé pour transmettre automatiquement les commandes à Gelato dès validation du paiement client.
+        </div>
+      </div>
+
+      <!-- Upsells liés -->
+      <div style="background:var(--gris-bg);border-radius:3px;padding:1rem">
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.75rem;font-weight:600">Produits complémentaires (upsell)</div>
+        <div style="display:flex;flex-direction:column;gap:.4rem">
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer"><input type="checkbox" checked> Cahier de coloriage assorti (+9 €)</label>
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer"><input type="checkbox"> Affiche A5 (+12 €)</label>
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer"><input type="checkbox"> Affiche A4 (+18 €)</label>
+          <label style="display:flex;align-items:center;gap:.6rem;font-size:12px;color:var(--gris);cursor:pointer"><input type="checkbox"> Affiche A3 (+26 €)</label>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-ft">
+      <button class="btn-cancel" onclick="document.getElementById('modal-add-product').classList.remove('open')">Annuler</button>
+      <button class="btn-cancel" style="color:var(--dore);border-color:var(--dore)">Enregistrer en brouillon</button>
+      <button class="btn-save">Publier le produit</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL COMMANDE existant -->
 <div class="modal-bd" id="modal">
   <div class="modal">
     <div class="modal-hd"><span class="modal-ttl">Nouvelle commande manuelle</span><span class="modal-x" onclick="closeModal()">×</span></div>
@@ -613,14 +1122,19 @@ tr:hover td{background:#fafaf8}
 </div>
 
 <script>
-const titles={dashboard:'Dashboard',commandes:'Commandes',catalogue:'Catalogue',clients:'Clients',parametres:'Paramètres'};
+const titles={dashboard:'Dashboard',commandes:'Commandes',gelato:'Gelato — Production & Expédition',catalogue:'Catalogue',['types-produits']:'Types de produits',clients:'Clients',parametres:'Paramètres'};
 function goTo(id,el){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  document.getElementById('sec-'+id).classList.add('active');
-  if(el)el.classList.add('active');
+  const sec = document.getElementById('sec-'+id);
+  if(sec) sec.classList.add('active');
+  if(el) el.classList.add('active');
   document.getElementById('tb-title').textContent=titles[id]||id;
+  // Re-render dynamique si besoin
+  if(id==='catalogue')      { renderTypeFilters(); renderCatStats(); renderProducts(); }
+  if(id==='types-produits') { renderTypesList(); }
 }
+
 function toggleExp(row,id){
   const exp=document.getElementById(id);
   const open=exp.style.display!=='none'&&exp.style.display!=='';
@@ -636,7 +1150,251 @@ const days=['L','M','M','J','V','S','D'],vals=[38,55,29,72,44,95,61],max=Math.ma
 const ch=document.getElementById('mini-chart'),lb=document.getElementById('mini-lbls');
 if(ch){days.forEach((d,i)=>{const b=document.createElement('div');b.className='bar';b.style.height=Math.round(vals[i]/max*100)+'%';b.title=vals[i]+' €';ch.appendChild(b);const l=document.createElement('div');l.className='bar-lbl';l.textContent=d;lb.appendChild(l)})}
 
-// ── i18n dans le back office ─────────────────────────────────
+// ══════════════════════════════════════════════
+// MOTEUR DE CATALOGUE DYNAMIQUE
+// ══════════════════════════════════════════════
+
+// Types de produits (modifiables par l'utilisateur)
+let PRODUCT_TYPES = [
+  { id:'livre',   label:'Livre personnalisé', emoji:'📖', color:'#1D4E49', perso:true  },
+  { id:'affiche', label:'Affiche / Poster',   emoji:'🖼️', color:'#AB9166', perso:false },
+  { id:'cahier',  label:'Cahier de coloriage',emoji:'🎨', color:'#EFD5C4', perso:false },
+];
+
+// Produits (base de données locale)
+let PRODUCTS = [
+  { id:1, name:'Je t\'aime plus grand que le ciel', type:'livre',   price:29,  status:'online', ventes:61,  sku:'PC-BOOK-FR-001', perso:true,  age:'0–6 ans',   notes:'3 couvertures · 2 premium' },
+  { id:2, name:'Bienvenu au monde',                 type:'livre',   price:29,  status:'online', ventes:18,  sku:'PC-BOOK-FR-004', perso:true,  age:'Naissance', notes:'Couverture unique' },
+  { id:3, name:'Affiche Pétunia A5',                type:'affiche', price:12,  status:'online', ventes:7,   sku:'PC-POSTER-A5-001', perso:false, age:'Tous âges', notes:'14×21 cm' },
+  { id:4, name:'Affiche Pétunia A4',                type:'affiche', price:18,  status:'online', ventes:24,  sku:'PC-POSTER-A4-001', perso:false, age:'Tous âges', notes:'21×29,7 cm' },
+  { id:5, name:'Affiche Pétunia A3',                type:'affiche', price:26,  status:'online', ventes:4,   sku:'PC-POSTER-A3-001', perso:false, age:'Tous âges', notes:'29,7×42 cm' },
+  { id:6, name:'Cahier coloriage — Je t\'aime...',  type:'cahier',  price:9,   status:'online', ventes:19,  sku:'PC-COLOR-A5-001', perso:false, age:'Tous âges', notes:'24 pages A5' },
+  { id:7, name:'Cahier coloriage — Bienvenu...',    type:'cahier',  price:9,   status:'online', ventes:8,   sku:'PC-COLOR-A5-002', perso:false, age:'Tous âges', notes:'20 pages A5' },
+];
+
+let activeTypeFilter = 'all';
+let activeSearch = '';
+let activeStatus = 'all';
+
+const STATUS_MAP = {
+  online: { label:'En ligne',   color:'var(--ok)',   bg:'var(--ok-bg)'   },
+  draft:  { label:'Brouillon',  color:'var(--gris)', bg:'#f0f0ec'        },
+  soon:   { label:'Bientôt',    color:'var(--warn)',  bg:'var(--warn-bg)' },
+};
+
+const TYPE_COLORS = ['#1D4E49','#AB9166','#2a6b64','#1a5fa0','#a06b00','#6b3a2a','#5a2d7a'];
+
+function renderTypeFilters() {
+  const el = document.getElementById('type-filters');
+  if(!el) return;
+  const all = `<div class="ftab ${activeTypeFilter==='all'?'active':''}" onclick="setTypeFilter('all')" style="cursor:pointer">Tous <span class="fcount">${PRODUCTS.length}</span></div>`;
+  const tabs = PRODUCT_TYPES.map(t => {
+    const count = PRODUCTS.filter(p=>p.type===t.id).length;
+    return `<div class="ftab ${activeTypeFilter===t.id?'active':''}" onclick="setTypeFilter('${t.id}')" style="cursor:pointer">${t.emoji} ${t.label} <span class="fcount">${count}</span></div>`;
+  }).join('');
+  el.innerHTML = all + tabs;
+}
+
+function renderCatStats() {
+  const el = document.getElementById('cat-stats');
+  if(!el) return;
+  const online = PRODUCTS.filter(p=>p.status==='online').length;
+  const draft  = PRODUCTS.filter(p=>p.status==='draft').length;
+  const totalVentes = PRODUCTS.reduce((s,p)=>s+p.ventes,0);
+  const totalCA = PRODUCTS.reduce((s,p)=>s+(p.ventes*p.price),0);
+  el.innerHTML = `
+    <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.85rem 1rem">
+      <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.3rem">Produits en ligne</div>
+      <div style="font-family:'Lora',serif;font-size:1.5rem;color:var(--vert)">${online}</div>
+      <div style="font-size:10px;color:var(--gris-light)">${draft} en brouillon</div>
+    </div>
+    <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.85rem 1rem">
+      <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.3rem">Types de produits</div>
+      <div style="font-family:'Lora',serif;font-size:1.5rem;color:var(--vert)">${PRODUCT_TYPES.length}</div>
+      <div style="font-size:10px;color:var(--gris-light)">configurés</div>
+    </div>
+    <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.85rem 1rem">
+      <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.3rem">Ventes totales</div>
+      <div style="font-family:'Lora',serif;font-size:1.5rem;color:var(--vert)">${totalVentes}</div>
+      <div style="font-size:10px;color:var(--gris-light)">ce mois</div>
+    </div>
+    <div style="background:white;border:1px solid #e8e8e4;border-radius:3px;padding:.85rem 1rem">
+      <div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.3rem">CA catalogue</div>
+      <div style="font-family:'Lora',serif;font-size:1.5rem;color:var(--vert)">${totalCA.toLocaleString('fr')} €</div>
+      <div style="font-size:10px;color:var(--gris-light)">ce mois</div>
+    </div>`;
+}
+
+function renderProducts() {
+  const grid = document.getElementById('products-grid');
+  if(!grid) return;
+  let filtered = PRODUCTS.filter(p => {
+    const matchType   = activeTypeFilter==='all' || p.type===activeTypeFilter;
+    const matchSearch = !activeSearch || p.name.toLowerCase().includes(activeSearch.toLowerCase());
+    const matchStatus = activeStatus==='all' || p.status===activeStatus;
+    return matchType && matchSearch && matchStatus;
+  });
+  if(!filtered.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--gris-light);font-size:13px">Aucun produit trouvé. <span style="color:var(--vert);cursor:pointer" onclick="document.getElementById('modal-add-product').classList.add('open')">Ajouter un produit →</span></div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map(p => {
+    const type = PRODUCT_TYPES.find(t=>t.id===p.type) || {emoji:'📦',label:p.type,color:'#8a8a8a'};
+    const st = STATUS_MAP[p.status] || STATUS_MAP.online;
+    const bgColors = {'livre':'#EFD5C4','affiche':'#e8f0ef','cahier':'#deeef5'};
+    const bg = bgColors[p.type] || '#f0f0ec';
+    return `
+      <div class="cat-card" style="cursor:pointer" onclick="editProduct(${p.id})">
+        <div class="cat-img" style="background:${bg};position:relative">
+          <div style="position:absolute;top:8px;left:8px;font-size:18px">${type.emoji}</div>
+          <div style="font-size:11px;font-family:'Lora',serif;font-style:italic;color:${type.color};text-align:center;padding:0 .5rem;line-height:1.4">${p.name}</div>
+        </div>
+        <div class="cat-body">
+          <div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem">
+            <span style="font-size:9px;letter-spacing:.08em;text-transform:uppercase;background:${bg};color:${type.color};padding:2px 6px;border-radius:2px">${type.label}</span>
+            ${p.perso ? '<span style="font-size:9px;color:var(--vert);background:var(--vert-pale);padding:2px 5px;border-radius:2px">✦ Perso</span>' : ''}
+          </div>
+          <div class="cat-name">${p.name}</div>
+          <div class="cat-meta">${p.notes} · ${p.ventes} ventes · <span style="color:${st.color}">●</span> ${st.label}</div>
+          <div style="font-size:10px;color:var(--gris-light);font-family:monospace;margin-bottom:.4rem">${p.sku}</div>
+          <div class="cat-foot">
+            <span class="cat-price">${p.price} €</span>
+            <div class="cat-acts">
+              <button class="bxs bxs-o" onclick="event.stopPropagation();editProduct(${p.id})">Modifier</button>
+              <button class="bxs bxs-v" onclick="event.stopPropagation()">Voir</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderTypesList() {
+  const el = document.getElementById('types-list');
+  if(!el) return;
+  el.innerHTML = PRODUCT_TYPES.map((t,i) => `
+    <div style="display:flex;align-items:center;gap:.65rem;padding:.6rem 1.1rem;border-bottom:1px solid #f8f8f6;cursor:pointer" onclick="loadTypeInForm(${i})">
+      <span style="font-size:16px">${t.emoji}</span>
+      <div style="flex:1">
+        <div style="font-size:13px;color:var(--noir);font-weight:600">${t.label}</div>
+        <div style="font-size:10px;color:var(--gris-light)">${PRODUCTS.filter(p=>p.type===t.id).length} produit(s) · ${t.perso?'Personnalisable':'Produit fixe'}</div>
+      </div>
+      <div style="width:12px;height:12px;border-radius:50%;background:${t.color};flex-shrink:0"></div>
+      <button class="bxs bxs-o" style="font-size:10px" onclick="event.stopPropagation();deleteType('${t.id}')">✕</button>
+    </div>`).join('');
+}
+
+function setTypeFilter(id) {
+  activeTypeFilter = id;
+  renderTypeFilters();
+  renderProducts();
+}
+function filterCatalogue(val) { activeSearch=val; renderProducts(); }
+function filterByStatus(val)  { activeStatus=val; renderProducts(); }
+function sortCatalogue(key) {
+  if(key==='ventes')     PRODUCTS.sort((a,b)=>b.ventes-a.ventes);
+  if(key==='prix-asc')   PRODUCTS.sort((a,b)=>a.price-b.price);
+  if(key==='prix-desc')  PRODUCTS.sort((a,b)=>b.price-a.price);
+  if(key==='nom')        PRODUCTS.sort((a,b)=>a.name.localeCompare(b.name));
+  renderProducts();
+}
+function editProduct(id) { alert('Ouverture du formulaire de modification pour le produit #' + id + ' — à implémenter en dev.'); }
+
+function saveType() {
+  const name = document.getElementById('type-name-fr').value.trim();
+  const emoji = document.getElementById('type-emoji').value.trim() || '📦';
+  const color = document.getElementById('type-color').value;
+  const perso = document.getElementById('type-perso-toggle').classList.contains('on');
+  if(!name) { alert('Le nom du type est obligatoire.'); return; }
+  const id = name.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+  PRODUCT_TYPES.push({ id, label:name, emoji, color, perso });
+  renderTypeFilters();
+  renderTypesList();
+  renderCatStats();
+  resetTypeForm();
+  // Mettre à jour le select dans le modal
+  updateTypeSelect();
+}
+
+function deleteType(id) {
+  const count = PRODUCTS.filter(p=>p.type===id).length;
+  if(count > 0) { alert(`Ce type contient ${count} produit(s). Réassignez-les avant de le supprimer.`); return; }
+  PRODUCT_TYPES = PRODUCT_TYPES.filter(t=>t.id!==id);
+  renderTypeFilters(); renderTypesList(); renderCatStats(); updateTypeSelect();
+}
+
+function loadTypeInForm(i) {
+  const t = PRODUCT_TYPES[i];
+  document.getElementById('type-name-fr').value = t.label;
+  document.getElementById('type-emoji').value   = t.emoji;
+  document.getElementById('type-color').value   = t.color;
+  document.getElementById('type-color-hex').value = t.color;
+  if(t.perso) document.getElementById('type-perso-toggle').classList.add('on');
+  else document.getElementById('type-perso-toggle').classList.remove('on');
+}
+
+function resetTypeForm() {
+  ['type-name-fr','type-name-en','type-emoji'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('type-color').value = '#1D4E49';
+  document.getElementById('type-color-hex').value = '#1D4E49';
+  document.getElementById('type-perso-toggle').classList.remove('on');
+}
+
+function updateTypeSelect() {
+  const sel = document.getElementById('modal-type-select');
+  if(!sel) return;
+  sel.innerHTML = PRODUCT_TYPES.map(t=>`<option value="${t.id}">${t.emoji} ${t.label}</option>`).join('');
+}
+
+// Sync color picker ↔ hex input
+document.addEventListener('DOMContentLoaded', () => {
+  const colorPicker = document.getElementById('type-color');
+  const colorHex    = document.getElementById('type-color-hex');
+  if(colorPicker && colorHex) {
+    colorPicker.addEventListener('input', ()=>{ colorHex.value=colorPicker.value; });
+    colorHex.addEventListener('input',    ()=>{ if(/^#[0-9a-f]{6}$/i.test(colorHex.value)) colorPicker.value=colorHex.value; });
+  }
+  // Boutons de type dans le modal
+  function renderModalTypeBtns(selected) {
+    selected = selected || PRODUCT_TYPES[0].id;
+    const el = document.getElementById('modal-type-btns');
+    if(!el) return;
+    el.innerHTML = PRODUCT_TYPES.map(t => `
+      <div onclick="selectModalType('${t.id}')" id="mtype-${t.id}" style="
+        border:2px solid ${t.id===selected?t.color:'#e0e0da'};
+        border-radius:2px;padding:.6rem 1rem;text-align:center;cursor:pointer;
+        background:${t.id===selected?t.color+'18':'white'};min-width:100px;flex:1
+      ">
+        <div style="font-size:16px;margin-bottom:.2rem">${t.emoji}</div>
+        <div style="font-size:11px;font-weight:600;color:${t.id===selected?t.color:'var(--gris)'}">${t.label}</div>
+        <div style="font-size:9px;color:var(--gris-light)">${t.perso?'Personnalisable':'Produit fixe'}</div>
+      </div>`).join('') + `
+      <div onclick="goTo('types-produits',null);document.getElementById('modal-add-product').classList.remove('open')" style="
+        border:2px dashed #e0e0da;border-radius:2px;padding:.6rem .75rem;text-align:center;cursor:pointer;
+        background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:80px
+      ">
+        <div style="font-size:16px;color:#e0e0da">+</div>
+        <div style="font-size:10px;color:var(--gris-light)">Nouveau type</div>
+      </div>`;
+    // Afficher/masquer section perso
+    const selType = PRODUCT_TYPES.find(t=>t.id===selected);
+    const sp = document.getElementById('section-livre');
+    if(sp) sp.style.display = (selType && selType.perso) ? '' : 'none';
+    const sa = document.getElementById('section-affiche');
+    if(sa) sa.style.display = 'none';
+  }
+  window.selectModalType = function(id) {
+    renderModalTypeBtns(id);
+  };
+  renderModalTypeBtns();
+  renderCatStats();
+  renderProducts();
+  renderTypesList();
+  updateTypeSelect();
+});
+
+// Observer changement de section pour re-render
+const _origGoTo = goTo;
 // translations.js — Éditions Petunia Chatterton
 // 6 langues : fr, en, es, nl, de, it
 
