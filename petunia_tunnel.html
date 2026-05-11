@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finaliser ma commande — Éditions Petunia Chatterton</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --vert:#1D4E49;--vert-light:#2a6b64;--vert-pale:#e8f2f0;
+  --rose:#EFD5C4;--beige:#F8F0E8;--beige-dark:#ede3d7;
+  --dore:#AB9166;--dore-light:#c4aa82;
+  --noir:#1a1a1a;--gris:#5a5a5a;--gris-light:#8a8a8a;--gris-bg:#f4f4f2;
+  --ok:#2d7a4f;--ok-bg:#e6f4ec;
+  --err:#c0392b;--err-bg:#fdeaea;
+}
+body{font-family:'Open Sans',sans-serif;background:var(--beige);color:var(--noir);min-height:100vh}
+
+/* ── NAV CHECKOUT ── */
+.checkout-nav{background:white;border-bottom:1px solid var(--beige-dark);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-back{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.nav-back:hover{color:var(--vert)}
+.nav-back::before{content:'←'}
+.nav-brand{font-family:'Lora',serif;font-style:italic;font-size:1rem;color:var(--vert)}
+.nav-secure{display:flex;align-items:center;gap:.4rem;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--ok)}
+.nav-secure::before{content:'●';font-size:8px}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap{background:white;border-bottom:1px solid var(--beige-dark);padding:.9rem 2rem}
+.progress-steps{display:flex;align-items:center;justify-content:center;gap:0;max-width:600px;margin:0 auto}
+.step-dot{display:flex;flex-direction:column;align-items:center;gap:.3rem;position:relative;flex:1}
+.step-dot:not(:last-child)::after{content:'';position:absolute;top:14px;left:calc(50% + 14px);right:calc(-50% + 14px);height:1px;background:var(--beige-dark);z-index:0}
+.step-dot.done::after{background:var(--vert)}
+.dot-circle{width:28px;height:28px;border-radius:50%;border:2px solid var(--beige-dark);background:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--gris-light);z-index:1;position:relative;transition:all .3s}
+.step-dot.active .dot-circle{border-color:var(--vert);background:var(--vert);color:white}
+.step-dot.done .dot-circle{border-color:var(--vert);background:var(--vert);color:white}
+.dot-check{display:none}
+.step-dot.done .dot-check{display:block}
+.step-dot.done .dot-num{display:none}
+.dot-label{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light);letter-spacing:.03em;white-space:nowrap}
+.step-dot.active .dot-label{color:var(--vert);font-weight:600}
+.step-dot.done .dot-label{color:var(--vert)}
+
+/* ── LAYOUT PRINCIPAL ── */
+.checkout-layout{display:grid;grid-template-columns:1fr 380px;gap:2rem;max-width:1000px;margin:0 auto;padding:2rem}
+
+/* ── FORMULAIRE ── */
+.checkout-form{background:white;border-radius:3px;border:1px solid var(--beige-dark);overflow:hidden}
+.form-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--beige-dark);display:flex;align-items:center;gap:.75rem}
+.form-header-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.form-header-title{font-family:'Lora',serif;font-size:1.1rem;color:var(--vert)}
+.form-body{padding:1.5rem}
+.field-group{margin-bottom:1rem}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1rem}
+.field-label{font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);margin-bottom:.4rem;display:flex;align-items:center;gap:.3rem}
+.field-label .req{color:var(--err);font-size:10px}
+.field-input{width:100%;padding:10px 14px;border:1px solid var(--beige-dark);border-radius:2px;font-family:'Open Sans',sans-serif;font-size:13px;color:var(--noir);background:white;transition:border-color .2s;outline:none}
+.field-input:focus{border-color:var(--vert)}
+.field-input.error{border-color:var(--err)}
+.field-input::placeholder{color:var(--gris-light)}
+.field-error{font-size:11px;color:var(--err);margin-top:.3rem}
+
+/* ── OPTIONS LIVRAISON ── */
+.shipping-opt{border:1.5px solid var(--beige-dark);border-radius:2px;padding:.85rem 1rem;cursor:pointer;transition:all .2s;margin-bottom:.5rem;display:flex;align-items:center;gap:.85rem}
+.shipping-opt.selected{border-color:var(--vert);background:var(--vert-pale)}
+.shipping-opt:hover:not(.selected){border-color:var(--dore)}
+.ship-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--beige-dark);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.shipping-opt.selected .ship-radio{border-color:var(--vert);background:var(--vert)}
+.ship-radio-inner{width:8px;height:8px;border-radius:50%;background:white;display:none}
+.shipping-opt.selected .ship-radio-inner{display:block}
+.ship-icon{font-size:20px;flex-shrink:0}
+.ship-info{flex:1}
+.ship-name{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--noir)}
+.ship-detail{font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light)}
+.ship-price{font-family:'Lora',serif;font-size:1rem;color:var(--vert);flex-shrink:0}
+
+/* ── PAIEMENT ── */
+.pay-method{border:1.5px solid var(--beige-dark);border-radius:2px;padding:.75rem 1rem;cursor:pointer;transition:all .2s;margin-bottom:.5rem;display:flex;align-items:center;gap:.85rem}
+.pay-method.selected{border-color:var(--vert);background:var(--vert-pale)}
+.pay-method:hover:not(.selected){border-color:var(--dore)}
+.pay-icons{display:flex;gap:.4rem;align-items:center}
+.pay-icon-badge{background:var(--beige-dark);border-radius:2px;padding:2px 7px;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris);font-weight:600}
+.card-fields{background:var(--gris-bg);border-radius:2px;padding:1rem;margin-top:.75rem}
+.ssl-badge{display:flex;align-items:center;gap:.4rem;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--ok);margin-top:.75rem}
+.ssl-badge::before{content:'🔒'}
+
+/* ── BOUTONS ── */
+.btn-primary{width:100%;background:var(--vert);color:white;padding:14px;border:none;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:1rem}
+.btn-primary:hover{background:var(--vert-light)}
+.btn-back{background:transparent;color:var(--gris);border:1px solid var(--beige-dark);padding:12px 20px;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;cursor:pointer;margin-top:.65rem;width:100%;transition:all .2s}
+.btn-back:hover{border-color:var(--gris)}
+
+/* ── RÉSUMÉ COMMANDE ── */
+.order-summary{position:sticky;top:1rem;align-self:start}
+.summary-card{background:white;border-radius:3px;border:1px solid var(--beige-dark);overflow:hidden}
+.summary-header{padding:.85rem 1.25rem;border-bottom:1px solid var(--beige-dark);font-family:'Open Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.summary-body{padding:1.25rem}
+.summary-item{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--beige-dark)}
+.summary-item:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.summary-img{width:56px;height:56px;border-radius:2px;background:var(--rose);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px}
+.summary-item-name{font-family:'Lora',serif;font-style:italic;font-size:.88rem;color:var(--vert);line-height:1.3}
+.summary-item-detail{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--gris-light);margin-top:.2rem}
+.summary-item-price{font-family:'Lora',serif;font-size:.95rem;color:var(--vert);margin-left:auto;flex-shrink:0}
+.summary-lines{padding:1rem 1.25rem;border-top:1px solid var(--beige-dark)}
+.summary-line{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.summary-line-label{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris)}
+.summary-line-val{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--noir)}
+.summary-total{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-top:1.5px solid var(--beige-dark)}
+.summary-total-label{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--vert)}
+.summary-total-val{font-family:'Lora',serif;font-size:1.4rem;color:var(--vert)}
+.summary-badges{padding:.85rem 1.25rem;border-top:1px solid var(--beige-dark);display:flex;flex-direction:column;gap:.5rem}
+.summary-badge{display:flex;align-items:center;gap:.6rem;font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris)}
+.summary-badge-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+
+/* ── PANIER SLIDE-OVER ── */
+.cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:300}
+.cart-overlay.open{display:block}
+.cart-panel{position:fixed;top:0;right:-420px;width:420px;max-width:95vw;height:100vh;background:white;z-index:301;display:flex;flex-direction:column;transition:right .3s ease;box-shadow:-4px 0 24px rgba(0,0,0,.1)}
+.cart-panel.open{right:0}
+.cart-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--beige-dark);display:flex;align-items:center;justify-content:space-between}
+.cart-title{font-family:'Lora',serif;font-style:italic;font-size:1.1rem;color:var(--vert)}
+.cart-close{cursor:pointer;color:var(--gris-light);font-size:20px;padding:2px 6px;line-height:1}
+.cart-close:hover{color:var(--noir)}
+.cart-body{flex:1;overflow-y:auto;padding:1.25rem 1.5rem}
+.cart-item{display:flex;gap:1rem;padding-bottom:1.25rem;border-bottom:1px solid var(--beige-dark);margin-bottom:1.25rem}
+.cart-item-img{width:70px;height:70px;background:var(--rose);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px}
+.cart-item-info{flex:1}
+.cart-item-name{font-family:'Lora',serif;font-style:italic;font-size:.95rem;color:var(--vert);margin-bottom:.3rem;line-height:1.3}
+.cart-item-detail{font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light);margin-bottom:.5rem}
+.cart-item-perso{font-family:'Open Sans',sans-serif;font-size:10px;color:var(--dore);background:rgba(171,145,102,.1);padding:2px 7px;border-radius:2px;display:inline-block}
+.qty-row{display:flex;align-items:center;gap:.6rem;margin-top:.65rem}
+.qty-btn{width:26px;height:26px;border:1px solid var(--beige-dark);background:white;border-radius:2px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--gris);transition:all .2s}
+.qty-btn:hover{border-color:var(--vert);color:var(--vert)}
+.qty-val{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--noir);min-width:20px;text-align:center}
+.cart-item-price{font-family:'Lora',serif;font-size:1rem;color:var(--vert);margin-left:auto;align-self:flex-start}
+.cart-delete{cursor:pointer;color:var(--gris-light);font-size:16px;align-self:flex-start;margin-left:.5rem;transition:color .2s}
+.cart-delete:hover{color:var(--err)}
+.cart-footer{padding:1.25rem 1.5rem;border-top:1px solid var(--beige-dark)}
+.cart-subtotal{display:flex;justify-content:space-between;margin-bottom:.5rem}
+.cart-subtotal-lbl{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris)}
+.cart-subtotal-val{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--noir)}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-top:1px solid var(--beige-dark);margin-bottom:1rem}
+.cart-total-lbl{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--vert)}
+.cart-total-val{font-family:'Lora',serif;font-size:1.4rem;color:var(--vert)}
+.cart-cta{width:100%;background:var(--vert);color:white;padding:14px;border:none;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.cart-cta:hover{background:var(--vert-light)}
+.cart-continue{width:100%;background:transparent;color:var(--gris);border:none;padding:10px;font-family:'Open Sans',sans-serif;font-size:12px;cursor:pointer;margin-top:.5rem;text-decoration:underline;text-underline-offset:2px}
+
+/* ── CONFIRMATION ── */
+.confirm-wrap{max-width:520px;margin:0 auto;padding:3rem 1rem;text-align:center}
+.confirm-icon{width:56px;height:56px;border-radius:50%;background:var(--ok-bg);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:24px}
+.confirm-title{font-family:'Lora',serif;font-size:1.75rem;color:var(--vert);margin-bottom:.75rem}
+.confirm-sub{font-family:'Lora',serif;font-style:italic;font-size:.95rem;color:var(--gris);line-height:1.7;margin-bottom:2rem}
+.confirm-info-block{background:white;border:1px solid var(--beige-dark);border-radius:3px;margin-bottom:1rem;overflow:hidden}
+.confirm-info-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1.25rem;border-bottom:1px solid var(--beige-dark)}
+.confirm-info-row:last-child{border-bottom:none}
+.confirm-info-label{font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light);letter-spacing:.05em}
+.confirm-info-val{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--noir)}
+.confirm-next{background:var(--vert-pale);border:1px solid rgba(29,78,73,.15);border-radius:3px;padding:1rem 1.25rem;display:flex;align-items:center;gap:.85rem;text-align:left;margin-bottom:2rem}
+.confirm-next-icon{font-size:22px;flex-shrink:0}
+.confirm-next-title{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;color:var(--vert);margin-bottom:.2rem}
+.confirm-next-detail{font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light)}
+.confirm-btn{display:inline-block;background:var(--vert);color:white;padding:13px 32px;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s}
+.confirm-btn:hover{background:var(--vert-light)}
+
+/* ── STEPPER PROGRESS ETAPES ── */
+.checkout-steps{display:none}
+.checkout-steps.active{display:block}
+
+/* ── PROMO CODE ── */
+.promo-wrap{margin-top:.75rem}
+.promo-toggle{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--dore);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.promo-form{display:none;flex;gap:.5rem;margin-top:.65rem}
+.promo-form.open{display:flex}
+.promo-input{flex:1;padding:8px 12px;border:1px solid var(--beige-dark);border-radius:2px;font-family:'Open Sans',sans-serif;font-size:12px;outline:none}
+.promo-input:focus{border-color:var(--vert)}
+.promo-btn{background:var(--vert);color:white;border:none;padding:8px 14px;border-radius:2px;font-family:'Open Sans',sans-serif;font-size:11px;cursor:pointer}
+
+/* ── EMPTY CART ── */
+.empty-cart{text-align:center;padding:3rem 1rem;color:var(--gris-light)}
+.empty-cart-icon{font-size:40px;margin-bottom:1rem}
+.empty-cart-text{font-family:'Lora',serif;font-style:italic;font-size:1rem;color:var(--gris);margin-bottom:1.5rem}
+</style>
+</head>
+<body>
+
+<!-- ── PANIER SLIDE-OVER ── -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-panel" id="cart-panel">
+  <div class="cart-header">
+    <div class="cart-title">Votre panier</div>
+    <span class="cart-close" onclick="closeCart()">×</span>
+  </div>
+  <div class="cart-body" id="cart-body"></div>
+  <div class="cart-footer" id="cart-footer"></div>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="checkout-nav">
+  <a href="petunia_personalisation.html" class="nav-back">Continuer mes achats</a>
+  <div class="nav-brand">Éditions Petunia Chatterton</div>
+  <div class="nav-secure">Paiement 100% sécurisé</div>
+</nav>
+
+<!-- ── PROGRESS ── -->
+<div class="progress-wrap" id="progress-wrap">
+  <div class="progress-steps">
+    <div class="step-dot active" id="dot-1">
+      <div class="dot-circle"><span class="dot-num">1</span><span class="dot-check">✓</span></div>
+      <div class="dot-label">Coordonnées</div>
+    </div>
+    <div class="step-dot" id="dot-2">
+      <div class="dot-circle"><span class="dot-num">2</span><span class="dot-check">✓</span></div>
+      <div class="dot-label">Livraison</div>
+    </div>
+    <div class="step-dot" id="dot-3">
+      <div class="dot-circle"><span class="dot-num">3</span><span class="dot-check">✓</span></div>
+      <div class="dot-label">Paiement</div>
+    </div>
+    <div class="step-dot" id="dot-4">
+      <div class="dot-circle"><span class="dot-num">4</span><span class="dot-check">✓</span></div>
+      <div class="dot-label">Confirmation</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── LAYOUT ── -->
+<div class="checkout-layout" id="checkout-layout">
+
+  <!-- FORMULAIRE (gauche) -->
+  <div id="form-area">
+
+    <!-- ÉTAPE 1 : COORDONNÉES -->
+    <div class="checkout-steps active" id="step-1">
+      <div class="checkout-form">
+        <div class="form-header">
+          <div class="form-header-icon" style="background:var(--vert-pale)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--vert)" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="form-header-title">Vos coordonnées</div>
+        </div>
+        <div class="form-body">
+          <div class="field-group">
+            <label class="field-label">Adresse email <span class="req">*</span></label>
+            <input class="field-input" type="email" id="f-email" placeholder="votre@mail.com">
+          </div>
+          <div class="field-row">
+            <div class="field-group" style="margin:0">
+              <label class="field-label">Prénom <span class="req">*</span></label>
+              <input class="field-input" type="text" id="f-prenom" placeholder="Prénom">
+            </div>
+            <div class="field-group" style="margin:0">
+              <label class="field-label">Nom <span class="req">*</span></label>
+              <input class="field-input" type="text" id="f-nom" placeholder="Nom">
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Téléphone <span class="req">*</span></label>
+            <input class="field-input" type="tel" id="f-tel" placeholder="06 00 00 00 00">
+          </div>
+
+          <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--beige-dark)">
+            <div style="font-family:'Open Sans',sans-serif;font-size:11px;color:var(--gris-light);margin-bottom:.65rem">Déjà un compte ?</div>
+            <div style="display:flex;gap:.75rem">
+              <button style="flex:1;border:1px solid var(--beige-dark);background:white;border-radius:2px;padding:9px 14px;font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem">
+                <span style="font-size:14px">G</span> Continuer avec Google
+              </button>
+              <button style="flex:1;border:1px solid var(--beige-dark);background:white;border-radius:2px;padding:9px 14px;font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);cursor:pointer">Se connecter</button>
+            </div>
+          </div>
+
+          <button class="btn-primary" onclick="goStep(2)">Continuer vers la livraison</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 2 : LIVRAISON -->
+    <div class="checkout-steps" id="step-2">
+      <div class="checkout-form">
+        <div class="form-header">
+          <div class="form-header-icon" style="background:#fff3e0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e67e22" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="form-header-title">Adresse de livraison</div>
+        </div>
+        <div class="form-body">
+          <div class="field-group">
+            <label class="field-label">Adresse <span class="req">*</span></label>
+            <input class="field-input" type="text" id="f-adresse" placeholder="123 rue de la Paix">
+          </div>
+          <div class="field-row">
+            <div class="field-group" style="margin:0">
+              <label class="field-label">Code postal <span class="req">*</span></label>
+              <input class="field-input" type="text" id="f-cp" placeholder="75001">
+            </div>
+            <div class="field-group" style="margin:0">
+              <label class="field-label">Ville <span class="req">*</span></label>
+              <input class="field-input" type="text" id="f-ville" placeholder="Paris">
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Pays <span class="req">*</span></label>
+            <select class="field-input" id="f-pays">
+              <option value="FR" selected>France</option>
+              <option value="BE">Belgique</option>
+              <option value="CH">Suisse</option>
+              <option value="LU">Luxembourg</option>
+              <option value="DE">Allemagne</option>
+              <option value="NL">Pays-Bas</option>
+              <option value="ES">Espagne</option>
+              <option value="IT">Italie</option>
+              <option value="GB">Royaume-Uni</option>
+            </select>
+          </div>
+
+          <!-- Modes de livraison -->
+          <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--beige-dark)">
+            <div style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-light);margin-bottom:.85rem;font-weight:600">Mode de livraison</div>
+
+            <div class="shipping-opt selected" id="ship-colissimo" onclick="selectShipping(this,'4.90','5-7 jours ouvrés')">
+              <div class="ship-radio"><div class="ship-radio-inner"></div></div>
+              <div class="ship-icon">📮</div>
+              <div class="ship-info">
+                <div class="ship-name">Colissimo — Suivi</div>
+                <div class="ship-detail">Livraison 5–7 jours ouvrés · Avec numéro de suivi</div>
+              </div>
+              <div class="ship-price">4,90 €</div>
+            </div>
+
+            <div class="shipping-opt" id="ship-express" onclick="selectShipping(this,'9.90','2-3 jours ouvrés')">
+              <div class="ship-radio"><div class="ship-radio-inner"></div></div>
+              <div class="ship-icon">⚡</div>
+              <div class="ship-info">
+                <div class="ship-name">Express — Chrono</div>
+                <div class="ship-detail">Livraison 2–3 jours ouvrés · Prioritaire</div>
+              </div>
+              <div class="ship-price">9,90 €</div>
+            </div>
+
+            <div class="shipping-opt" id="ship-offert" onclick="selectShipping(this,'0','5-7 jours ouvrés (offerte)')">
+              <div class="ship-radio"><div class="ship-radio-inner"></div></div>
+              <div class="ship-icon">🎁</div>
+              <div class="ship-info">
+                <div class="ship-name">Livraison offerte</div>
+                <div class="ship-detail">Disponible dès 45 € d'achat · Colissimo suivi</div>
+              </div>
+              <div class="ship-price" style="color:var(--ok)">Gratuit</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:.75rem;margin-top:1rem">
+            <button class="btn-back" style="flex:1;margin:0" onclick="goStep(1)">Retour</button>
+            <button class="btn-primary" style="flex:2;margin:0" onclick="goStep(3)">Continuer vers le paiement</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 : PAIEMENT -->
+    <div class="checkout-steps" id="step-3">
+      <div class="checkout-form">
+        <div class="form-header">
+          <div class="form-header-icon" style="background:var(--ok-bg)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <div class="form-header-title">Mode de paiement</div>
+        </div>
+        <div class="form-body">
+
+          <!-- Méthodes -->
+          <div class="pay-method selected" id="pay-card" onclick="selectPayMethod('card')">
+            <div class="ship-radio"><div class="ship-radio-inner"></div></div>
+            <div class="pay-icons">
+              <span class="pay-icon-badge">VISA</span>
+              <span class="pay-icon-badge">MC</span>
+              <span class="pay-icon-badge">AMEX</span>
+            </div>
+            <span style="font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--noir)">Carte bancaire</span>
+          </div>
+
+          <div class="pay-method" id="pay-paypal" onclick="selectPayMethod('paypal')">
+            <div class="ship-radio"><div class="ship-radio-inner"></div></div>
+            <div style="background:#003087;color:white;font-size:12px;font-weight:700;padding:3px 10px;border-radius:3px;letter-spacing:-.5px">Pay<span style="color:#009cde">Pal</span></div>
+            <span style="font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;color:var(--noir)">PayPal</span>
+          </div>
+
+          <!-- Champs carte -->
+          <div class="card-fields" id="card-fields">
+            <div class="field-group">
+              <label class="field-label">Numéro de carte <span class="req">*</span></label>
+              <input class="field-input" type="text" placeholder="1234 5678 1234 5678" maxlength="19" oninput="formatCard(this)">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Titulaire de la carte <span class="req">*</span></label>
+              <input class="field-input" type="text" placeholder="Jean Dupont">
+            </div>
+            <div class="field-row">
+              <div class="field-group" style="margin:0">
+                <label class="field-label">Date d'expiration <span class="req">*</span></label>
+                <input class="field-input" type="text" placeholder="MM / AA" maxlength="7" oninput="formatExpiry(this)">
+              </div>
+              <div class="field-group" style="margin:0">
+                <label class="field-label">Code de sécurité <span class="req">*</span></label>
+                <input class="field-input" type="password" placeholder="•••" maxlength="4">
+              </div>
+            </div>
+            <label style="display:flex;align-items:center;gap:.6rem;font-family:'Open Sans',sans-serif;font-size:12px;color:var(--gris);cursor:pointer;margin-top:.5rem">
+              <input type="checkbox">
+              Enregistrer ma carte pour mes prochains achats
+            </label>
+          </div>
+
+          <!-- PayPal message -->
+          <div id="paypal-fields" style="display:none;background:var(--gris-bg);border-radius:2px;padding:1rem;margin-top:.75rem;text-align:center;font-family:'Open Sans',sans-serif;font-size:13px;color:var(--gris)">
+            Vous serez redirigé vers PayPal pour finaliser le paiement en toute sécurité.
+          </div>
+
+          <div class="ssl-badge">Paiement 100% SSL — Vos données sont protégées</div>
+
+          <div style="display:flex;gap:.75rem;margin-top:1rem">
+            <button class="btn-back" style="flex:1;margin:0" onclick="goStep(2)">Retour</button>
+            <button class="btn-primary" style="flex:2;margin:0" id="pay-btn" onclick="goStep(4)">Payer <span id="pay-amount">34,90 €</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 4 : CONFIRMATION -->
+    <div class="checkout-steps" id="step-4">
+      <div class="confirm-wrap">
+        <div class="confirm-icon">✅</div>
+        <h1 class="confirm-title">Merci pour votre commande !</h1>
+        <p class="confirm-sub">Votre commande a bien été enregistrée et sera traitée dans les plus brefs délais. Un email de confirmation vous a été envoyé.</p>
+
+        <div class="confirm-info-block">
+          <div class="confirm-info-row">
+            <span class="confirm-info-label">Numéro de commande</span>
+            <span class="confirm-info-val" style="color:var(--vert);font-family:monospace">CMD-2025-<span id="order-num">1042</span></span>
+          </div>
+          <div class="confirm-info-row">
+            <span class="confirm-info-label">Total payé</span>
+            <span class="confirm-info-val" id="confirm-total">34,90 €</span>
+          </div>
+          <div class="confirm-info-row">
+            <span class="confirm-info-label">Email de confirmation</span>
+            <span class="confirm-info-val" id="confirm-email" style="color:var(--dore)">votre@mail.com</span>
+          </div>
+        </div>
+
+        <div class="confirm-next">
+          <div class="confirm-next-icon">📦</div>
+          <div>
+            <div class="confirm-next-title">Et maintenant ?</div>
+            <div class="confirm-next-detail">Votre livre sera expédié chez vous d'ici le <strong>23 jan. 2026</strong>.<br>Vous recevrez un email avec le numéro de suivi dès l'expédition.</div>
+          </div>
+        </div>
+
+        <a href="petunia_chatterton_homepage.html" class="confirm-btn">Retour à l'accueil</a>
+      </div>
+    </div>
+
+  </div><!-- /form-area -->
+
+  <!-- RÉSUMÉ (droite) -->
+  <div class="order-summary" id="order-summary-col">
+    <div class="summary-card">
+      <div class="summary-header">Votre commande</div>
+      <div class="summary-body" id="summary-items"></div>
+      <div class="summary-lines">
+        <div class="summary-line">
+          <span class="summary-line-label">Sous-total</span>
+          <span class="summary-line-val" id="sum-subtotal">29,00 €</span>
+        </div>
+        <div class="summary-line">
+          <span class="summary-line-label">Livraison</span>
+          <span class="summary-line-val" id="sum-shipping">4,90 €</span>
+        </div>
+        <div class="summary-line" id="sum-promo-line" style="display:none">
+          <span class="summary-line-label" style="color:var(--ok)">Code promo</span>
+          <span class="summary-line-val" style="color:var(--ok)" id="sum-promo-val">— €</span>
+        </div>
+      </div>
+      <div class="summary-total">
+        <span class="summary-total-label">Total</span>
+        <span class="summary-total-val" id="sum-total">33,90 €</span>
+      </div>
+      <div class="summary-badges">
+        <div class="summary-badge">
+          <div class="summary-badge-icon" style="background:var(--ok-bg)">📦</div>
+          <span>Commandé aujourd'hui, livré le <strong>23 jan.</strong> chez vous</span>
+        </div>
+        <div class="summary-badge">
+          <div class="summary-badge-icon" style="background:var(--vert-pale)">🔒</div>
+          <span>Paiement sécurisé</span>
+        </div>
+        <div class="summary-badge">
+          <div class="summary-badge-icon" style="background:#fff3e0">↩️</div>
+          <span>Retours acceptés sous 30 jours</span>
+        </div>
+      </div>
+
+      <!-- Code promo -->
+      <div style="padding:.85rem 1.25rem;border-top:1px solid var(--beige-dark)">
+        <span class="promo-toggle" onclick="togglePromo()">Vous avez un code promo ?</span>
+        <div class="promo-form" id="promo-form">
+          <input class="promo-input" id="promo-input" placeholder="Code promo">
+          <button class="promo-btn" onclick="applyPromo()">Appliquer</button>
+        </div>
+        <div id="promo-msg" style="font-size:11px;margin-top:.4rem"></div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /checkout-layout -->
+
+<script>
+// ── ÉTAT GLOBAL ──────────────────────────────────────────
+const STATE = {
+  currentStep: 1,
+  shipping: 4.90,
+  shippingLabel: '4,90 €',
+  promo: 0,
+  cart: [
+    {
+      id: 1,
+      name: "Je t'aime plus grand que le ciel",
+      detail: "Livre imprimé · Couverture Originale",
+      perso: "Léa / Maman",
+      price: 29,
+      qty: 1,
+      emoji: "📖"
+    }
+  ]
+};
+
+// ── NAVIGATION ÉTAPES ────────────────────────────────────
+function goStep(n) {
+  // Validation étape 1
+  if(STATE.currentStep === 1 && n > 1) {
+    const email = document.getElementById('f-email').value;
+    const prenom = document.getElementById('f-prenom').value;
+    const nom = document.getElementById('f-nom').value;
+    if(!email || !prenom || !nom) {
+      alert('Veuillez remplir tous les champs obligatoires.');
+      return;
+    }
+    // Mettre à jour email confirmation
+    document.getElementById('confirm-email').textContent = email;
+  }
+
+  // Cacher l'ancienne étape
+  document.getElementById('step-' + STATE.currentStep).classList.remove('active');
+
+  // Progression des dots
+  for(let i = 1; i <= 4; i++) {
+    const dot = document.getElementById('dot-' + i);
+    dot.classList.remove('active', 'done');
+    if(i < n) dot.classList.add('done');
+    if(i === n) dot.classList.add('active');
+  }
+
+  // Masquer résumé à la confirmation
+  if(n === 4) {
+    document.getElementById('order-summary-col').style.display = 'none';
+    document.getElementById('checkout-layout').style.gridTemplateColumns = '1fr';
+    document.getElementById('progress-wrap').style.display = 'none';
+    // Générer numéro de commande aléatoire
+    document.getElementById('order-num').textContent = Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('confirm-total').textContent = getTotal();
+  }
+
+  STATE.currentStep = n;
+  document.getElementById('step-' + n).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── LIVRAISON ────────────────────────────────────────────
+function selectShipping(el, price, label) {
+  document.querySelectorAll('.shipping-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  STATE.shipping = parseFloat(price);
+  STATE.shippingLabel = parseFloat(price) === 0 ? 'Gratuit' : price + ' €';
+  updateSummary();
+}
+
+// ── PAIEMENT ─────────────────────────────────────────────
+function selectPayMethod(method) {
+  document.querySelectorAll('.pay-method').forEach(m => m.classList.remove('selected'));
+  document.getElementById('pay-' + method).classList.add('selected');
+  document.getElementById('card-fields').style.display = method === 'card' ? 'block' : 'none';
+  document.getElementById('paypal-fields').style.display = method === 'paypal' ? 'block' : 'none';
+}
+
+function formatCard(input) {
+  let v = input.value.replace(/\D/g,'').substring(0,16);
+  input.value = v.replace(/(.{4})/g,'$1 ').trim();
+}
+
+function formatExpiry(input) {
+  let v = input.value.replace(/\D/g,'');
+  if(v.length >= 2) v = v.substring(0,2) + ' / ' + v.substring(2,4);
+  input.value = v;
+}
+
+// ── PANIER ───────────────────────────────────────────────
+function openCart() {
+  document.getElementById('cart-overlay').classList.add('open');
+  document.getElementById('cart-panel').classList.add('open');
+  renderCart();
+}
+
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('open');
+  document.getElementById('cart-panel').classList.remove('open');
+}
+
+function changeQty(id, delta) {
+  const item = STATE.cart.find(i => i.id === id);
+  if(!item) return;
+  item.qty = Math.max(0, item.qty + delta);
+  if(item.qty === 0) STATE.cart = STATE.cart.filter(i => i.id !== id);
+  renderCart();
+  updateSummary();
+}
+
+function removeItem(id) {
+  STATE.cart = STATE.cart.filter(i => i.id !== id);
+  renderCart();
+  updateSummary();
+}
+
+function renderCart() {
+  const body = document.getElementById('cart-body');
+  const footer = document.getElementById('cart-footer');
+  if(!STATE.cart.length) {
+    body.innerHTML = `<div class="empty-cart"><div class="empty-cart-icon">🛒</div><p class="empty-cart-text">Votre panier est vide</p><a href="petunia_catalogue.html" style="font-family:'Open Sans',sans-serif;font-size:12px;color:var(--vert);text-decoration:underline">Voir nos créations →</a></div>`;
+    footer.innerHTML = '';
+    return;
+  }
+  const subtotal = STATE.cart.reduce((s,i) => s + i.price * i.qty, 0);
+  body.innerHTML = STATE.cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img">${item.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-detail">${item.detail}</div>
+        ${item.perso ? `<div class="cart-item-perso">✦ ${item.perso}</div>` : ''}
+        <div class="qty-row">
+          <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+        </div>
+      </div>
+      <span class="cart-item-price">${(item.price * item.qty).toFixed(2).replace('.',',')} €</span>
+      <span class="cart-delete" onclick="removeItem(${item.id})">🗑</span>
+    </div>`).join('');
+
+  footer.innerHTML = `
+    <div class="cart-subtotal"><span class="cart-subtotal-lbl">Sous-total</span><span class="cart-subtotal-val">${subtotal.toFixed(2).replace('.',',')} €</span></div>
+    <div class="cart-subtotal"><span class="cart-subtotal-lbl">Livraison</span><span class="cart-subtotal-val">${STATE.shippingLabel}</span></div>
+    <div class="cart-total-row">
+      <span class="cart-total-lbl">Total</span>
+      <span class="cart-total-val">${getTotal()}</span>
+    </div>
+    <button class="cart-cta" onclick="closeCart()">Finaliser ma commande</button>
+    <button class="cart-continue" onclick="closeCart()">Continuer mes achats</button>`;
+}
+
+// ── RÉSUMÉ ───────────────────────────────────────────────
+function updateSummary() {
+  const subtotal = STATE.cart.reduce((s,i) => s + i.price * i.qty, 0);
+  document.getElementById('sum-subtotal').textContent = subtotal.toFixed(2).replace('.',',') + ' €';
+  document.getElementById('sum-shipping').textContent = STATE.shippingLabel;
+  document.getElementById('sum-total').textContent = getTotal();
+  document.getElementById('pay-amount').textContent = getTotal();
+
+  const itemsEl = document.getElementById('summary-items');
+  itemsEl.innerHTML = STATE.cart.map(item => `
+    <div class="summary-item">
+      <div class="summary-img">${item.emoji}</div>
+      <div>
+        <div class="summary-item-name">${item.name}</div>
+        <div class="summary-item-detail">${item.detail}${item.perso ? ' · ' + item.perso : ''}</div>
+        ${item.qty > 1 ? `<div style="font-size:10px;color:var(--gris-light)">Qté : ${item.qty}</div>` : ''}
+      </div>
+      <div class="summary-item-price">${(item.price * item.qty).toFixed(2).replace('.',',')} €</div>
+    </div>`).join('');
+}
+
+function getTotal() {
+  const subtotal = STATE.cart.reduce((s,i) => s + i.price * i.qty, 0);
+  const total = subtotal + STATE.shipping - STATE.promo;
+  return Math.max(0, total).toFixed(2).replace('.',',') + ' €';
+}
+
+// ── CODE PROMO ───────────────────────────────────────────
+function togglePromo() {
+  document.getElementById('promo-form').classList.toggle('open');
+}
+
+function applyPromo() {
+  const code = document.getElementById('promo-input').value.trim().toUpperCase();
+  const msg = document.getElementById('promo-msg');
+  const promos = { 'PETUNIA10': 10, 'NOEL5': 5, 'BIENVENUE': 3 };
+  if(promos[code]) {
+    STATE.promo = promos[code];
+    document.getElementById('sum-promo-line').style.display = '';
+    document.getElementById('sum-promo-val').textContent = '−' + promos[code] + ',00 €';
+    msg.textContent = '✓ Code appliqué : −' + promos[code] + ' €';
+    msg.style.color = 'var(--ok)';
+    updateSummary();
+  } else {
+    msg.textContent = '✗ Code invalide ou expiré';
+    msg.style.color = 'var(--err)';
+  }
+}
+
+// ── INIT ─────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  updateSummary();
+});
+</script>
+
+</body>
+</html>
